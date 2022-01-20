@@ -2328,7 +2328,7 @@
             </p>
             <ul>
               <li>
-                <b>success</b> | <i>boolean</i> | <b>required</b>
+                <b>success</b> | <i>boolean</i> | <b>required | true</b>
                 <ul>
                   <li>
                     Indicating wheter or not the request has been successfull or not.
@@ -2340,6 +2340,30 @@
                 <ul>
                   <li>
                     The JWT formatted and base64 encoded Verifiable Presentation.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>holderDID</b> | <i>string</i> | <b>required</b>
+                <ul>
+                  <li>
+                    The holderDID that was used to generate the verifiable presentation.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>corrUUID</b> | <i>string</i> | <b>required</b>
+                <ul>
+                  <li>
+                    The corrUUID that was used to generate the verifiable presentation.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>credentialType</b> | <i>string</i> | <i>enum</i> | <b>required</b>
+                <ul>
+                  <li>
+                    The credentialType that was used to generate the verifiable presentation. Either of type <b>IdentityCredential</b> OR <b>DSCSAATPCredential</b>.
                   </li>
                 </ul>
               </li>
@@ -2357,7 +2381,7 @@
             </p>
             <ul>
               <li>
-                <b>success</b> | <i>boolean</i> | <b>required</b>
+                <b>success</b> | <i>boolean</i> | <b>required | false</b>
                 <ul>
                   <li>
                     Indicating wheter or not the request has been successfull or not.
@@ -2446,7 +2470,7 @@
                 <b>Verifiable Presentation</b> | <i>string</i> | format <i>base64</i>| <b>required</b>
                 <ul>
                   <li>
-                    Correlation UUID which is obtained from the <a>PI</a> Message
+                    The verifiable presentation to verify in JWT base64 encoded format.
                   </li>
                 </ul>
               </li>
@@ -2471,7 +2495,7 @@
             </p>
             <ul>
               <li>
-                <b>success</b> | <i>boolean</i> | <b>required</b>
+                <b>success</b> | <i>boolean</i> | <b>required | true</b>
                 <ul>
                   <li>
                     Indicating wheter or not the request has been successfull or not.
@@ -2500,7 +2524,7 @@
             </p>
             <ul>
               <li>
-                <b>success</b> | <i>boolean</i> | <b>required</b>
+                <b>success</b> | <i>boolean</i> | <b>required | true</b>
                 <ul>
                   <li>
                     Indicating wheter or not the request has been successfull or not.
