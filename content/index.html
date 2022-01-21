@@ -2328,7 +2328,7 @@
             </p>
             <ul>
               <li>
-                <b>success</b> | <i>boolean</i> | <b>required | true</b>
+                <b>success</b> | <i>boolean</i> | <b>required</b> <i>with value</i> <b>true</b>
                 <ul>
                   <li>
                     Indicating wheter or not the request has been successfull or not.
@@ -2344,7 +2344,7 @@
                 </ul>
               </li>
               <li>
-                <b>holderDID</b> | <i>string</i> | <b>required</b>
+                <b>holderDID</b> | <i>string</i> | <b>optional</b>
                 <ul>
                   <li>
                     The holderDID that was used to generate the verifiable presentation.
@@ -2352,7 +2352,7 @@
                 </ul>
               </li>
               <li>
-                <b>corrUUID</b> | <i>string</i> | <b>required</b>
+                <b>corrUUID</b> | <i>string</i> | <b>optional</b>
                 <ul>
                   <li>
                     The corrUUID that was used to generate the verifiable presentation.
@@ -2360,7 +2360,7 @@
                 </ul>
               </li>
               <li>
-                <b>credentialType</b> | <i>string</i> | <i>enum</i> | <b>required</b>
+                <b>credentialType</b> | <i>string</i> | <i>enum</i> | <b>optional</b>
                 <ul>
                   <li>
                     The credentialType that was used to generate the verifiable presentation. Either of type <b>IdentityCredential</b> OR <b>DSCSAATPCredential</b>.
@@ -2368,7 +2368,7 @@
                 </ul>
               </li>
               <li>
-                <b>message</b> | <i>string</i> | <b>required</b>
+                <b>message</b> | <i>string</i> | <b>optional</b>
                 <ul>
                   <li>
                     Additional message to be included
@@ -2381,7 +2381,7 @@
             </p>
             <ul>
               <li>
-                <b>success</b> | <i>boolean</i> | <b>required | false</b>
+                <b>success</b> | <i>boolean</i> | <b>required</b> <i>with value</i> <b>false</b>
                 <ul>
                   <li>
                     Indicating wheter or not the request has been successfull or not.
@@ -2467,7 +2467,7 @@
             <p>The <a>Digital Wallet</a> SHALL provide an API accepting a request body with the following values:</p>
             <ul>
               <li>
-                <b>Verifiable Presentation</b> | <i>string</i> | format <i>base64</i>| <b>required</b>
+                <b>Verifiable Presentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
                 <ul>
                   <li>
                     The verifiable presentation to verify in JWT base64 encoded format.
@@ -2495,7 +2495,7 @@
             </p>
             <ul>
               <li>
-                <b>success</b> | <i>boolean</i> | <b>required | true</b>
+                <b>success</b> | <i>boolean</i> | <b>required</b> <i>with value</i> <b>true</b>
                 <ul>
                   <li>
                     Indicating wheter or not the request has been successfull or not.
@@ -2503,7 +2503,7 @@
                 </ul>
               </li>
               <li>
-                <b>verifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
+                <b>verifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>optional</b>
                 <ul>
                   <li>
                     The JWT formatted and base64 encoded Verifiable Presentation which has been verified
@@ -2511,7 +2511,7 @@
                 </ul>
               </li>
               <li>
-                <b>message</b> | <i>string</i> | <b>required</b>
+                <b>message</b> | <i>string</i> | <b>optional</b>
                 <ul>
                   <li>
                     Additional message to be included
@@ -2524,7 +2524,7 @@
             </p>
             <ul>
               <li>
-                <b>success</b> | <i>boolean</i> | <b>required | true</b>
+                <b>success</b> | <i>boolean</i> | <b>required</b> <i>with value</i> <b>false</b>
                 <ul>
                   <li>
                     Indicating wheter or not the request has been successfull or not.
@@ -2544,7 +2544,7 @@
                 <b>errorCodes</b> | <i>array</i> | <b>required</b>
                 <ul>
                   <li>
-                    a list of error code(s) as specified in section [TODO: FIX LINK] 4.2.1 encountered while attempting
+                    a list of error code(s) as specified in section 5.3 encountered while attempting
                     to generate VP
                   </li>
                 </ul>
@@ -2556,8 +2556,7 @@
           <td>HTTP Status Codes</td>
           <td>
             <p>
-              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to [TODO:
-              FIX LINK] 5.2
+              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to 4.2
               Cloud Wallet Interfaces and Open API Integration:
             </p>
             <ul>
