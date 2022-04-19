@@ -13,7 +13,7 @@
   <meta http-equiv=" Content-Type" content="text/html;charset=utf-8" />
 
   <title>Digital Wallet Conformance Criteria</title>
-  <h2 id="subtitle">v1.0.0</h2>
+  <h2 id="subtitle">v1.1.0</h2>
 
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script type="text/javascript" class="remove">
@@ -87,7 +87,7 @@
           key: "Document Status",
           data: [
             {
-              value: "Approved",
+              value: "PROPOSAL",
             },
           ],
         },
@@ -2664,6 +2664,15 @@
           <ul>
             <li>
               <b>vc_invalid</b>
+            </li>
+          </ul>
+        </li>
+        <li>
+          The field <b>vp.verifiableCredential.issuer</b> (Issuer of the Verifiable <a>Credential</a>) is concluded to not be part of the OCI
+          <b>Trusted Issuer</b> list state at the time of verification. (TODO: Link to Contract specification)
+          <ul>
+            <li>
+              <b>vc_non_trusted_issuer</b>
             </li>
           </ul>
         </li>
