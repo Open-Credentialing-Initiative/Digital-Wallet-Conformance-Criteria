@@ -13,7 +13,7 @@
   <meta http-equiv=" Content-Type" content="text/html;charset=utf-8" />
 
   <title>Digital Wallet Conformance Criteria</title>
-  <h2 id="subtitle">v1.1.0</h2>
+  <h2 id="subtitle">v2.0.0</h2>
 
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script type="text/javascript" class="remove">
@@ -21,6 +21,7 @@
       specStatus: 'base',
       shortName: 'Digital Wallet Conformance Criteria',
       publishDate: "4 Feb 2022",
+      latestVersion: "https://open-credentialing-initiative.github.io/Digital-Wallet-Conformance-Criteria/latest",
       maxTocLevel: 3,
       logos: [],
       lint: {
@@ -212,7 +213,8 @@
           Verifying that a company is “authorized” is enough to meet the letter of the law. However, in digital
           ecosystems it is also necessary to establish the identity of the company. Thus, it becomes a two part process
           - is the counterparty who they say they are, and if so, are they “authorized”? To add to this challenge, DSCSA
-          transactions for Product Identifier (<a>PI</a>) Verification and Transaction Information (<a>TI</a>) Tracing move through
+          transactions for Product Identifier (<a>PI</a>) Verification and Transaction Information (<a>TI</a>) Tracing
+          move through
           any number of intermediaries (solution providers, routing systems, etc.), all of whom fall under the statute.
           In a digital ecosystem, good design is to limit the opportunity for information leaks, transaction replays,
           and tampering with the transaction or <a>Credential</a> content throughout the ecosystem.
@@ -221,31 +223,37 @@
       <section>
         <h2>OCI Credentialing Roles</h2>
         <p>
-          A <b><a>Credential</a></b> is a digital assertion containing a set of claims (e.g., about a state license or FDA
+          A <b><a>Credential</a></b> is a digital assertion containing a set of claims (e.g., about a state license or
+          FDA
           Establishment Identifier) made by an entity about itself or another entity. A subset of identity data,
           credentials are cryptographically signed and can be verified. Credentials can be used to create selective
           disclosures of information (known as “verifiable presentations”) to limit personal data exposure. The entity
           described by the claims is called the subject of the <a>Credential</a>.
         </p>
         <p>
-          A <b>holder</b> can refer to the subject, to others who hold a <a>Credential</a> on behalf of the subject, or to
+          A <b>holder</b> can refer to the subject, to others who hold a <a>Credential</a> on behalf of the subject, or
+          to
           third
           parties authorized to cache or hold a <a>Credential</a> that has been provided to them.
         </p>
         <p>
-          A <b>relying party</b> or <b>verifier</b> is generally the entity to whom a verifiable <a>Credential</a> is presented
+          A <b>relying party</b> or <b>verifier</b> is generally the entity to whom a verifiable <a>Credential</a> is
+          presented
           (i.e., the
-          party making decisions based on the claims and their degree of trust in the <a>Credential</a>). A verifier requests a
+          party making decisions based on the claims and their degree of trust in the <a>Credential</a>). A verifier
+          requests a
           <a>Credential</a> or proof from a holder and verifies it to make a trust decision about the subject entity.
         </p>
         <p>
           A <b>Digital Wallet Provider</b> provides <a>Digital Wallets</a> and connected services to create enterprise
           identities via
-          decentralized identifiers (<a>DID</a>) for Trading Partners (e.g. Manufacturer, Wholesaler, Dispenser) and Verifiable
+          decentralized identifiers (<a>DID</a>) for Trading Partners (e.g. Manufacturer, Wholesaler, Dispenser) and
+          Verifiable
           Credential Issuers.
         </p>
         <p>
-          A <b>Verification Router Service</b> (VRS) provides <a>PI</a> verification routing and <a>PI</a> verification request and
+          A <b>Verification Router Service</b> (VRS) provides <a>PI</a> verification routing and <a>PI</a> verification
+          request and
           response
           services. The VRS can act on behalf of the holder (when generating a verifiable presentation) or the verifier
           (when verifying a verifiable presentation).
@@ -257,7 +265,8 @@
         </p>
         <p>
           A <b>regulatory body</b> is an entity that establishes a legal requirement for the subject to be registered or
-          licensed (i.e., the FDA and States Board of Pharmacy for DSCSA <a>ATP</a> status, and other enforcement agencies as
+          licensed (i.e., the FDA and States Board of Pharmacy for DSCSA <a>ATP</a> status, and other enforcement
+          agencies as
           may be applicable).
         </p>
         <p>
@@ -275,7 +284,8 @@
             <td>Identity and <a>ATP</a> license verification provider </td>
             <td>
               <ul>
-                <li>Performs identity and <a>ATP</a> due diligence in accordance with the OCI Credential Issuer Conformance
+                <li>Performs identity and <a>ATP</a> due diligence in accordance with the OCI Credential Issuer
+                  Conformance
                   Criteria</li>
                 <li>Issues credentials</li>
               </ul>
@@ -294,10 +304,12 @@
                 <li>Uses VRS systems to automate generation and routing of verification request and response messages
                 </li>
                 <li>Uses <a>Digital Wallets</a> to acquire and manage <a>ATP</a> credentials </li>
-                <li>Requesting <a>ATP</a> sends <a>PI</a> Verification requests. A Requesting <a>ATP</a> may engage a VRS provider to verify
+                <li>Requesting <a>ATP</a> sends <a>PI</a> Verification requests. A Requesting <a>ATP</a> may engage a
+                  VRS provider to verify
                   a product identifier and, consequently, enable VRS provider to present their <a>ATP</a> VC in the
                   verification request message. </li>
-                <li>Responding <a>ATP</a> sends <a>PI</a> Verification responses. A Responding <a>ATP</a> may engage a VRS provider to
+                <li>Responding <a>ATP</a> sends <a>PI</a> Verification responses. A Responding <a>ATP</a> may engage a
+                  VRS provider to
                   automate its response to a verification request for a product identifier and, consequently, enable VRS
                   provider to present their <a>ATP</a> VC in the verification response message.</li>
               </ul>
@@ -346,11 +358,13 @@
             <td>
               <ul>
                 <li>
-                  Provides Verification Routing Service following the GS1 Lightweight Messaging Standard (LWMS) for <a>PI</a>
+                  Provides Verification Routing Service following the GS1 Lightweight Messaging Standard (LWMS) for
+                  <a>PI</a>
                   Verifications
                 </li>
                 <li>
-                  Implements or utilizes <a>Digital Wallet</a> to invoke OCI standard <a>ATP</a> credential Application Programming
+                  Implements or utilizes <a>Digital Wallet</a> to invoke OCI standard <a>ATP</a> credential Application
+                  Programming
                   Interface (API) to generate and verify verifiable presentations of <a>ATP</a> credentials
                 </li>
                 <li>
@@ -358,8 +372,10 @@
                   presentation to the <a>PI</a> request or response message.
                 </li>
                 <li>
-                  When representing the <a>ATP</a> credential verifier, the VRS provider will send a verifiable presentation to
-                  the verifier`s <a>Digital Wallet</a> and process the verification result of the <a>ATP</a> <a>Credential</a>
+                  When representing the <a>ATP</a> credential verifier, the VRS provider will send a verifiable
+                  presentation to
+                  the verifier`s <a>Digital Wallet</a> and process the verification result of the <a>ATP</a>
+                  <a>Credential</a>
                 </li>
               </ul>
             </td>
@@ -377,7 +393,8 @@
             <td>
               <p>
                 Acts as a governance body to provide licenses to trading partners. It is neither expected that
-                regulators have the tools for digital identity verification nor a wallet to issue <a>ATP</a> license status
+                regulators have the tools for digital identity verification nor a wallet to issue <a>ATP</a> license
+                status
                 credentials in the initial phases of the OCI ecosystem development.
               </p>
               <p>
@@ -413,7 +430,8 @@
               <p>
                 Acts as a regulatory body to conduct audits and investigations for monitoring and enforcing DSCSA
                 compliance. It is neither expected that regulators have the tools for digital identity verification nor
-                a wallet to issue <a>ATP</a> license status credentials in the initial phases of the OCI ecosystem development.
+                a wallet to issue <a>ATP</a> license status credentials in the initial phases of the OCI ecosystem
+                development.
               </p>
               <p>
                 <b>Future direction:</b> As above, it is recommended to investigate the option to use wallets to
@@ -460,18 +478,25 @@
         supply chain.
       </p>
       <p>
-        OCI leverages decentralized public key infrastructure (PKI) and credentials to protect Product Identifier (<a>PI</a>)
-        verification API calls by providing tools to sign <a>PI</a> verification request and response messages while blending
-        these messages with <a>ATP</a> credentials. With these tools in place, a responder API can check the counterparty’s ATP
-        license status prior to responding to a <a>PI</a> verification call. As a result, only authorized parties with valid
-        <a>ATP</a> credentials will receive a response. OCI applies the same mechanism for the verification of the response
+        OCI leverages decentralized public key infrastructure (PKI) and credentials to protect Product Identifier
+        (<a>PI</a>)
+        verification API calls by providing tools to sign <a>PI</a> verification request and response messages while
+        blending
+        these messages with <a>ATP</a> credentials. With these tools in place, a responder API can check the
+        counterparty’s ATP
+        license status prior to responding to a <a>PI</a> verification call. As a result, only authorized parties with
+        valid
+        <a>ATP</a> credentials will receive a response. OCI applies the same mechanism for the verification of the
+        response
         origin.
       </p>
       <p>
-        <a>Digital Wallet</a> infrastructure is used to protect the private key, acquire, store and exchange credentials of a
+        <a>Digital Wallet</a> infrastructure is used to protect the private key, acquire, store and exchange credentials
+        of a
         given supply chain actor. As these wallets are integrated with the GS1 Lightweight Messaging Standard for
         Verification of Product Identifiers and VRS infrastructure, they allow a US DSCSA-compliant implementation of
-        the <a>ATP</a> regulatory requirements. Decentralized PKI mechanisms of the system are designed to mitigate reuse of
+        the <a>ATP</a> regulatory requirements. Decentralized PKI mechanisms of the system are designed to mitigate
+        reuse of
         API access credentials, which further contributes to improved security.
       </p>
     </section>
@@ -587,14 +612,17 @@
         <li>
           <dfn>Digital wallet</dfn>:
           A digital wallet which manages the lifecycle, creation and storage of cryptographic key material for a single
-          or multiple users hosted on a secure cloud infrastructure environment. <a>Digital Wallets</a> can be either hosted on
+          or multiple users hosted on a secure cloud infrastructure environment. <a>Digital Wallets</a> can be either
+          hosted on
           a cloud environment or on an edge device.
         </li>
         <li>
           <dfn>Edge wallet</dfn>:
-          A <a>Digital Wallet</a> in which cryptographic key material and credentials are held on a local device (e.g. mobile
+          A <a>Digital Wallet</a> in which cryptographic key material and credentials are held on a local device (e.g.
+          mobile
           device) rather than being controlled by a server. While public keys and other data may be stored on the cloud,
-          the private key remains on the local device, so that new presentations of a <a>Credential</a> can only be initiated
+          the private key remains on the local device, so that new presentations of a <a>Credential</a> can only be
+          initiated
           by the user via their local device.
         </li>
         <li>
@@ -616,7 +644,8 @@
           A type of identifier specified by the World Wide Web Consortium (W3C) that enables verifiable, decentralized
           digital identity. In contrast to typical, federated identifiers, DIDs can be decoupled from centralized
           registries, identity providers, and certificate authorities. This takes the form of a Uniform Resource
-          Identifier (URI) that associates a <a>DID</a> subject with a <a>DID</a> document, allowing trustable interactions associated
+          Identifier (URI) that associates a <a>DID</a> subject with a <a>DID</a> document, allowing trustable
+          interactions associated
           with that subject.
         </li>
         <li>
@@ -674,9 +703,11 @@
         <li>
           <dfn><abbr title="Verifiable data registry">VDR</abbr></dfn>
           (Verifiable data registry)
-          In order to be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or network of
+          In order to be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or
+          network of
           some kind. Regardless of the specific technology used, any such system that supports recording DIDs and
-          returning data necessary to produce <a>DID</a> documents is called a verifiable data registry. Examples include
+          returning data necessary to produce <a>DID</a> documents is called a verifiable data registry. Examples
+          include
           distributed ledgers, decentralized file systems, databases of any kind, peer-to-peer networks, and other forms
           of trusted data storage. The system facilitates the creation, verification, updating, and/or deactivation of
           the <a>DID</a> documents for corresponding decentralized identifiers.
@@ -766,16 +797,19 @@
       open, interoperable, portable, standards-based, decentralized identity framework is essential.
     </p>
     <p>
-      OCI uses decentralized public key infrastructure (PKI) technology for <a>Digital Wallets</a> and for electronically
+      OCI uses decentralized public key infrastructure (PKI) technology for <a>Digital Wallets</a> and for
+      electronically
       signed verifiable credentials about the enterprises involved in the <a>ATP</a> verification process.
     </p>
     <p>
       The OCI conformance criteria are based on a set of identity standards (W3C standards, IETF standards, Hyperledger
-      Aries), open API standards, and existing industry standards for <a>PI</a> message exchange (GS1 Lightweight Messaging
+      Aries), open API standards, and existing industry standards for <a>PI</a> message exchange (GS1 Lightweight
+      Messaging
       Standard for Verification of Product Identifiers ) described in this section.
     </p>
     <p>
-      It shall be noted that the OCI Digital Wallet Conformance Criteria distinguishes between Cloud- and <a>Edge wallets</a>
+      It shall be noted that the OCI Digital Wallet Conformance Criteria distinguishes between Cloud- and <a>Edge
+        wallets</a>
       as
       illustrated below.
     </p>
@@ -805,7 +839,8 @@
         <tr>
           <td>2</td>
           <td>Verifiable Data Registry & <a>DID</a> Methods</td>
-          <td>Use of a common set of <a>DID</a> Methods endorsed by OCI (e.g. ETHR <a>DID</a> Method Specification, did:web Method
+          <td>Use of a common set of <a>DID</a> Methods endorsed by OCI (e.g. ETHR <a>DID</a> Method Specification,
+            did:web Method
             Specification)</td>
         </tr>
         <tr>
@@ -902,7 +937,8 @@
       <section>
         <h2>Identifiers for Enterprise Identity</h2>
         <p>
-          A <a>DID</a> is a globally unique identifier developed specifically for decentralized systems as defined by the W3C
+          A <a>DID</a> is a globally unique identifier developed specifically for decentralized systems as defined by
+          the W3C
           <a>DID</a> specification. DIDs enable interoperable decentralized self-sovereign identity management using
           standardized <a>Digital Wallets</a>.
         </p>
@@ -921,28 +957,35 @@
           </li>
         </ul>
         <p>
-          <a>DID</a> methods are the mechanism by which a particular type of <a>DID</a> and its associated <a>DID</a> document are created,
-          resolved, updated, and deactivated. <a>DID</a> methods are defined using separate <a>DID</a> method specifications as
+          <a>DID</a> methods are the mechanism by which a particular type of <a>DID</a> and its associated <a>DID</a>
+          document are created,
+          resolved, updated, and deactivated. <a>DID</a> methods are defined using separate <a>DID</a> method
+          specifications as
           described in the following chapter.
         </p>
       </section>
       <section>
         <h2>Verifiable Data Registry & Endorsed <a>DID</a> Methods</h2>
         <p>
-          To be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or network of some
+          To be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or network of
+          some
           kind. Regardless of the specific technology used, any such system that facilitates the creation, verification,
-          updating, and/or deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable data
-          registry (<a>VDR</a>). A verifiable data registry might also be used for other cryptographically-verifiable data
+          updating, and/or deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
+          data
+          registry (<a>VDR</a>). A verifiable data registry might also be used for other cryptographically-verifiable
+          data
           structures such as verifiable credentials. Examples for VDRs include distributed ledgers, decentralized file
           systems, databases of any kind, peer-to-peer networks, and other forms of trusted data storage.
         </p>
         <p>
           There are multiple VDRs used in today’s <a>DID</a> implementations that support different security protocols,
           discoverability, and linkage to existing trust networks. To avoid complexity and enable interoperability, OCI
-          supports selected <a>DID</a> methods and establishes a process for maintaining a <a>DID</a> method endorsement.
+          supports selected <a>DID</a> methods and establishes a process for maintaining a <a>DID</a> method
+          endorsement.
         </p>
         <p>
-          To ensure resolution of <a>DID</a> methods, Digital Wallet Providers SHALL implement and support all <a>DID</a> methods
+          To ensure resolution of <a>DID</a> methods, Digital Wallet Providers SHALL implement and support all
+          <a>DID</a> methods
           endorsed by OCI. OCI endorses the following <a>DID</a> methods:
         </p>
         <table class="simple">
@@ -974,9 +1017,11 @@
       <section>
         <h2><a>DID</a> Resolution</h2>
         <p>
-          Digital Wallet Providers SHALL integrate a <a>DID</a> resolver service for resolving <a>DID</a> documents. The <a>DID</a> resolver
+          Digital Wallet Providers SHALL integrate a <a>DID</a> resolver service for resolving <a>DID</a> documents. The
+          <a>DID</a> resolver
           SHALL support all <a>DID</a> methods endorsed by the OCI as defined in Table 3 in section 3.1.2. It SHALL be a
-          trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or DIDKit)
+          trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
+          DIDKit)
           vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
           use public instances of resolvers, instead using their own implementations.
         </p>
@@ -1009,7 +1054,8 @@
           Issuers.
         </p>
         <p>
-          Digital Wallet Providers SHALL put controls in place to ensure that <a>ATP</a> credentials are from vetted Credential
+          Digital Wallet Providers SHALL put controls in place to ensure that <a>ATP</a> credentials are from vetted
+          Credential
           Issuers only.
         </p>
         <section>
@@ -1020,7 +1066,8 @@
             <li>did:web:credentialissuer-name2.org</li>
           </ul>
           <p>
-            A verifying party during validation of an <a>ATP</a> <a>Credential</a> SHALL check that the issuer of the <a>ATP</a> credential,
+            A verifying party during validation of an <a>ATP</a> <a>Credential</a> SHALL check that the issuer of the
+            <a>ATP</a> credential,
             conveyed by the claim in the <a>ATP</a> credential, matches one of those trusted issuers defined above.
           </p>
         </section>
@@ -1036,7 +1083,8 @@
           <p>
             Implementers should be aware of issues presented by Spoofed DNS records where the record returned by a
             malicious DNS Server is inauthentic and allows the record to be pointed at a malicious server which contains
-            a different <a>DID</a> Document. To prevent this type of issue, wallet implementers and verifiable credential
+            a different <a>DID</a> Document. To prevent this type of issue, wallet implementers and verifiable
+            credential
             issuers SHALL use DNSSEC which is defined in [[RFC4033]], [[RFC4034]], and [[RFC4035]].
           </p>
         </section>
@@ -1068,15 +1116,18 @@
         <p>
           Credentials that are issued by the Credential Issuer are created in accordance with the W3C JSON-LD format for
           schema serialization. To ensure processing, validation, and interpretation of verifiable credentials by
-          different implementers, JSON-LD schemas for identity and <a>ATP</a> credentials are introduced. <a>Digital Wallet</a>
+          different implementers, JSON-LD schemas for identity and <a>ATP</a> credentials are introduced. <a>Digital
+            Wallet</a>
           Providers SHALL support the JSON-LD format and SHALL support JSON-LD schema validation.
         </p>
         <p>
-          The <a>Digital Wallet</a> provider SHALL have mechanisms in place to support multiple valid versions of credential
+          The <a>Digital Wallet</a> provider SHALL have mechanisms in place to support multiple valid versions of
+          credential
           schemas endorsed and published by OCI. Such a mechanism will allow handling transition periods when new
           credential schema versions are released and the industry has to adopt changes to schemas. It shall be
           understood that there can be multiple schema versions active, decommissioned, and revised versions can have an
-          expiration date. Decommissioned schema versions SHALL return an error by the <a>ATP</a> credential verification API.
+          expiration date. Decommissioned schema versions SHALL return an error by the <a>ATP</a> credential
+          verification API.
         </p>
         <p>
           The OCI SHALL document and publish a list of approved (active), revised, and decommissioned versions of the
@@ -1110,7 +1161,8 @@
           normalizing the definitions of the OCI <a>Credential</a> schemas with GS1.
         </p>
         <p>
-          At a later process of the OCI ecosystem development, OCI may decide to move the <a>Credential</a> schemas to a GS1
+          At a later process of the OCI ecosystem development, OCI may decide to move the <a>Credential</a> schemas to a
+          GS1
           schema repository (e.g. GS1 web vocabulary on Github). To be consistent with GS1 requirements, OCI might want
           to introduce further validation tools such as <a href="https://www.w3.org/TR/shacl/">SHACL</a>. If and when
           these changes happen, <a>Digital Wallet</a>
@@ -1122,7 +1174,8 @@
         <h2>Proofs & Verifications</h2>
         <p>
           Electronic signatures are captured in three places during a digital transaction to verify its authorization.
-          The <a>Digital Wallet</a> Provider SHALL implement the following signature suites and algorithms for signing and
+          The <a>Digital Wallet</a> Provider SHALL implement the following signature suites and algorithms for signing
+          and
           verification:
         </p>
         <table class="simple">
@@ -1199,7 +1252,8 @@
       <section>
         <h2>Credential Issuance & Exchange</h2>
         <p>
-          Communication between Credential Issuer’s <a>Digital Wallet</a> and Trading Partner’s <a>Digital Wallet</a> or between
+          Communication between Credential Issuer’s <a>Digital Wallet</a> and Trading Partner’s <a>Digital Wallet</a> or
+          between
           trading parties for the exchange of credentials may be required to issue and exchange credentials. There are
           two options to issue and exchange credentials:
         </p>
@@ -1211,9 +1265,11 @@
           <h2>DIDComm</h2>
           <p>
             The DIDComm Messaging Specification is a secure method for credential issuance based on a set of
-            interoperable and <a>DID</a> method-agnostic Aries RFCs are working items of the Hyperledger and Decentralized
+            interoperable and <a>DID</a> method-agnostic Aries RFCs are working items of the Hyperledger and
+            Decentralized
             Identity Foundation (DIF) that define technical standards specifications. It may be used to support
-            wallet-to-wallet communication between organizations (e.g. Credential Issuer and <a>Digital Wallet</a> Provider),
+            wallet-to-wallet communication between organizations (e.g. Credential Issuer and <a>Digital Wallet</a>
+            Provider),
             or facilitate secure message exchange within an organization.
           </p>
           <p>
@@ -1227,8 +1283,10 @@
           <p>
             Beyond this, Trading Partners SHOULD be able to exchange Verifiable Presentations of their Identity
             Credentials with other Trading Partners using DIDcomm. This is important when a trading partner receives an
-            <a>ATP</a> <a>Credential</a> from a previously unknown trading partner and wishes to request the corresponding identity
-            <a>Credential</a>. Having established a trusted communication channel between Trading Partner wallets, future use
+            <a>ATP</a> <a>Credential</a> from a previously unknown trading partner and wishes to request the
+            corresponding identity
+            <a>Credential</a>. Having established a trusted communication channel between Trading Partner wallets,
+            future use
             cases that require exchanging credentials can be facilitated more easily.
           </p>
           <table class="simple">
@@ -1282,7 +1340,8 @@
           <h2>vc-http-api</h2>
           <p>
             The W3C Credentials Community Group VC APIs are a set of RESTful API definitions conforming with the OpenAPI
-            3.0 Specification for the roles of Issuer, Verifier, and Holder as described in the Verifiable <a>Credential</a>
+            3.0 Specification for the roles of Issuer, Verifier, and Holder as described in the Verifiable
+            <a>Credential</a>
             Data Model specification. These APIs provide a standard set of interfaces by which interoperability may be
             tested and verified by various parties who leverage VCs.
           </p>
@@ -1292,7 +1351,8 @@
             The <a href="https://w3c-ccg.github.io/vc-api/">Verifiable Credentials HTTP API</a> specification only
             describes creating and verifying credentials via
             HTTP. DIDComm communications includes this as well as the transport of the created or verified credentials.
-            To provide the same functionality, a <a>Digital Wallet</a> provider SHALL provide a secure way to transport the
+            To provide the same functionality, a <a>Digital Wallet</a> provider SHALL provide a secure way to transport
+            the
             credentials to other parties.
           </p>
           <table class="simple">
@@ -1318,15 +1378,19 @@
       <section>
         <h2><a>Credential</a> Revocation</h2>
         <p>
-          OCI can potentially support multiple methods for communicating when a <a>Credential</a> has been revoked. At the
-          current stage, OCI supports a proven revocation management method based on LDAP <a>Credential</a> Revocation Lists
+          OCI can potentially support multiple methods for communicating when a <a>Credential</a> has been revoked. At
+          the
+          current stage, OCI supports a proven revocation management method based on LDAP <a>Credential</a> Revocation
+          Lists
           (CRLs). Consequently, Digital Wallet Providers SHALL implement the OCI Directory Service (LDAP)-based
           mechanism for determining if a Verifiable <a>Credential</a> has been revoked (<a
             href="https://spherity.github.io/vc-status-2021-ldap/">vc-status-2021-ldap</a>).
         </p>
         <p>
-          A <a>Digital Wallet</a> Provider MAY implement a caching mechanism for <a>Credential</a> revocation data to cache LDAP data
-          for 24 hours. <a>Credential</a> revocation data SHALL not be older than 24 hours during normal operations of the OCI
+          A <a>Digital Wallet</a> Provider MAY implement a caching mechanism for <a>Credential</a> revocation data to
+          cache LDAP data
+          for 24 hours. <a>Credential</a> revocation data SHALL not be older than 24 hours during normal operations of
+          the OCI
           Directory Service.
         </p>
         <p>
@@ -1407,12 +1471,14 @@
         <tr>
           <td>Input Data</td>
           <td>Enterprise Digital Wallet Administration Data, User and Role Management Data, Onboarding Data for
-            <a>Credential</a> acquisition</td>
+            <a>Credential</a> acquisition
+          </td>
         </tr>
         <tr>
           <td>Output Data</td>
           <td>ATP Monitoring Data (list of connections with ATP counterparties, identity credentials of ATP
-            counterparties, status of VPs, ATP validation of individual <a>PI</a> verify requests), Wallet Administration Data
+            counterparties, status of VPs, ATP validation of individual <a>PI</a> verify requests), Wallet
+            Administration Data
             (users and roles, my company identity and ATP credentials).</td>
         </tr>
       </table>
@@ -1436,7 +1502,7 @@
         <tr>
           <td>OpenAPI Specification</td>
           <td><a
-              href="https://open-credentialing-initiative.github.io/api-specifications/#/VerifiablePresentation">https://open-credentialing-initiative.github.io/api-specifications/#/VerifiablePresentation</a>>
+              href="https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationVerification">https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationVerification</a>>
           </td>
         </tr>
         <tr>
@@ -1510,7 +1576,8 @@
         </tr>
         <tr>
           <td>Description</td>
-          <td><a>DID</a> Transactions with <a>DID</a> Registry on Public Ledger, <a>DID</a> document read transactions via a universal
+          <td><a>DID</a> Transactions with <a>DID</a> Registry on Public Ledger, <a>DID</a> document read transactions
+            via a universal
             resolver</td>
         </tr>
         <tr>
@@ -1577,13 +1644,15 @@
       </p>
       <ol>
         <li>
-          <b>Authentication</b>: Endpoints of the <a>Digital Wallets</a> require authentication that is secured via a JWT. To
+          <b>Authentication</b>: Endpoints of the <a>Digital Wallets</a> require authentication that is secured via a
+          JWT. To
           obtain a
           token and start making requests, the implementer SHALL provide an authentication provider that can process
           requests to obtain authentication token.
         </li>
         <li>
-          <b>Status Codes</b>: <a>Digital Wallets</a> SHALL use HTTP status codes to indicate the success or failure of API
+          <b>Status Codes</b>: <a>Digital Wallets</a> SHALL use HTTP status codes to indicate the success or failure of
+          API
           requests.
           If a request fails, it returns an error using the appropriate status code.
         </li>
@@ -1621,8 +1690,10 @@
       <section>
         <h2>Wallet User Management</h2>
         <p>
-          A solution SHALL integrate an Identity and Access Management (<a>IAM</a>) solution for User and Role Management into
-          the <a>Digital Wallet</a> infrastructure. A solution SHALL support user on-boarding, off-boarding and user <a>Credential</a>
+          A solution SHALL integrate an Identity and Access Management (<a>IAM</a>) solution for User and Role
+          Management into
+          the <a>Digital Wallet</a> infrastructure. A solution SHALL support user on-boarding, off-boarding and user
+          <a>Credential</a>
           management features and workflows.
         </p>
         <ul>
@@ -1635,12 +1706,14 @@
             removed.
           </li>
           <li>
-            User <a>Credential</a> management includes a secure process to reset and/or rescind access credentials and change
+            User <a>Credential</a> management includes a secure process to reset and/or rescind access credentials and
+            change
             user roles (where multiple user roles exist).
           </li>
         </ul>
         <p>
-          The wallet MAY be integrated with existing trading partner identity and access management (<a>IAM</a>) solutions.
+          The wallet MAY be integrated with existing trading partner identity and access management (<a>IAM</a>)
+          solutions.
           Implementers of solutions for smaller trading partners MAY simplify the user management solution by merging
           administrator and user roles, as users and administrators can be the same person.
         </p>
@@ -1656,7 +1729,8 @@
           from another counterparty.
         </p>
         <p>
-          A solution SHALL provide a data store for storing identity and <a>ATP</a> credentials and transaction log data to
+          A solution SHALL provide a data store for storing identity and <a>ATP</a> credentials and transaction log data
+          to
           support analysis, archive and auditing requirements for DSCSA.
         </p>
       </section>
@@ -1683,7 +1757,8 @@
         <tr>
           <td>Description</td>
           <td>
-            Only the authorized user of trading partner or credential issuer can manually access the <a>Digital Wallet</a>
+            Only the authorized user of trading partner or credential issuer can manually access the <a>Digital
+              Wallet</a>
             application.
           </td>
         </tr>
@@ -1800,7 +1875,8 @@
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            Solution SHOULD implement an audit trail including non-repudiable digital signatures for all <a>ATP</a> <a>Credential</a>
+            Solution SHOULD implement an audit trail including non-repudiable digital signatures for all <a>ATP</a>
+            <a>Credential</a>
             transactions realized on the system.
             User authentication and activities SHALL be logged. Audit trail SHALL be available for user inspection.
           </td>
@@ -1849,8 +1925,10 @@
                 Solution SHALL provide secure key management for encryption and signing keys
               </li>
               <li>
-                Solution SHALL provide features to update <a>DID</a> documents and to rotate keys in accordance with the W3C
-                <a>DID</a> standards and best practices/implementation guidelines on a regular basis, keys SHALL be rotated no
+                Solution SHALL provide features to update <a>DID</a> documents and to rotate keys in accordance with the
+                W3C
+                <a>DID</a> standards and best practices/implementation guidelines on a regular basis, keys SHALL be
+                rotated no
                 less often than once every 12 months.
               </li>
               <li>
@@ -1953,7 +2031,8 @@
         <tr>
           <td>Description</td>
           <td>
-            <a>Digital Wallet</a> and credentialing solution systems must be resilient to single points of failure or outages
+            <a>Digital Wallet</a> and credentialing solution systems must be resilient to single points of failure or
+            outages
           </td>
         </tr>
         <tr>
@@ -1966,7 +2045,8 @@
           <td>Conformance Criteria</td>
           <td>
             DevOps infrastructure and cloud services SHALL be designed in a redundant manner so that the system will
-            continue to work in production mode (i.e., no degraded performance) if one component fails. <a>Digital Wallet</a>
+            continue to work in production mode (i.e., no degraded performance) if one component fails. <a>Digital
+              Wallet</a>
             Providers SHOULD aim for 99.5% availability
           </td>
         </tr>
@@ -1998,7 +2078,8 @@
           <td>
             The maximum time taken by the system as a whole to send any information back to the end user who triggered a
             query (and out of the transit/transmission overhead). Average time for performing the two API calls to
-            generate and verify <a>ATP</a> VPs SHALL be in total less than 1500 ms. Maximum time for both calls SHALL be in
+            generate and verify <a>ATP</a> VPs SHALL be in total less than 1500 ms. Maximum time for both calls SHALL be
+            in
             total less than 3000 ms.
           </td>
         </tr>
@@ -2013,7 +2094,8 @@
           <td>Conformance Criteria</td>
           <td>
             Solution SHALL provide low-latency APIs.
-            Solution MAY apply caching methods (e.g., revocation lists, <a>DID</a> documents, credential verification events)
+            Solution MAY apply caching methods (e.g., revocation lists, <a>DID</a> documents, credential verification
+            events)
             where technically and legally possible to reduce throughput times of processing the APIs. Cached data SHALL
             be valid no longer than 48 hours.
           </td>
@@ -2224,13 +2306,14 @@
         <tr>
           <td>OpenAPI Specification</td>
           <td><a
-              href="https://open-credentialing-initiative.github.io/api-specifications/#/VerifiablePresentation/postVerfiablePresentationGeneration">https://open-credentialing-initiative.github.io/api-specifications/#/VerifiablePresentation/postVerfiablePresentationGeneration</a>
+              href="https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationGeneration">https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationGeneration</a>
           </td>
         </tr>
         <tr>
           <td>Request Body</td>
           <td>
-            <p>The <a>Digital Wallet</a> SHALL provide an API consuming a JSON request body with the following values:</p>
+            <p>The <a>Digital Wallet</a> SHALL provide an API consuming a JSON request body with the following values:
+            </p>
             <ul>
               <li>
                 <b>corrUUID</b> | <i>string</i> | <b>required</b>
@@ -2261,7 +2344,8 @@
             <p>
               <b>Note:</b> It shall be understood that a counterparty VRS can be unavailable at any given time. If this
               is the
-              case, the first VRS provider needs to regenerate a JWT token for resending the <a>PI</a> verify request to the
+              case, the first VRS provider needs to regenerate a JWT token for resending the <a>PI</a> verify request to
+              the
               counterparty VRS at a later time to retry the <a>PI</a> verification request.
             </p>
           </td>
@@ -2269,7 +2353,8 @@
         <tr>
           <td>Request Parameters</td>
           <td>
-            <p>The <a>Digital Wallet</a> SHALL provide the following OPTIONAL query request parameters. During the generation
+            <p>The <a>Digital Wallet</a> SHALL provide the following OPTIONAL query request parameters. During the
+              generation
               of a VP these checks MAY be omitted and only be used for other use cases. In standard mode of operations
               verifiable presentations can be generated without any additional checks. Checks will always be done on the
               receiving side. Therefore and to reuse overall latency checks can be neglected on the sender side. The
@@ -2282,7 +2367,8 @@
                 <b>vc-expirationDate</b> | <i>boolean</i> | <b>optional</b> | default 'false'
                 <ul>
                   <li>
-                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the expiration date of the ATP
+                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the expiration date of the
+                    ATP
                     <a>Credential</a>
                   </li>
                 </ul>
@@ -2300,7 +2386,8 @@
                 <b>vc-issuanceDate</b> | <i>boolean</i> | <b>optional</b> | default 'false'
                 <ul>
                   <li>
-                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the issuance date of the ATP
+                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the issuance date of the
+                    ATP
                     <a>Credential</a>
                   </li>
                 </ul>
@@ -2320,7 +2407,8 @@
           <td>Response Body</td>
           <td>
             <p>
-              Depending on whether the VP generation is successful or not, The <a>Digital Wallet</a> SHALL either return a
+              Depending on whether the VP generation is successful or not, The <a>Digital Wallet</a> SHALL either return
+              a
               response body representing positive or negative generation.
             </p>
             <p>
@@ -2363,7 +2451,8 @@
                 <b>credentialType</b> | <i>string</i> | <i>enum</i> | <b>optional</b>
                 <ul>
                   <li>
-                    The credentialType that was used to generate the verifiable presentation. Either of type <b>IdentityCredential</b> OR <b>DSCSAATPCredential</b>.
+                    The credentialType that was used to generate the verifiable presentation. Either of type
+                    <b>IdentityCredential</b> OR <b>DSCSAATPCredential</b>.
                   </li>
                 </ul>
               </li>
@@ -2413,7 +2502,8 @@
           <td>HTTP Status Codes</td>
           <td>
             <p>
-              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to section 4.2
+              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to
+              section 4.2
               Cloud Wallet Interfaces and Open API Integration:
             </p>
             <ul>
@@ -2474,6 +2564,14 @@
                   </li>
                 </ul>
               </li>
+              <li>
+                <b>verifierDID</b> | <i>string</i> | <b>required</b>
+                <ul>
+                  <li>
+                    The <a>DID</a> that requests a verification of the provided <b>Verifiable Presentation</b>.
+                  </li>
+                </ul>
+              </li>
             </ul>
           </td>
         </tr>
@@ -2487,7 +2585,8 @@
           <td>Response Body</td>
           <td>
             <p>
-              Depending on whether the verification is successful or not, the <a>Digital Wallet</a> SHALL either return a
+              Depending on whether the verification is successful or not, the <a>Digital Wallet</a> SHALL either return
+              a
               response body representing positive verification or negative verification.
             </p>
             <p>
@@ -2556,7 +2655,8 @@
           <td>HTTP Status Codes</td>
           <td>
             <p>
-              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to 4.2
+              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to
+              4.2
               Cloud Wallet Interfaces and Open API Integration:
             </p>
             <ul>
@@ -2659,7 +2759,8 @@
           </ul>
         </li>
         <li>
-          The field <b>vp.verifiableCredential</b> (The Verifiable <a>Credential</a> in json-ld format) is evaluated and either
+          The field <b>vp.verifiableCredential</b> (The Verifiable <a>Credential</a> in json-ld format) is evaluated and
+          either
           concluded to be incomplete, non-parsable or fails sanity checks for expiration- and or issuanceDate.
           <ul>
             <li>
@@ -2668,8 +2769,9 @@
           </ul>
         </li>
         <li>
-          The field <b>vp.verifiableCredential.issuer</b> (Issuer of the Verifiable <a>Credential</a>) is concluded to not be part of the OCI
-          <b>Trusted Issuer</b> list state at the time of verification. (TODO: Link to Contract specification)
+          The field <b>vp.verifiableCredential.issuer</b> (Issuer of the Verifiable <a>Credential</a>) is concluded to
+          not be part of the OCI
+          <b>Trusted Issuer</b> list state at the time of verification.
           <ul>
             <li>
               <b>vc_non_trusted_issuer</b>
@@ -2687,11 +2789,21 @@
           </ul>
         </li>
         <li>
-          The field <b>vp.verifiableCredential.proof</b> (Proof of the Verifiable <a>Credential</a>) is concluded to be invalid
+          The field <b>vp.verifiableCredential.proof</b> (Proof of the Verifiable <a>Credential</a>) is concluded to be
+          invalid
           given the signed body or does not yield a valid or resolvable result.
           <ul>
             <li>
               <b>vc_proof_invalid</b>
+            </li>
+          </ul>
+        </li>
+        <li>
+          The Digital Wallet Solution is not able to find a suitable Verifiable Credential to be used for
+          generating a Verifiable Presentation given the specified DID. 
+          <ul>
+            <li>
+              <b>vc_not_found</b>
             </li>
           </ul>
         </li>
@@ -2707,7 +2819,8 @@
         decision is based on confidentiality considerations on an overall <a>PI</a> verification system level.
       </p>
       <p>
-        The JWT VP SHALL have a lifetime (or time to live) attribute. The lifetime for JWT VPs used in <a>PI</a> verifications
+        The JWT VP SHALL have a lifetime (or time to live) attribute. The lifetime for JWT VPs used in <a>PI</a>
+        verifications
         SHALL not be longer than 5 minutes or 300,000 ms. The JWT VP verification API will use this VP lifetime
         threshold to check if a VP is expired. This VP lifetime threshold will be added to the issuance date of the VP,
         iat attribute of VP, to determine whether the VP verification time is within the acceptable time window for
@@ -2719,7 +2832,8 @@
     <h2>ORGANIZATION CONTROLS</h2>
     <section>
       <h2>Documentation</h2>
-      <p>It is RECOMMENDED that the <a>Digital Wallet</a> provider offers the following documentation to support any validation
+      <p>It is RECOMMENDED that the <a>Digital Wallet</a> provider offers the following documentation to support any
+        validation
         process: </p>
       <ul>
         <li>
@@ -2730,9 +2844,11 @@
         </li>
       </ul>
       <p>
-        The <a>Digital Wallet</a> Provider SHALL establish a process to create installation qualification documentation (IQ).
+        The <a>Digital Wallet</a> Provider SHALL establish a process to create installation qualification documentation
+        (IQ).
         Digital Wallet Providers SHALL provide individual IQ documentation to trading partners during the onboarding
-        process. IQ should instruct about how the <a>Digital Wallet</a> components are installed and integrated correctly. This
+        process. IQ should instruct about how the <a>Digital Wallet</a> components are installed and integrated
+        correctly. This
         includes documentation of the software deployment process, installed system components and the host
         environments.
       </p>
