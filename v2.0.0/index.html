@@ -2610,6 +2610,14 @@
                 </ul>
               </li>
               <li>
+                <b>verifierDID</b> | <i>string</i> | <b>optional</b>
+                <ul>
+                  <li>
+                    The <a>DID</a> that requested a verification of the provided <b>Verifiable Presentation</b>.
+                  </li>
+                </ul>
+              </li>
+              <li>
                 <b>message</b> | <i>string</i> | <b>optional</b>
                 <ul>
                   <li>
@@ -2799,7 +2807,7 @@
           </ul>
         </li>
         <li>
-          The Digital Wallet Solution is not able to find a suitable Verifiable Credential to be used for
+          The Digital Wallet Solution is not able to find a valid Verifiable <a>Credential</a> to be used for
           generating a Verifiable Presentation given the specified DID. 
           <ul>
             <li>
