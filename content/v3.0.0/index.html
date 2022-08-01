@@ -1080,13 +1080,13 @@
         <h2>Trusted Credential Issuer Registry</h2>
         <p>
           As described above, Credential Issuers and their trust in them is a key part of the OCI ecosystem. In order to
-          make sure that this key role may not be exploited the trust is anchored
+          make sure that this key role may not be exploited, the trust is anchored
           in a decentralized and cryptographically-verifiable way. This key information of which issuers to trust and
           which not (not endorsed by the OCI) is stored in the <b>"Trusted Issuer Registry"</b>.
         </p>
         <p>
           The OCI maintains multiple versions of the Trusted Issuer Registry for production and demo/testing purposes.
-          You can find the deployed contracts at theses adresses:
+          You can find the deployed contracts at these addresses:
         </p>
         <ul>
           <li>
@@ -1105,7 +1105,7 @@
         <p>The Ropsten Sandbox Contract has been modified to not require any OCI mechanisms to add and remove trusted
           issuer dids. This may be used for testing by anyone who is interested.</p>
         <p>In addition to readily deployed versions of the contracts, the OCI also published the source code as well as
-          implementation guidelines on Github.</p>
+          implementation guidelines on GitHub.</p>
         <ul>
           <li>
             <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry">https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry</a>
@@ -1116,7 +1116,7 @@
           <h2>Wallet Requirements</h2>
           <p>
             A Digital Wallet SHALL (at the time of verification and generation) check if a to-be-used Verifiable
-            Credential is indeed issued from a Trusted Issuer. To accomplish this a wallet SHALL
+            Credential is indeed issued from a Trusted Issuer. To accomplish this, a wallet SHALL
             call the following contract method signature to retrieve the current approved list of trusted issuers.
           </p>
           <code>
@@ -1129,7 +1129,7 @@
             ["did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74", "did:web:example.com", "did:key:0c498d9e26865f34fcaa50c498d9e26865f34fcaa5"]
           </code>
           <p>
-            With this given information the Digital Wallet SHALL check that the issuer of the
+            With this given information, the Digital Wallet SHALL check that the issuer of the
             <a>ATP</a> credential,
             conveyed by the claim in the <a>ATP</a> credential, matches one of those trusted issuers returned from the contract.
           </p>
@@ -1145,7 +1145,7 @@
           </ul>
           <p>
             The Digital Wallet SHALL create measures to request other nodes in the scenario that the requested node in a verification process is down or does 
-            not answer in a resonable amount of time.  
+            not answer in a reasonable amount of time.  
           </p>
         </section>
       </section>
