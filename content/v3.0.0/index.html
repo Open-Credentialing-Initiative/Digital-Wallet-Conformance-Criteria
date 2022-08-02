@@ -1090,26 +1090,25 @@
         </p>
         <ul>
           <li>
-            <a href="https://etherscan.io/address/0xd9dbAb3757d0327c461eFf7371b494Bb45BB016f">(Mainnet)
-              0xd9dbAb3757d0327c461eFf7371b494Bb45BB016f</a>
+            <a href="https://etherscan.io/address/0x158b6823b7D5225f9B250389bd44d4077046D608" target="_blank" rel="noopener noreferrer">(Mainnet)
+              0x158b6823b7D5225f9B250389bd44d4077046D608</a>
           </li>
           <li>
-            <a href="https://ropsten.etherscan.io/address/0xd9dbAb3757d0327c461eFf7371b494Bb45BB016f">(Ropsten)
-              0xd9dbAb3757d0327c461eFf7371b494Bb45BB016f</a>
+            <a href="https://ropsten.etherscan.io/address/0x158b6823b7D5225f9B250389bd44d4077046D608" target="_blank" rel="noopener noreferrer">(Ropsten)
+              0x158b6823b7D5225f9B250389bd44d4077046D608</a>
           </li>
           <li>
-            <a href="https://ropsten.etherscan.io/address/0xd9dbAb3757d0327c461eFf7371b494Bb45BB016f">(Ropsten Sandbox)
-              0xd9dbAb3757d0327c461eFf7371b494Bb45BB016f</a>
+            <a href="https://ropsten.etherscan.io/address/0x4A678C5AA932DfBcc0def48114e7D5e66720A637" target="_blank" rel="noopener noreferrer">(Ropsten Sandbox)
+              0x4A678C5AA932DfBcc0def48114e7D5e66720A637</a>
           </li>
         </ul>
         <p>The Ropsten Sandbox Contract has been modified to not require any OCI mechanisms to add and remove trusted
-          issuer dids. This may be used for testing by anyone who is interested.</p>
+          issuer DIDs. This may be used for testing by anyone who is interested.</p>
         <p>In addition to readily deployed versions of the contracts, the OCI also published the source code as well as
           implementation guidelines on GitHub.</p>
         <ul>
           <li>
-            <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry">https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry</a>
-
+            <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry</a>
           </li>
         </ul>
         <section>
@@ -1117,19 +1116,46 @@
           <p>
             A Digital Wallet SHALL (at the time of verification and generation) check if a to-be-used Verifiable
             Credential is indeed issued from a Trusted Issuer. To accomplish this, a wallet SHALL
-            call the following contract method signature to retrieve the current approved list of trusted issuers.
+            call one of the following contract method signatures to verify the status of the credential issuer:
           </p>
-          <code>
-            function getTrustedIssuers() public view returns (string[] memory)
-          </code>
+          <ul>
+            <li>
+              Retrieve the full list of all Trusted Issuer <a>DIDs</a>.
+              <ul>
+                <li>
+                  Signature:
+                  <code>
+                    function getTrustedIssuers() public view returns (string[] memory)
+                  </code>
+                </li>
+                <li>
+                  Returns a string array:
+                  <code>
+                    ["did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74", "did:web:example.com", "did:key:0c498d9e26865f34fcaa50c498d9e26865f34fcaa5"]
+                  </code>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Retrieve the Trusted Issuer status of given a supplied <a>DID</a>.
+              <ul>
+                <li>
+                  Signature:
+                  <code>
+                    function isTrustedIssuer(string memory _DID) public view returns (bool)
+                  </code>
+                </li>
+                <li>
+                  Returns a boolean:
+                  <code>
+                    true/false
+                  </code>
+                </li>
+              </ul>
+            </li>
+          </ul>
           <p>
-            The described function returns a string array of dids like this:
-          </p>
-          <code>
-            ["did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74", "did:web:example.com", "did:key:0c498d9e26865f34fcaa50c498d9e26865f34fcaa5"]
-          </code>
-          <p>
-            With this given information, the Digital Wallet SHALL check that the issuer of the
+            With this information, the Digital Wallet SHALL check that the issuer of the
             <a>ATP</a> credential,
             conveyed by the claim in the <a>ATP</a> credential, matches one of those trusted issuers returned from the contract.
           </p>
