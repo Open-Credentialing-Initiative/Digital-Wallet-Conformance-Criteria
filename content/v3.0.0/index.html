@@ -1040,9 +1040,9 @@
         </p>
         <p>
           To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
-          SHALL implement a Trusted Credential Issuer registry which is part of this conformance criteria document (see
+          SHALL implement and maintain a Trusted Credential Issuer registry (see
           next section). Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
-          Credential Issuers that are endorsed via the OCI registry created under the OCI Conformance Program.
+          Credential Issuer that is endorsed via the specified OCI registry.
         </p>
         <p>
           Credential Issuers SHALL use a <a>DID</a> method implementation that supports a <a
@@ -1079,13 +1079,12 @@
       <section>
         <h2>Trusted Credential Issuer Registry</h2>
         <p>
-          As described above, Credential Issuers and their trust in them is a key part of the OCI ecosystem. In order to
-          make sure that this key role may not be exploited, the trust is anchored
-          in a decentralized and cryptographically-verifiable way. This key information of which issuers to trust and
-          which not (not endorsed by the OCI) is stored in the <b>"Trusted Issuer Registry"</b>.
+          As described above, the trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
+          ensure that this key role is not exploited, the trust is anchored
+          in a decentralized and cryptographically verifiable way. The crucial information of which issuers are to be trusted (i.e. endorsed by OCI) is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum Smart Contracts.
         </p>
         <p>
-          The OCI maintains multiple versions of the Trusted Issuer Registry for production and demo/testing purposes.
+          OCI maintains multiple versions of the Trusted Issuer Registry for production and demo/testing purposes.
           You can find the deployed contracts at these addresses:
         </p>
         <ul>
@@ -1104,7 +1103,7 @@
         </ul>
         <p>The Ropsten Sandbox Contract has been modified to not require any OCI mechanisms to add and remove trusted
           issuer DIDs. This may be used for testing by anyone who is interested.</p>
-        <p>In addition to readily deployed versions of the contracts, the OCI also published the source code as well as
+        <p>In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
           implementation guidelines on GitHub.</p>
         <ul>
           <li>
@@ -1112,11 +1111,11 @@
           </li>
         </ul>
         <section>
-          <h2>Wallet Requirements</h2>
+          <h2>Digital Wallet Requirements</h2>
           <p>
-            A Digital Wallet SHALL (at the time of verification and generation) check if a to-be-used Verifiable
-            Credential is indeed issued from a Trusted Issuer. To accomplish this, a wallet SHALL
-            call one of the following contract method signatures to verify the status of the credential issuer:
+            At each generation and verification of a Verifiable Presentation, a Digital Wallet SHALL check if the respective Verifiable
+            Credential has indeed been issued by a Trusted Issuer. To accomplish this, a wallet SHALL
+            call one of the following contract method signatures to verify the status of the Credential Issuer:
           </p>
           <ul>
             <li>
@@ -1155,13 +1154,12 @@
             </li>
           </ul>
           <p>
-            With this information, the Digital Wallet SHALL check that the issuer of the
-            <a>ATP</a> credential,
-            conveyed by the claim in the <a>ATP</a> credential, matches one of those trusted issuers returned from the contract.
+            By deriving this information from the contract, the Digital Wallet SHALL check that the issuer stated within the claims of the respective 
+            <a>ATP</a> credential matches one of those trusted issuers recorded in the Trusted Issuer Registry.
           </p>
           <p>
-            It is RECOMMENDED that the Wallet chooses a Ethereum Node of high trust. The OCI provides their own Ethereum Node for this purpose and it may be used 
-            without any costs.
+            The Digital Wallet SHOULD choose an Ethereum node of high trust. OCI provides their own Ethereum Node for this purpose and it may be used 
+            at no cost.
           </p>
           <ul>
             <li>
@@ -1170,8 +1168,8 @@
             </li>
           </ul>
           <p>
-            The Digital Wallet SHALL create measures to request other nodes in the scenario that the requested node in a verification process is down or does 
-            not answer in a reasonable amount of time.  
+            The Digital Wallet SHALL have measures in place to request other Ethereum nodes in case the requested node is down or does 
+            not respond in a reasonable amount of time.  
           </p>
         </section>
       </section>
