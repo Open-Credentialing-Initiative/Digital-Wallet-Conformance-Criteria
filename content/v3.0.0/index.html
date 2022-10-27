@@ -188,7 +188,7 @@
         Looking to the future, Digital Wallet Providers are encouraged to ensure
         flexibility and customizability to support additional use cases for authorized
         trading partner verification, including the exchange of additional enterprise
-        compliance credentials. 
+        compliance credentials.
       <p>
         For additional information, please see the
         <a href="https://www.oc-i.org/">
@@ -1094,19 +1094,16 @@
         </p>
         <ul>
           <li>
-            <a href="https://etherscan.io/address/0x158b6823b7D5225f9B250389bd44d4077046D608" target="_blank" rel="noopener noreferrer">Production (Mainnet)</a>
+            <a href="https://goerli.etherscan.io/address/0xDfC7aCC61c532350a562018d627c6fe6aBBca5e8" target="_blank" rel="noopener noreferrer">Development (Goerli)</a>
           </li>
           <li>
-            <a href="https://ropsten.etherscan.io/address/0x158b6823b7D5225f9B250389bd44d4077046D608" target="_blank" rel="noopener noreferrer">Development (Ropsten)</a>
-          </li>
-          <li>
-            <a href="https://ropsten.etherscan.io/address/0x4A678C5AA932DfBcc0def48114e7D5e66720A637" target="_blank" rel="noopener noreferrer">Development (Ropsten Sandbox)</a>
+            <a href="https://goerli.etherscan.io/address/0x07a79C830352ab30d7C3241F2d16db7e33D1f197" target="_blank" rel="noopener noreferrer">Development (Goerli Sandbox)</a>
           </li>
         </ul>
-        <p>The Ropsten Sandbox Contract has been modified to not require any OCI mechanisms to add and remove trusted
+        <p>The Goerli Sandbox Contract has been modified to not require any OCI mechanisms to add and remove trusted
           issuer DIDs. This may be used for testing by anyone who is interested.</p>
         <p>In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
-          implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>
+          implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>.
         </p>
         <section>
           <h2>Digital Wallet Requirements</h2>
@@ -1152,22 +1149,12 @@
             </li>
           </ul>
           <p>
-            By deriving this information from the contract, the Digital Wallet SHALL check that the issuer stated within the claims of the respective 
+            By deriving this information from the contract, the Digital Wallet SHALL check that the issuer stated within the claims of the respective
             <a>ATP</a> credential matches one of those trusted issuers recorded in the Trusted Issuer Registry.
           </p>
           <p>
-            The Digital Wallet SHOULD choose an Ethereum node of high trust. OCI provides their own Ethereum Node for this purpose and it may be used 
-            at no cost.
-          </p>
-          <ul>
-            <li>
-              <a href="https://ropsten.etherscan.io/address/0xd9dbAb3757d0327c461eFf7371b494Bb45BB016f">PLACEHOLDER
-                NODE</a>
-            </li>
-          </ul>
-          <p>
-            The Digital Wallet SHALL have measures in place to request other Ethereum nodes in case the requested node is down or does 
-            not respond in a reasonable amount of time.  
+            The Digital Wallet SHALL have measures in place to request other Ethereum nodes in case the requested node is down or does
+            not respond in a reasonable amount of time.
           </p>
         </section>
       </section>
