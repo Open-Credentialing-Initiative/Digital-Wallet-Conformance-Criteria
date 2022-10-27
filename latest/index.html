@@ -13,14 +13,14 @@
   <meta http-equiv=" Content-Type" content="text/html;charset=utf-8" />
 
   <title>Digital Wallet Conformance Criteria</title>
-  <h2 id="subtitle">v2.0.0</h2>
+  <h2 id="subtitle">v3.0.0</h2>
 
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script type="text/javascript" class="remove">
     var respecConfig = {
       specStatus: 'base',
       shortName: 'Digital Wallet Conformance Criteria',
-      publishDate: "26 April 2022",
+      publishDate: "4 August 2022",
       latestVersion: "https://open-credentialing-initiative.github.io/Digital-Wallet-Conformance-Criteria/latest",
       maxTocLevel: 3,
       logos: [],
@@ -88,7 +88,7 @@
           key: "Document Status",
           data: [
             {
-              value: "Approved",
+              value: "Draft",
             },
           ],
         },
@@ -185,6 +185,11 @@
         requirements for ATP. Beyond supporting the adoption and
         standardization of the <a>ATP</a> architecture, OCI establishes a structure
         for running further credential-based pilots and incubation projects.
+        Looking to the future, Digital Wallet Providers are encouraged to ensure
+        flexibility and customizability to support additional use cases for authorized
+        trading partner verification, including the exchange of additional enterprise
+        compliance credentials.
+      <p>
         For additional information, please see the
         <a href="https://www.oc-i.org/">
           Open Credentialing Initiative website.
@@ -1040,9 +1045,9 @@
         </p>
         <p>
           To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
-          SHALL implement a Trusted Credential Issuer registry which is part of this conformance criteria document (see
+          SHALL implement and maintain a Trusted Credential Issuer registry (see
           next section). Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
-          Credential Issuers that are endorsed via the OCI registry created under the OCI Conformance Program.
+          Credential Issuer that is endorsed via the specified OCI registry.
         </p>
         <p>
           Credential Issuers SHALL use a <a>DID</a> method implementation that supports a <a
@@ -1059,19 +1064,6 @@
           Issuers only.
         </p>
         <section>
-          <h2>Trusted Credential Issuer Registry</h2>
-          <p>The following is a list of trusted issuer identifiers conformant with OCI.</p>
-          <ul>
-            <li>did:web:credentialissuer-name1.com</li>
-            <li>did:web:credentialissuer-name2.org</li>
-          </ul>
-          <p>
-            A verifying party during validation of an <a>ATP</a> <a>Credential</a> SHALL check that the issuer of the
-            <a>ATP</a> credential,
-            conveyed by the claim in the <a>ATP</a> credential, matches one of those trusted issuers defined above.
-          </p>
-        </section>
-        <section>
           <h2>Securing DID:web</h2>
           <p>
             DNS presents many of the attack vectors that enable active security and privacy attacks on the did:web
@@ -1086,6 +1078,83 @@
             a different <a>DID</a> Document. To prevent this type of issue, wallet implementers and verifiable
             credential
             issuers SHALL use DNSSEC which is defined in [[RFC4033]], [[RFC4034]], and [[RFC4035]].
+          </p>
+        </section>
+      </section>
+      <section>
+        <h2>Trusted Credential Issuer Registry</h2>
+        <p>
+          As described above, the trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
+          ensure that this key role is not exploited, the trust is anchored
+          in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have satisfied OCI’s <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">Credential Issuer Conformance Criteria</a>, are to be trusted is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum Smart Contracts.
+        </p>
+        <p>
+          OCI maintains multiple versions of the Trusted Issuer Registry for production and demo/testing purposes.
+          You can find the deployed contracts at these addresses:
+        </p>
+        <ul>
+          <li>
+            <a href="https://goerli.etherscan.io/address/0xDfC7aCC61c532350a562018d627c6fe6aBBca5e8" target="_blank" rel="noopener noreferrer">Development (Goerli)</a>
+          </li>
+          <li>
+            <a href="https://goerli.etherscan.io/address/0x07a79C830352ab30d7C3241F2d16db7e33D1f197" target="_blank" rel="noopener noreferrer">Development (Goerli Sandbox)</a>
+          </li>
+        </ul>
+        <p>The Goerli Sandbox Contract has been modified to not require any OCI mechanisms to add and remove trusted
+          issuer DIDs. This may be used for testing by anyone who is interested.</p>
+        <p>In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
+          implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>.
+        </p>
+        <section>
+          <h2>Digital Wallet Requirements</h2>
+          <p>
+            At each generation and verification of a Verifiable Presentation, a Digital Wallet SHALL check if the respective Verifiable
+            Credential has indeed been issued by a Trusted Issuer. To accomplish this, a wallet SHALL
+            call one of the following contract method signatures to verify the status of the Credential Issuer:
+          </p>
+          <ul>
+            <li>
+              Retrieve the full list of all Trusted Issuer <a>DIDs</a>.
+              <ul>
+                <li>
+                  Signature:
+                  <code>
+                    function getTrustedIssuers() public view returns (string[] memory)
+                  </code>
+                </li>
+                <li>
+                  Returns a string array:
+                  <code>
+                    ["did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74", "did:web:example.com", "did:key:0c498d9e26865f34fcaa50c498d9e26865f34fcaa5"]
+                  </code>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Retrieve the Trusted Issuer status of given a supplied <a>DID</a>.
+              <ul>
+                <li>
+                  Signature:
+                  <code>
+                    function isTrustedIssuer(string memory _DID) public view returns (bool)
+                  </code>
+                </li>
+                <li>
+                  Returns a boolean:
+                  <code>
+                    true/false
+                  </code>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p>
+            By deriving this information from the contract, the Digital Wallet SHALL check that the issuer stated within the claims of the respective
+            <a>ATP</a> credential matches one of those trusted issuers recorded in the Trusted Issuer Registry.
+          </p>
+          <p>
+            The Digital Wallet SHALL have measures in place to request other Ethereum nodes in case the requested node is down or does
+            not respond in a reasonable amount of time.
           </p>
         </section>
       </section>
@@ -2044,16 +2113,18 @@
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            DevOps infrastructure and cloud services SHALL be designed in a redundant manner so that the system will
-            continue to work in production mode (i.e., no degraded performance) if one component fails. <a>Digital
-              Wallet</a>
-            Providers SHOULD aim for 99.5% availability
+            DevOps infrastructure and cloud services SHALL
+            be designed in a redundant manner so that the system will continue to
+            work in production mode (i.e., no degraded performance) if one
+            component fails. Digital Wallet Providers SHOULD aim for 99.5%
+            availability
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            Availability monitoring, failover tests for operational solution
+            Infrastructure designed for high availability,
+            resilience and failover with ability to monitor and report on availability
           </td>
         </tr>
       </table>
@@ -2094,16 +2165,16 @@
           <td>Conformance Criteria</td>
           <td>
             Solution SHALL provide low-latency APIs.
-            Solution MAY apply caching methods (e.g., revocation lists, <a>DID</a> documents, credential verification
-            events)
-            where technically and legally possible to reduce throughput times of processing the APIs. Cached data SHALL
-            be valid no longer than 48 hours.
+            Solution MAY apply caching methods (e.g., revocation lists, DID
+            documents, credential verification events) where technically and
+            legally possible to reduce throughput times of processing the APIs.
+            Cached data SHALL be valid no longer than 48 hours.
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            Performance, throughput, and latency test
+            API performance designed for low-latency with built-in ability to measure performance, throughput and latency.
           </td>
         </tr>
       </table>
@@ -2152,6 +2223,7 @@
 
       <br>
       <br>
+
       <table class="simple">
         <tr>
           <th></th>
@@ -2160,51 +2232,6 @@
         <tr>
           <td>ID</td>
           <td>NFR009</td>
-        </tr>
-        <tr>
-          <td>NFR Type</td>
-          <td>Extensibility & Customizability</td>
-        </tr>
-        <tr>
-          <td>Description</td>
-          <td>
-            The solution must be able to support additional use cases for authorized trading partner verification,
-            including the exchange of additional enterprise compliance credentials.
-          </td>
-        </tr>
-        <tr>
-          <td>Rationale</td>
-          <td>
-            There are further DSCSA and enterprise verification use cases.
-          </td>
-        </tr>
-        <tr>
-          <td>Conformance Criteria</td>
-          <td>
-            The solution SHOULD be flexible and customizable to cater for these use cases and as-yet unidentified ones.
-            Care must be taken to not optimize or architect only for these credential types, sizes, and volumes, as this
-            would limit the extension of the infrastructure to use cases with advanced credential exchange requirements.
-            The solution SHOULD support a combination of credentials.
-          </td>
-        </tr>
-        <tr>
-          <td>Measurement</td>
-          <td>
-            Number of supported credential types
-          </td>
-        </tr>
-      </table>
-
-      <br>
-      <br>
-      <table class="simple">
-        <tr>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>ID</td>
-          <td>NFR010</td>
         </tr>
         <tr>
           <td>NFR Type</td>
@@ -2247,7 +2274,7 @@
         </tr>
         <tr>
           <td>ID</td>
-          <td>NFR011</td>
+          <td>NFR010</td>
         </tr>
         <tr>
           <td>NFR Type</td>
@@ -2808,7 +2835,7 @@
         </li>
         <li>
           The Digital Wallet Solution is not able to find a valid Verifiable <a>Credential</a> to be used for
-          generating a Verifiable Presentation given the specified DID. 
+          generating a Verifiable Presentation given the specified DID.
           <ul>
             <li>
               <b>vc_not_found</b>
