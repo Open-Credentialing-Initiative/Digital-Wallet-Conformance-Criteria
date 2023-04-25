@@ -55,3 +55,4 @@ jobs:
         with:
           add: 'content/*'
           default_author: github_actions
+          push: origin HEAD:main
