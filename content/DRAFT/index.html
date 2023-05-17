@@ -13,14 +13,14 @@
   <meta http-equiv=" Content-Type" content="text/html;charset=utf-8" />
 
   <title>Digital Wallet Conformance Criteria</title>
-  <h2 id="subtitle">v3.1.0</h2>
+  <h2 id="subtitle">[DRAFT] v3.X.0</h2>
 
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script type="text/javascript" class="remove">
     var respecConfig = {
       specStatus: 'base',
-      shortName: 'Digital Wallet Conformance Criteria',
-      publishDate: "4 August 2022",
+      shortName: '[DRAFT]Digital Wallet Conformance Criteria',
+      publishDate: "23 May 2023",
       latestVersion: "https://open-credentialing-initiative.github.io/Digital-Wallet-Conformance-Criteria/latest",
       maxTocLevel: 3,
       logos: [],
@@ -108,7 +108,7 @@
 
 <body>
   <!-- sotd -->
-  <p class="copyright">Copyright © 2022 Open Credentialing Initiative.</p>
+  <p class="copyright">Copyright © 2023 Open Credentialing Initiative.</p>
   <section>
     <h2>Status of this Document</h2>
     <p>
@@ -117,7 +117,7 @@
     </p>
     <p>
       This is a living document developed by OCl's Founding Members with input
-      from other OCI Charter Members, DSCSA Trading Partners, Solution
+      from other OCI Charter Members, DSCSA Trading Partners, Authorities, Solution
       Providers, Associations, Standards Bodies and others interested in
       implementing and contributing to the betterment of the W3C Verifiable
       Credentials architecture piloted by the DSCSA <a>ATP</a> Pilot. It is
@@ -140,7 +140,7 @@
     <section>
       <h2>Intended Audience</h2>
       <p>
-        The publication is intended for DIgital Wallet implementers or service providers who wish to be recognized by
+        The publication is intended for Digital Wallet implementers or service providers who wish to be recognized by
         the Open Credentialing Initiative (OCI) as <b>Digital Wallet Providers</b> in the OCI interoperable environment,
         or for
         anyone associated with the pharmaceutical drug distribution industry who is interested in understanding the
@@ -160,16 +160,15 @@
       <p>
         The OCI was formed by a group of industry service providers, manufacturers, and wholesalers, and dispensers
         working together to design and deliver an electronic solution for the pharmaceutical industry to achieve
-        compliance with FDA mandates for supply chain security. Upon successful demonstration of the technical solution
+        compliance with statutory and FDA mandates for supply chain security. Upon successful demonstration of the technical solution
         and acceptance by the participating manufacturers and wholesalers, the participants formed the OCI to further
         develop the solution into a set of tools that could be adopted and implemented across the industry.
-        The name OCI was chosen for the following reasons:
       </p>
       <p>
         The name OCI was chosen for the following reasons:
       </p>
-      <li>
-        <b>Open</b> - Non-proprietary and interoperable*. OCI is open to all
+      <ul><li>
+        <b>Open</b> - Non-proprietary and interoperable. OCI is open to all
         providers, users, and standards organizations that support adoption of
         the integrated W3C standards and applicable <a>NIST</a> <a>identity proofing</a>
         standards.
@@ -179,11 +178,10 @@
         license or identity card that you carry in your <a>Digital Wallet</a>) that
         attests to the identity and status of its owner / holder.
       </li>
-      <li><b>Initiative</b> - Indicates that the work is ongoing.</li>
-      <p>
-        OCI supports pharmaceutical industry compliance with DSCSA
-        requirements for ATP. Beyond supporting the adoption and
-        standardization of the <a>ATP</a> architecture, OCI establishes a structure
+      <li><b>Initiative</b> - Indicates that the work is ongoing.</li></ul>
+      <p>OCI supports pharmaceutical industry compliance with DSCSA
+        requirements for ATP, as well as allowing for interoperability with Authorities (e.g. federal and state regulators) and ATP Equivalents (i.e. trading partners that are not required to register with the FDA or obtain a State license, such as the Veterans Administration, Department of Defense, etc.). These three groups are referred to as "DSCSA Stakeholders" collectively.
+	<p>Beyond supporting the adoption and standardization of the DSCSA <a>Stakeholder</a> architecture, OCI establishes a structure
         for running further credential-based pilots and incubation projects.
         Looking to the future, Digital Wallet Providers are encouraged to ensure
         flexibility and customizability to support additional use cases for authorized
@@ -201,13 +199,13 @@
       <p>
         The US Drug Supply Chain Security Act (DSCSA) has the objective of securing pharmaceutical drug distribution,
         from manufacturers all the way to pharmacies. For patient safety, it is essential to know that only trusted and
-        authorized entities are involved in the manufacture, distribution, and dispensing of prescription drugs. In
+        authorized entities are involved in the manufacturing, repackaging, distribution, and dispensing of prescription drugs. In
         addition to verification, product tracing, and serialization requirements, each supply chain actor must ensure
         that their Trading Partners are authorized (including indirect Trading Partners).
-        DSCSA requires that Trading Partners of manufacturers, wholesale distributors, dispensers, and repackagers meet
+        DSCSA requires that Trading Partners of manufacturers, wholesale distributors, dispensers, repackagers, and third-party logistics providers (<a>3PL</a>s) meet
         the applicable requirements for being “authorized trading partners” (see sections 582(b)(3), (c)(3), (d)(3), and
-        (e)(3) of the FD&C Act (21 U.S.C. 360eee-1); where “authorized” means registration in accordance with section
-        510 (manufacturers and repackagers), or having a valid license under State law (wholesalers and dispensers).
+        (e)(3) of the FD&C Act (21 U.S.C. 360eee-1); briefly, “authorized” means registration in accordance with section
+        510 (manufacturers and repackagers), or having a valid license under State law (wholesalers, 3PLs, and dispensers).
       </p>
     </section>
     <section>
@@ -252,7 +250,7 @@
         <p>
           A <b>Digital Wallet Provider</b> provides <a>Digital Wallets</a> and connected services to create enterprise
           identities via
-          decentralized identifiers (<a>DID</a>) for Trading Partners (e.g. Manufacturer, Wholesaler, Dispenser) and
+          decentralized identifiers (<a>DID</a>) for ATPs (e.g. Manufacturer, Wholesaler, Dispenser, Repackager, 3PL), ATP Equivalents, Authorities, and
           Verifiable
           Credential Issuers.
         </p>
@@ -266,16 +264,15 @@
         <p>
           A <b>Credential Issuer</b> is an entity that issues Verifiable Credentials (VC); also known as a Credential
           Service Provider (CSP). The Credential Issuer is responsible for checking the status of entity registrations
-          and licenses prior to issuing VC to wholesalers and manufacturers.
+          and licenses prior to issuing VCs to ATPs.
         </p>
         <p>
-          A <b>regulatory body</b> is an entity that establishes a legal requirement for the subject to be registered or
+          An <b>authority</b> is an entity that establishes a legal requirement for the subject to be registered or
           licensed (i.e., the FDA and States Board of Pharmacy for DSCSA <a>ATP</a> status, and other enforcement
-          agencies as
-          may be applicable).
+          agencies as may be applicable). Authorities have a dual role in OCI specifications: they define which companies are ATPs, and have the option to obtain and use Authority Credentials to support their own interoperability requirements.
         </p>
         <p>
-          The following stakeholder roles shall be established in the OCI:
+          The following roles shall be established in the OCI:
         </p>
         <table class="simple">
           <tr>
@@ -286,10 +283,10 @@
           </tr>
           <tr>
             <td>1</td>
-            <td>Identity and <a>ATP</a> license verification provider </td>
+            <td>Identity and <a>Stakeholder</a> license verification provider </td>
             <td>
               <ul>
-                <li>Performs identity and <a>ATP</a> due diligence in accordance with the OCI Credential Issuer
+                <li>Performs identity and <a>stakeholder</a> due diligence in accordance with the OCI Credential Issuer
                   Conformance
                   Criteria</li>
                 <li>Issues credentials</li>
@@ -303,7 +300,7 @@
           </tr>
           <tr>
             <td>2</td>
-            <td>Authorized Trading Partner (ATP) e.g., manufacturer, wholesaler, dispenser</td>
+            <td>Authorized Trading Partner (ATP) (e.g. manufacturer, wholesaler, dispenser, repackager, 3PL)</td>
             <td>
               <ul>
                 <li>Uses VRS systems to automate generation and routing of verification request and response messages
@@ -326,13 +323,40 @@
               </ul>
             </td>
           </tr>
+
           <tr>
             <td>3</td>
+            <td>Authorized Trading Partner (ATP) Equivalent (e.g. Veterans Administration, Department of Defense)</td>
+            <td>
+              <ul>
+                <li>May use VRS systems to automate generation and routing of verification request and response messages
+                </li>
+                <li>Uses <a>Digital Wallets</a> to acquire and manage <a>ATP Equivalent</a> credentials </li>
+                <li>Requesting <a>ATP Equivalent</a> sends <a>PI</a> Verification requests. A Requesting <a>ATP Equivalent</a> may engage a
+                  VRS provider to verify
+                  a product identifier and, consequently, enable VRS provider to present their <a>ATP Equivalent</a> VC in the
+                  verification request message. </li>
+                <li>Responding <a>ATP</a> sends <a>PI</a> Verification responses. A Responding <a>ATP</a> may engage a
+                  VRS provider to
+                  automate its response to a verification request for a product identifier and, consequently, enable VRS
+                  provider to present their <a>ATP</a> VC in the verification response message.</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>Holder</li>
+                <li>Verifier</li>
+              </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td>4</td>
             <td><a>Digital Wallet</a> Provider</td>
             <td>
               <ul>
                 <li>
-                  Provides <a>Digital Wallets</a> for ATPs and Credential Issuers
+                  Provides <a>Digital Wallets</a> for Stakeholders and Credential Issuers
                 </li>
                 <li>
                   Provides functionality to issue, revoke and verify credentials
@@ -358,7 +382,7 @@
             </td>
           </tr>
           <tr>
-            <td>4</td>
+            <td>5</td>
             <td>VRS Provider</td>
             <td>
               <ul>
@@ -380,7 +404,10 @@
                   When representing the <a>ATP</a> credential verifier, the VRS provider will send a verifiable
                   presentation to
                   the verifier`s <a>Digital Wallet</a> and process the verification result of the <a>ATP</a>
-                  <a>Credential</a>
+                  <a>Credential</a></ul>
+              <p>
+                <b>Future direction:</b> It is recommended to investigate the option to use ATP Equivalent and Authority credentials so that these Stakeholders can prove they are indeed government bodies engaging in regulator-initiated DSCSA verification and tracing requests.
+              </p>
                 </li>
               </ul>
             </td>
@@ -393,29 +420,12 @@
             </td>
           </tr>
           <tr>
-            <td>5</td>
-            <td>State Board of Pharmacy</td>
+            <td>6</td>
+            <td>Authority (e.g. FDA, DEA, State Board of Pharmacy)</td>
             <td>
               <p>
-                Acts as a governance body to provide licenses to trading partners. It is neither expected that
-                regulators have the tools for digital identity verification nor a wallet to issue <a>ATP</a> license
-                status
-                credentials in the initial phases of the OCI ecosystem development.
-              </p>
-              <p>
-                <b>Future direction:</b> It is recommended to investigate the option to use wallets to establish
-                authorized
-                enforcement body credentials so that an enforcement body can prove they are indeed an authorized
-                government body for regulator-initiated DSCSA verification and tracing requests:
-              </p>
-              <ol>
-                <li>
-                  use <a>Digital Wallets</a> to acquire and manage regulator credentials
-                </li>
-                <li>
-                  present regulator VC when interacting with <a>ATP</a> application systems
-                </li>
-              </ol>
+                Acts as a governance body to provide licenses to trading partners and/or as a regulatory body to conduct audits and investigations for monitoring and enforcing DSCSA
+                compliance. The OCI specification includes Authority credentials so that an Authority may present a VP when interacting with <a>ATP</a> application systems, thereby proving they are a recognized body for authority-initiated DSCSA verification and tracing requests.
             </td>
             <td>
               <ul>
@@ -423,52 +433,15 @@
                   Source of truth for <a>ATP</a> status information
                 </li>
                 <li>
-                  Holder of regulator credentials
+                  Holder of authority credentials
+                </li>
+                <li>
+                  Verifier (requester) of authority-initiated (DSCSA) verification and tracing requests
                 </li>
               </ul>
             </td>
           </tr>
           <tr>
-            <td>6</td>
-            <td>Regulator</td>
-            <td>
-              <p>
-                Acts as a regulatory body to conduct audits and investigations for monitoring and enforcing DSCSA
-                compliance. It is neither expected that regulators have the tools for digital identity verification nor
-                a wallet to issue <a>ATP</a> license status credentials in the initial phases of the OCI ecosystem
-                development.
-              </p>
-              <p>
-                <b>Future direction:</b> As above, it is recommended to investigate the option to use wallets to
-                establish
-                authorized government body credentials:
-              </p>
-              <ol>
-                <li>
-                  use <a>Digital Wallets</a> to acquire and manage regulator credentials
-                </li>
-                <li>
-                  present regulator VC when interacting with <a>ATP</a> application systems
-                </li>
-                <li>
-                  verify VC of Trading Partners responding to regulator-initiated verification and tracing requests
-                </li>
-              </ol>
-            </td>
-            <td>
-              <ul>
-                <li>
-                  Source of truth for <a>ATP</a> status information
-                </li>
-                <li>
-                  Holder of regulator credentials
-                </li>
-                <li>
-                  Verifier (requester) of regulator-initiated (DSCSA) verification and tracing requests
-                </li>
-              </ul>
-            </td>
-          </tr>
         </table>
       </section>
     </section>
@@ -487,11 +460,11 @@
         (<a>PI</a>)
         verification API calls by providing tools to sign <a>PI</a> verification request and response messages while
         blending
-        these messages with <a>ATP</a> credentials. With these tools in place, a responder API can check the
+        these messages with <a>Stakeholder</a> credentials. With these tools in place, a responder API can check the
         counterparty’s ATP
-        license status prior to responding to a <a>PI</a> verification call. As a result, only authorized parties with
+        license status (or equivalent) prior to responding to a <a>PI</a> verification call. As a result, only authorized parties with
         valid
-        <a>ATP</a> credentials will receive a response. OCI applies the same mechanism for the verification of the
+        <a>Stakeholder</a> credentials will receive a response. OCI applies the same mechanism for the verification of the
         response
         origin.
       </p>
@@ -500,7 +473,7 @@
         of a
         given supply chain actor. As these wallets are integrated with the GS1 Lightweight Messaging Standard for
         Verification of Product Identifiers and VRS infrastructure, they allow a US DSCSA-compliant implementation of
-        the <a>ATP</a> regulatory requirements. Decentralized PKI mechanisms of the system are designed to mitigate
+        the <a>ATP</a> and related regulatory requirements. Decentralized PKI mechanisms of the system are designed to mitigate
         reuse of
         API access credentials, which further contributes to improved security.
       </p>
@@ -591,16 +564,24 @@
       </p>
       <ul>
         <li>
+          <dfn><abbr title="Third-Party Logistics Provider">3PL</abbr></dfn>
+          (Third-Party Logistics Provider): As defined in the statute, "an entity that provides or coordinates
+    warehousing, or other logistics services of a product in interstate
+    commerce on behalf of a manufacturer, wholesale distributor, or
+    dispenser of a product, but does not take ownership of the product,
+    nor have responsibility to direct the sale or disposition of the
+    product."
+        </li>
+        <li>
           <dfn><abbr title="Authorized Trading Partner">ATP</abbr></dfn>
           (Authorized Trading Partner): The Drug Supply Chain Security Act
           (DSCSA) restricts access to the distribution system for prescription
-          drug products by requiring that trading partners of manufacturers,
-          wholesale distributors, dispensers, and repackagers meet the
+          drug products by requiring that trading partners of manufacturers, repackagers,
+          wholesale distributors, 3PLs, and dispensers meet the
           applicable requirements for being Authorized Trading Partners.
           <a>DSCSA</a>
           includes definitions for authorized and trading partner with respect
-          to manufacturers, repackagers, wholesaler distributors, third-party
-          logistics providers (3PLs), and dispensers. For example: “To be
+          to these categories. For example: “To be
           considered an authorized trading partner, a wholesale distributor
           must have a valid license under State law or section 583 of the FD&C
           Act, in accordance with section 582(a)(6) of the FD&C Act, comply
@@ -610,19 +591,27 @@
           wholesale distributor, or dispenser.”
         </li>
         <li>
-          <dfn>Cloud wallet</dfn>:
+          <dfn><abbr title="Authorized Trading Partner Equivalent">ATP Equivalent</abbr></dfn>
+          (Authorized Trading Partner Equivalent): Some trading partners are not required to register with the FDA or obtain a State license (e.g. Veterans Administration, Department of Defense, etc.). OCI has developed a credential schema for these trading partners so that they may leverage credentialing to participate in the electronic, interoperable system mandated by DSCSA. A fuller definition of which entities fall under this stakeholder group may be found in the OCI Credential Issuer Conformance Criteria.
+        </li>
+		<li>
+          <dfn>Authority</dfn><strong>:</strong>
+          Under the Drug Supply Chain Security Act (DSCSA), the Secretary and "other appropriate Federal or State officials” are empowered to perform certain activities such as tracing and verification. OCI has developed a credential schema for these stakeholders so that they may leverage credentialing to participate in the electronic, interoperable system. A fuller definition of which entities fall under this stakeholder group may be found in the OCI Credential Issuer Conformance Criteria.
+        </li>
+        <li>
+          <dfn>Cloud wallet</dfn><strong>:</strong>
           A digital cloud wallet which manages the lifecycle, creation and storage of cryptographic key material for a
           single or multiple users hosted on a secure cloud infrastructure environment.
         </li>
         <li>
-          <dfn>Digital wallet</dfn>:
+          <dfn>Digital wallet</dfn><strong>:</strong>
           A digital wallet which manages the lifecycle, creation and storage of cryptographic key material for a single
           or multiple users hosted on a secure cloud infrastructure environment. <a>Digital Wallets</a> can be either
           hosted on
           a cloud environment or on an edge device.
         </li>
         <li>
-          <dfn>Edge wallet</dfn>:
+          <dfn>Edge wallet</dfn><strong>:</strong>
           A <a>Digital Wallet</a> in which cryptographic key material and credentials are held on a local device (e.g.
           mobile
           device) rather than being controlled by a server. While public keys and other data may be stored on the cloud,
@@ -631,8 +620,8 @@
           by the user via their local device.
         </li>
         <li>
-          <dfn>Credential</dfn>
-          : A digital assertion containing a set of claims (e.g., about a
+          <dfn>Credential</dfn><strong>:</strong>
+          A digital assertion containing a set of claims (e.g., about a
           state license or FDA Establishment Identifier) made by an entity
           about itself or another entity. Credentials are a subset of identity
           data. The entity described by the claims is called the subject of
@@ -645,7 +634,7 @@
         </li>
         <li>
           <dfn><abbr title="Decentralized Identifier">DID</abbr></dfn>
-          (Decentralized Identifier)
+          (Decentralized Identifier): 
           A type of identifier specified by the World Wide Web Consortium (W3C) that enables verifiable, decentralized
           digital identity. In contrast to typical, federated identifiers, DIDs can be decoupled from centralized
           registries, identity providers, and certificate authorities. This takes the form of a Uniform Resource
@@ -655,7 +644,7 @@
         </li>
         <li>
           <dfn><abbr title="Product Identifier">PI</abbr></dfn>
-          (Product Identifier)
+          (Product Identifier): 
           DSCSA defines the term “product identifier” as, “a standardized graphic that includes, in both human-readable
           form and on a machine-readable data carrier that conforms to the standards developed by a widely recognized
           international standards development organization, the standardized numerical identifier (SNI), lot number, and
@@ -676,14 +665,13 @@
         </li>
         <li>
           <dfn><abbr title="Identity and Access Management">IAM</abbr></dfn>
-          (Identity and Access Management)
+          (Identity and Access Management): 
           Identity management, also known as identity and access management (IAM), is a framework of policies and
           technologies to ensure that the right human or system users in an enterprise have the appropriate access to
           technology resources.
         </li>
         <li>
-          <dfn>Identity Proofing</dfn>
-          : The process by which a
+          <dfn>Identity Proofing</dfn><strong>:</strong> The process by which a
           <a>CSP</a>
           collects, validates, and verifies information about an entity.
         </li>
@@ -699,15 +687,21 @@
           standards for a wide range of products and services.
         </li>
         <li>
+          <dfn>
+			Stakeholder
+          </dfn><strong>:</strong>
+          The three participant groups for DSCSA interoperability: ATPs, ATP Equivalents, and Authorities. Stakeholders under the OCI specification may obtain Digital Wallets and Credentials in order to engage in DSCSA activities such as verification and tracing.
+        </li>
+        <li>
           <dfn><abbr title="Transaction Information">TI</abbr></dfn>
-          (Transaction Information)
+          (Transaction Information): 
           For each transaction, product tracing information should be exchanged. Product tracing information include
           Transaction Information including lot number of product, number of containers, date of transaction, date of
           the shipment, business name and address of the seller and the purchaser.
         </li>
         <li>
           <dfn><abbr title="Verifiable data registry">VDR</abbr></dfn>
-          (Verifiable data registry)
+          (Verifiable data registry): 
           In order to be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or
           network of
           some kind. Regardless of the specific technology used, any such system that supports recording DIDs and
@@ -1003,7 +997,7 @@
       <section>
         <h2><a>DID</a> Resolution</h2>
         <p>
-          Digital Wallet Providers SHALL integrate <a>DID</a> resolver functionality for resolving <a>DID</a> documents. The
+          Digital Wallet Providers SHALL integrate a <a>DID</a> resolver service for resolving <a>DID</a> documents. The
           <a>DID</a> resolver
           SHALL support all <a>DID</a> methods endorsed by the OCI as defined in Table 3 in section 3.1.2. It SHALL be a
           trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
@@ -1131,7 +1125,7 @@
           </ul>
           <p>
             By deriving this information from the contract, the Digital Wallet SHALL check that the issuer stated within the claims of the respective
-            <a>ATP</a> credential matches one of those trusted issuers recorded in the Trusted Issuer Registry.
+            <a>Stakeholder</a> credential matches one of those trusted issuers recorded in the Trusted Issuer Registry.
           </p>
           <p>
             The Digital Wallet SHALL have measures in place to request other Ethereum nodes in case the requested node is down or does
@@ -1166,7 +1160,7 @@
         <p>
           Credentials that are issued by the Credential Issuer are created in accordance with the W3C JSON-LD format for
           schema serialization. To ensure processing, validation, and interpretation of verifiable credentials by
-          different implementers, JSON-LD schemas for identity and <a>ATP</a> credentials are introduced. <a>Digital
+          different implementers, JSON-LD schemas for identity and <a>Stakeholder</a> credentials are introduced. <a>Digital
             Wallet</a>
           Providers SHALL support the JSON-LD format and SHALL support JSON-LD schema validation.
         </p>
@@ -1187,8 +1181,7 @@
           SHALL follow the schema requirements defined by OCI credential schema requirements.
         </p>
         <p>
-          Digital Wallet Providers SHALL support the OCI approved credential schema for processing, validation, and
-          interpretation that are published on the <a href="https://github.com/Open-Credentialing-Initiative/oci">OCI
+          Digital Wallet Providers SHALL be capable of interpreting and validating the OCI-approved credential schemas published on the <a href="https://github.com/Open-Credentialing-Initiative/oci">OCI
             Github</a> for:
         </p>
         <ul>
@@ -1202,7 +1195,20 @@
               href="https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAATPCredential-v1.0.0.jsonld">DSCSA
               <a>ATP</a> Credential </a>
           </li>
+          <li>
+            <a
+              href="https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAATPEquivalentCredential-v1.0.0.jsonld">DSCSA
+              <a>ATP Equivalent</a> Credential </a>
+          </li>
+          <li>
+            <a
+              href="https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAAuthorityCredential-v1.0.0.jsonld">DSCSA
+              <a>Authority</a> Credential </a>
+          </li>  
         </ul>
+        <p>
+          Digital Wallet Providers SHALL be capable of managing of the Identity Credential, and of managing at least one of the three Stakeholder <a>Credential</a> types indicated above.
+        </p>
         <i><u>Outlook</u></i>
         <p>
           GS1 maintains a web vocabulary that is designed to extend the work done by schema.org and makes use of similar
@@ -1248,7 +1254,7 @@
                   Verifiable Credential of “Identity Credential” type
                 </li>
                 <li>
-                  Verifiable Credential of “DSCSA <a>ATP</a> Credential” type
+                  Verifiable Credential of one of the three <a>Stakeholder</a> types
                 </li>
               </ol>
             </td>
@@ -1280,7 +1286,7 @@
             <td>Trading Partner: Direct Presentation Exchange</td>
             <td>
               <p>
-                Presentation of a Verifiable Presentation between Trading Partner wallets or from Trading Partner’s
+                Presentation of a Verifiable Presentation between Stakeholder wallets or from Stakeholder’s
                 wallet to Credential Issuer’s wallet via DIDComm protocol i.e., “present-proof” v2.0.
               </p>
               <ol>
@@ -1288,7 +1294,7 @@
                   Verifiable Presentation that holds “Identity Credential”
                 </li>
                 <li>
-                  Verifiable Presentation that holds “DSCSA <a>ATP</a> Credential”
+                  Verifiable Presentation that holds one of the three <a>Stakeholder</a> credential types
                 </li>
               </ol>
             </td>
@@ -1302,7 +1308,7 @@
       <section>
         <h2>Credential Issuance & Exchange</h2>
         <p>
-          Communication between Credential Issuer’s <a>Digital Wallet</a> and Trading Partner’s <a>Digital Wallet</a> or
+          Communication between Credential Issuer’s <a>Digital Wallet</a> and Stakeholder’s <a>Digital Wallet</a> or
           between trading parties for the exchange of credentials may be required to issue and exchange credentials.
         </p>        
         <section>
@@ -1325,11 +1331,11 @@
           </p>
           <img src="assets/didcomm.png" style="width: 100%; height: 100%;"></img>
           <p>
-            Beyond this, Trading Partners SHOULD be able to exchange Verifiable Presentations of their Identity
-            Credentials with other Trading Partners using DIDcomm. This is important when a trading partner receives an
-            <a>ATP</a> <a>Credential</a> from a previously unknown trading partner and wishes to request the
+            Beyond this, Stakeholder SHOULD be able to exchange Verifiable Presentations of their Identity
+            Credentials with other Stakeholder using DIDcomm. This is important when a trading partner receives a
+            <a>Stakeholder</a> <a>Credential</a> from a previously unknown trading partner and wishes to request the
             corresponding identity
-            <a>Credential</a>. Having established a trusted communication channel between Trading Partner wallets,
+            <a>Credential</a>. Having established a trusted communication channel between Stakeholder wallets,
             future use
             cases that require exchanging credentials can be facilitated more easily.
           </p>
@@ -1482,10 +1488,10 @@
         </tr>
         <tr>
           <td>Output Data</td>
-          <td>ATP Monitoring Data (list of connections with ATP counterparties, identity credentials of ATP
-            counterparties, status of VPs, ATP validation of individual <a>PI</a> verify requests), Wallet
+          <td>Stakeholder Monitoring Data (list of connections with Stakeholder counterparties, identity credentials of Stakeholder
+            counterparties, status of VPs, Stakeholder validation of individual <a>PI</a> verify requests), Wallet
             Administration Data
-            (users and roles, my company identity and ATP credentials).</td>
+            (users and roles, my company/organization identity and Stakeholder credentials).</td>
         </tr>
       </table>
 
@@ -1502,7 +1508,7 @@
         </tr>
         <tr>
           <td>Description</td>
-          <td>API Integration with VRS Provider, API Interface for creating and verifying ATP Credential Presentations
+          <td>API Integration with VRS Provider, API Interface for creating and verifying Stakeholder Credential Presentations
             (See Section 5.1.7 Proof & Verifications )</td>
         </tr>
         <tr>
@@ -1522,11 +1528,11 @@
         </tr>
         <tr>
           <td>Input Data</td>
-          <td>Request creation of ATP <a>Credential</a> Presentation, Verify ATP Credential Presentation</td>
+          <td>Request creation of Stakeholder <a>Credential</a> Presentation, Verify Stakeholder Credential Presentation</td>
         </tr>
         <tr>
           <td>Output Data</td>
-          <td>ATP Credential Presentation (JWT), ATP credential presentation verification response.</td>
+          <td>Stakeholder Credential Presentation (JWT), Stakeholder credential presentation verification response.</td>
         </tr>
       </table>
 
@@ -1633,11 +1639,11 @@
         </tr>
         <tr>
           <td>Input Data</td>
-          <td>Request identity or ATP credential issuance</td>
+          <td>Request identity or Stakeholder credential issuance</td>
         </tr>
         <tr>
           <td>Output Data</td>
-          <td>Identity or ATP <a>Credential</a></td>
+          <td>Identity or Stakeholder <a>Credential</a></td>
         </tr>
       </table>
 
@@ -1727,15 +1733,15 @@
       <section>
         <h2>Identity & <a>ATP</a> <a>Credential</a> Management</h2>
         <p>
-          A solution SHALL provide a process workflow for acquiring identity and <a>ATP</a> credentials from a vetted
+          A solution SHALL provide a process workflow for acquiring identity and at least one of the three <a>Stakeholder</a> credential types from a vetted
           Credential Issuer.
         </p>
         <p>
-          A solution SHOULD provide a feature for users of the trading partner to request and log identity credentials
+          A solution SHOULD provide a feature for users of the Stakeholder to request and log identity credentials
           from another counterparty.
         </p>
         <p>
-          A solution SHALL provide a data store for storing identity and <a>ATP</a> credentials and transaction log data
+          A solution SHALL provide a data store for storing identity and <a>Stakeholder</a> credentials and transaction log data
           to
           support analysis, archive and auditing requirements for DSCSA.
         </p>
@@ -1763,7 +1769,7 @@
         <tr>
           <td>Description</td>
           <td>
-            Only the authorized user of trading partner or credential issuer can manually access the <a>Digital
+            Only the authorized user of the Stakeholder or credential issuer can manually access the <a>Digital
               Wallet</a>
             application.
           </td>
@@ -1881,7 +1887,7 @@
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            Solution SHOULD implement an audit trail including non-repudiable digital signatures for all <a>ATP</a>
+            Solution SHOULD implement an audit trail including non-repudiable digital signatures for all <a>Stakeholder</a>
             <a>Credential</a>
             transactions realized on the system.
             User authentication and activities SHALL be logged. Audit trail SHALL be available for user inspection.
@@ -1976,7 +1982,7 @@
         <tr>
           <td>Rationale</td>
           <td>
-            Cloud architecture should ensure VRS and trading partner systems are secured from attack. Since the system
+            Cloud architecture should ensure VRS and Stakeholder systems are secured from attack. Since the system
             handles business critical data, the measures taken to protect data need to be defined. Privileged access to
             system components is minimized and strictly controlled.
           </td>
@@ -2044,7 +2050,7 @@
         <tr>
           <td>Rationale</td>
           <td>
-            When integrated into operations, <a>ATP</a> credentialing is a critical business system
+            When integrated into operations, <a>Stakeholder</a> credentialing is a critical business system
           </td>
         </tr>
         <tr>
@@ -2086,7 +2092,7 @@
           <td>
             The maximum time taken by the system as a whole to send any information back to the end user who triggered a
             query (and out of the transit/transmission overhead). Average time for performing the two API calls to
-            generate and verify <a>ATP</a> VPs SHALL be in total less than 1500 ms. Maximum time for both calls SHALL be
+            generate and verify <a>Stakeholder</a> VPs SHALL be in total less than 1500 ms. Maximum time for both calls SHALL be
             in
             total less than 3000 ms.
           </td>
@@ -2251,9 +2257,10 @@
   </section>
   <section>
     <h2>INTEGRATION WITH VRS PROVIDERS</h2>
+	<p>At time of publication, the use of Authority and ATP Equivalent credentials within the VRS is being discussed among relevant stakeholder groups. It should be noted that the current version of the OpenAPI integration supports only ATP credentials.</p>
     <!-- Generation Endpoint -->
     <section>
-      <h2>API to generate a Verifiable Presentation of <a>ATP</a> Credential</h2>
+      <h2>API to generate a Verifiable Presentation of <a>Stakeholder</a> Credential</h2>
       <table class="simple">
         <tr>
           <th></th>
@@ -2261,11 +2268,11 @@
         </tr>
         <tr>
           <td>API Name</td>
-          <td>Generate ATP Verifiable Presentation of ATP Credential</td>
+          <td>Generate Stakeholder Verifiable Presentation of Stakeholder Credential</td>
         </tr>
         <tr>
           <td>Description</td>
-          <td>The HTTP endpoint used to generate a Verifiable Presentation of a DSCSA ATP Credential.</td>
+          <td>The HTTP endpoint used to generate a Verifiable Presentation of a DSCSA Stakeholder Credential.</td>
         </tr>
         <tr>
           <td>OpenAPI Specification</td>
@@ -2299,7 +2306,7 @@
                 <b>credentialType</b> | <i>string (enum)</i> | <b>required</b>
                 <ul>
                   <li>
-                    IdentityCredential or DSCSA-ATP-Credential
+                    IdentityCredential, DSCSAATPCredential, DSCSAATPEquivalentCredential, or DSCSAAuthorityCredential
                     The type of <a>Credential</a> that should be requested
                   </li>
                 </ul>
@@ -2332,7 +2339,7 @@
                 <ul>
                   <li>
                     The <a>Digital Wallet</a> SHALL provide this optional parameter to check the expiration date of the
-                    ATP
+                    Stakeholder
                     <a>Credential</a>
                   </li>
                 </ul>
@@ -2341,7 +2348,7 @@
                 <b>vc-proof</b> | <i>boolean</i> | <b>optional</b> | default 'false'
                 <ul>
                   <li>
-                    The <a>Digital Wallet</a> SHALL provide this parameter to check the cryptographic proof of the ATP
+                    The <a>Digital Wallet</a> SHALL provide this parameter to check the cryptographic proof of the Stakeholder
                     <a>Credential</a>
                   </li>
                 </ul>
@@ -2351,7 +2358,7 @@
                 <ul>
                   <li>
                     The <a>Digital Wallet</a> SHALL provide this optional parameter to check the issuance date of the
-                    ATP
+                    Stakeholder
                     <a>Credential</a>
                   </li>
                 </ul>
@@ -2360,7 +2367,7 @@
               <ul>
                 <li>
                   The <a>Digital Wallet</a> SHALL provide this optional parameter to check the revocation status (incl.
-                  expiration) of the ATP <a>Credential</a>
+                  expiration) of the Stakeholder <a>Credential</a>
                 </li>
               </ul>
               </li>
@@ -2383,7 +2390,7 @@
                 <b>success</b> | <i>boolean</i> | <b>required</b> <i>with value</i> <b>true</b>
                 <ul>
                   <li>
-                    Indicating wheter or not the request has been successfull or not.
+                    Indicating whether or not the request has been successful or not.
                   </li>
                 </ul>
               </li>
@@ -2415,8 +2422,8 @@
                 <b>credentialType</b> | <i>string</i> | <i>enum</i> | <b>optional</b>
                 <ul>
                   <li>
-                    The credentialType that was used to generate the verifiable presentation. Either of type
-                    <b>IdentityCredential</b> OR <b>DSCSAATPCredential</b>.
+                    The credentialType that was used to generate the verifiable presentation. Any of type
+                    <b>IdentityCredential</b>, </b>DSCSAATPCredential, <b>DSCSAATPEquivalentCredential</b>, or <b>DSCSAAuthorityCredential</b>.
                   </li>
                 </ul>
               </li>
@@ -2494,7 +2501,7 @@
 
     <!-- Verification Endpoint -->
     <section>
-      <h2>API to Verify Verifiable Presentation of ATP Credential</h2>
+      <h2>API to Verify Verifiable Presentation of Stakeholder Credential</h2>
       <table class="simple">
         <tr>
           <th></th>
@@ -2502,12 +2509,12 @@
         </tr>
         <tr>
           <td>API Name</td>
-          <td>Verify ATP Verifiable Presentation of ATP Credential</td>
+          <td>Verify Stakeholder Verifiable Presentation of Stakeholder Credential</td>
         </tr>
         <tr>
           <td>Description</td>
           <td>To check the authenticity, integrity, revocation & expiration status of a Verifiable Presentation of an
-            ATP Credential.</td>
+            Stakeholder Credential.</td>
         </tr>
         <tr>
           <td>OpenAPI Specification</td>
@@ -2521,7 +2528,7 @@
             <p>The <a>Digital Wallet</a> SHALL provide an API accepting a request body with the following values:</p>
             <ul>
               <li>
-                <b>VerifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
+                <b>Verifiable Presentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
                 <ul>
                   <li>
                     The verifiable presentation to verify in JWT base64 encoded format.
@@ -2797,6 +2804,7 @@
         threshold to check if a VP is expired. This VP lifetime threshold will be added to the issuance date of the VP,
         iat attribute of VP, to determine whether the VP verification time is within the acceptable time window for
         using the generated VP.
+      <p>Looking to the future, OCI will seek to leverage DIDcomm protocols to enable full message signing and related cryptographic protections. For more information, readers are encouraged to access the <a href="https://dscsagovernance.org/blueprint/" target="_blank">PDG Foundational Blueprint for 2023 Interoperability Chapter 5: Tracing Architecture Functional Design</a>, particularly Figure 15: Trace Network Implementation Maturity.</p>
       </p>
     </section>
   </section>
