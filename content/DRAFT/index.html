@@ -1159,14 +1159,12 @@
           verification API.
         </p>
         <p>
-          The OCI SHALL document and publish a list of approved (active), revised, and decommissioned versions of the
+          OCI documents and publishes approved (active), revised, and decommissioned versions of the
           identity and <a>ATP</a> credential schemas on <a
             href="https://open-credentialing-initiative.github.io/schemas/">https://open-credentialing-initiative.github.io/schemas/</a>.
-          Implementers
-          SHALL follow the schema requirements defined by OCI credential schema requirements.
         </p>
         <p>
-          Digital Wallet Providers SHALL support the OCI approved credential schema for processing, validation, and
+          Digital Wallet Providers SHALL support the applicable OCI-approved credential schema for processing, validation, and
           interpretation that are published on the <a href="https://github.com/Open-Credentialing-Initiative/oci">OCI
             Github</a> for:
         </p>
@@ -1181,23 +1179,7 @@
               href="https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAATPCredential-v1.0.0.jsonld">DSCSA
               <a>ATP</a> Credential </a>
           </li>
-        </ul>
-        <i><u>Outlook</u></i>
-        <p>
-          GS1 maintains a web vocabulary that is designed to extend the work done by schema.org and makes use of similar
-          concepts (Product, Offer, Organization), extending them with many more details. As the definitions defined in
-          the vocabulary are already used in attributes of GS1 B2B messages and EPCIS events, OCI is working with GS1 on
-          normalizing the definitions of the OCI <a>Credential</a> schemas with GS1.
-        </p>
-        <p>
-          At a later process of the OCI ecosystem development, OCI may decide to move the <a>Credential</a> schemas to a
-          GS1
-          schema repository (e.g. GS1 web vocabulary on Github). To be consistent with GS1 requirements, OCI might want
-          to introduce further validation tools such as <a href="https://www.w3.org/TR/shacl/">SHACL</a>. If and when
-          these changes happen, <a>Digital Wallet</a>
-          Providers SHOULD support the GS1 schema repository and the <a href="https://www.w3.org/TR/shacl/">SHACL</a>
-          instruments.
-        </p>
+        </ul>           
       </section>
       <section>
         <h2>Proofs & Verifications</h2>
@@ -1244,7 +1226,7 @@
             <td>Trading Partner: <a>ATP</a> <a>PI</a> Verify Workflow</td>
             <td>
               Generation and Verification of a Verifiable Presentation that proves the possession of “DSCSA ATP
-              Credential” in the context of the GS1 Lightweight Messaging Standard Protocol.
+              Credential” in the context of the <a href="https://www.gs1us.org/DesktopModules/Bring2mind/DMX/Download.aspx?Command=Core_Download&EntryId=1897&language=en-US&PortalId=0&TabId=134">GS1 Lightweight Messaging Standard</a>.
             </td>
             <td>
               Verifiable Presentations SHALL be encoded as JSON Web Tokens [[RFC7519]] per <a
