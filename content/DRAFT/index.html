@@ -959,36 +959,28 @@
         </p>
       </section>
       <section>
-        <h2>Verifiable Data Registry & Endorsed <a>DID</a> Methods</h2>
+        <h2>Endorsed <a>DID</a> Methods</h2>
         <p>
           To be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or network of
-          some
-          kind. Regardless of the specific technology used, any such system that facilitates the creation, verification,
+          some kind. Regardless of the specific technology used, any such system that facilitates the creation, verification,
           updating, and/or deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
-          data
-          registry (<a>VDR</a>). A verifiable data registry might also be used for other cryptographically-verifiable
-          data
-          structures such as verifiable credentials. Examples for VDRs include distributed ledgers, decentralized file
-          systems, databases of any kind, peer-to-peer networks, and other forms of trusted data storage.
+          data registry (<a>VDR</a>).
         </p>
         <p>
           There are multiple VDRs used in today’s <a>DID</a> implementations that support different security protocols,
           discoverability, and linkage to existing trust networks. To avoid complexity and enable interoperability, OCI
-          supports selected <a>DID</a> methods and establishes a process for maintaining a <a>DID</a> method
-          endorsement.
+          endorses selected <a>DID</a> methods.
         </p>
         <p>
-          To ensure resolution of <a>DID</a> methods, Digital Wallet Providers SHALL implement and support all
-          <a>DID</a> methods
-          endorsed by OCI. OCI endorses the following <a>DID</a> methods:
+          To ensure resolution of <a>DID</a> methods, Digital Wallet Providers SHALL support the resolving of all DID methods endorsed by OCI, 
+          and SHALL implement at least one DID method. OCI endorses the following <a>DID</a> methods:
         </p>
         <table class="simple">
           <tr>
             <th>#</th>
             <th><a>DID</a> Method</th>
             <th>Reference</th>
-            <th><a>VDR</a></th>
-            <th>OCI Credentialing Actor</th>
+            <th><a>VDR</a></th>            
           </tr>
           <tr>
             <td>1</td>
@@ -996,84 +988,53 @@
             <td><a
                 href="https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md">did:ethr
                 Method Specification</a></td>
-            <td>Ethereum Mainnet</td>
-            <td>Trading Partner</td>
+            <td>Ethereum Mainnet</td>            
           </tr>
           <tr>
             <td>2</td>
             <td>did:web</td>
             <td><a href="https://w3c-ccg.github.io/did-method-web/">did:web Method Specification</a></td>
-            <td>Secure data store maintained by the implementer</td>
-            <td>Credentialing Issuer</td>
+            <td>Secure data store maintained by the implementer</td>            
           </tr>
         </table>
+        <section>
+          <h2>Securing did:web</h2>
+          <p>
+            DNS presents many of the attack vectors that enable active security and privacy attacks on the did:web
+            method and it is important that implementers address these concerns via proper configuration of DNS. For
+            example, without proper security of the DNS resolution via DNS over HTTPS it is possible for active attackers
+            to intercept the result of the DNS resolution via a man-in-the-middle attack which would point at a
+            malicious server with the incorrect <a>DID</a> Document.
+          </p>
+          <p>
+            Implementers should be aware of issues presented by spoofed DNS records where the record returned by a
+            malicious DNS Server is inauthentic and allows the record to be pointed at a malicious server which contains
+            a different <a>DID</a> Document. To prevent this type of issue,  Digital Wallet Providers and Credential
+            Issuers SHALL use DNSSEC which is defined in [[RFC4033]], [[RFC4034]], and [[RFC4035]].
+          </p>
+        </section>
       </section>
       <section>
         <h2><a>DID</a> Resolution</h2>
         <p>
           Digital Wallet Providers SHALL integrate <a>DID</a> resolver functionality for resolving <a>DID</a> documents. The
           <a>DID</a> resolver
-          SHALL support all <a>DID</a> methods endorsed by the OCI as defined in Table 3 in section 3.1.2. It SHALL be a
+          SHALL support all <a>DID</a> methods endorsed by the OCI as defined in section 4.1.2. It SHALL be a
           trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
           DIDKit)
           vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
           use public instances of resolvers, instead using their own implementations.
         </p>
-      </section>
-      <section>
-        <h2>Vetted Credential Issuer, Root of Trust & Securing DID:web</h2>
-        <p>
-          Credential Issuers verify trading partner identity and license status. They are proving verifiable credentials
-          within their trust domain and are therefore root of trust in their respective trust domain.
-        </p>
-        <p>
-          To qualify for an OCI Credential Issuer, the Credential Issuer shall fulfill the <a
-            href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">conformance
-            criteria for
-            Credential Issuers defined by OCI.</a>
-        </p>
-        <p>
-          To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
-          SHALL implement and maintain a Trusted Credential Issuer registry (see
-          next section). Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
-          Credential Issuer that is endorsed via the specified OCI registry.
-        </p>
-        <p>
-          Credential Issuers SHALL use a <a>DID</a> method implementation that supports a <a
-            href="https://datatracker.ietf.org/doc/html/rfc8615">Well-Known Uniform Resource
-            Identifier [[RFC8615]]</a> to make the identifiers well-known among the OCI trading partner.
-        </p>
-        <p>
-          To provide the well-known mechanism, Digital Wallet Providers SHALL support the DID:web method for Credential
-          Issuers.
-        </p>
-        <p>
-          Digital Wallet Providers SHALL put controls in place to ensure that <a>ATP</a> credentials are from vetted
-          Credential
-          Issuers only.
-        </p>
-        <section>
-          <h2>Securing DID:web</h2>
-          <p>
-            DNS presents many of the attack vectors that enable active security and privacy attacks on the did:web
-            method and it's important that implementers address these concerns via proper configuration of DNS. For
-            example, without proper security of the DNS resolution via DNS over HTTPS it's possible for active attackers
-            to intercept the result of the DNS resolution via a Man in the Middle attack which would point at a
-            malicious server with the incorrect <a>DID</a> Document.
-          </p>
-          <p>
-            Implementers should be aware of issues presented by Spoofed DNS records where the record returned by a
-            malicious DNS Server is inauthentic and allows the record to be pointed at a malicious server which contains
-            a different <a>DID</a> Document. To prevent this type of issue, wallet implementers and verifiable
-            credential
-            issuers SHALL use DNSSEC which is defined in [[RFC4033]], [[RFC4034]], and [[RFC4035]].
-          </p>
-        </section>
-      </section>
+      </section>      
       <section>
         <h2>Trusted Credential Issuer Registry</h2>
         <p>
-          As described above, the trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
+          To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
+          maintains a Trusted Credential Issuer registry. Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
+          Credential Issuer that is endorsed via the OCI registry.
+        </p>  
+        <p>
+          The trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
           ensure that this key role is not exploited, the trust is anchored
           in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have satisfied OCI’s <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">Credential Issuer Conformance Criteria</a>, are to be trusted is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum Smart Contracts.
         </p>
