@@ -13,14 +13,14 @@
   <meta http-equiv=" Content-Type" content="text/html;charset=utf-8" />
 
   <title>Digital Wallet Conformance Criteria</title>
-  <h2 id="subtitle">v3.1.0</h2>
+  <h2 id="subtitle">v3.2.0</h2>
 
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script type="text/javascript" class="remove">
     var respecConfig = {
       specStatus: 'base',
       shortName: 'Digital Wallet Conformance Criteria',
-      publishDate: "4 August 2022",
+      publishDate: "5 May 2023",
       latestVersion: "https://open-credentialing-initiative.github.io/Digital-Wallet-Conformance-Criteria/latest",
       maxTocLevel: 3,
       logos: [],
@@ -108,7 +108,7 @@
 
 <body>
   <!-- sotd -->
-  <p class="copyright">Copyright © 2022 Open Credentialing Initiative.</p>
+  <p class="copyright">Copyright © 2023 Open Credentialing Initiative.</p>
   <section>
     <h2>Status of this Document</h2>
     <p>
@@ -201,13 +201,13 @@
       <p>
         The US Drug Supply Chain Security Act (DSCSA) has the objective of securing pharmaceutical drug distribution,
         from manufacturers all the way to pharmacies. For patient safety, it is essential to know that only trusted and
-        authorized entities are involved in the manufacture, distribution, and dispensing of prescription drugs. In
+        authorized entities are involved in the manufacturing, repackaging, distribution, and dispensing of prescription drugs. In
         addition to verification, product tracing, and serialization requirements, each supply chain actor must ensure
         that their Trading Partners are authorized (including indirect Trading Partners).
-        DSCSA requires that Trading Partners of manufacturers, wholesale distributors, dispensers, and repackagers meet
+        DSCSA requires that Trading Partners of manufacturers, wholesale distributors, dispensers, repackagers, and third-party logistics providers (3PLs) meet
         the applicable requirements for being “authorized trading partners” (see sections 582(b)(3), (c)(3), (d)(3), and
-        (e)(3) of the FD&C Act (21 U.S.C. 360eee-1); where “authorized” means registration in accordance with section
-        510 (manufacturers and repackagers), or having a valid license under State law (wholesalers and dispensers).
+        (e)(3) of the FD&C Act (21 U.S.C. 360eee-1); briefly, “authorized” means registration in accordance with section
+        510 (manufacturers and repackagers), or having a valid license under State law (wholesalers, 3PLs, and dispensers).
       </p>
     </section>
     <section>
@@ -252,7 +252,7 @@
         <p>
           A <b>Digital Wallet Provider</b> provides <a>Digital Wallets</a> and connected services to create enterprise
           identities via
-          decentralized identifiers (<a>DID</a>) for Trading Partners (e.g. Manufacturer, Wholesaler, Dispenser) and
+          decentralized identifiers (<a>DID</a>) for Trading Partners (e.g. Manufacturer, Wholesaler, Dispenser, Repackager, 3PL) and
           Verifiable
           Credential Issuers.
         </p>
@@ -266,7 +266,7 @@
         <p>
           A <b>Credential Issuer</b> is an entity that issues Verifiable Credentials (VC); also known as a Credential
           Service Provider (CSP). The Credential Issuer is responsible for checking the status of entity registrations
-          and licenses prior to issuing VC to wholesalers and manufacturers.
+          and licenses prior to issuing VCs to ATPs.
         </p>
         <p>
           A <b>regulatory body</b> is an entity that establishes a legal requirement for the subject to be registered or
@@ -303,7 +303,7 @@
           </tr>
           <tr>
             <td>2</td>
-            <td>Authorized Trading Partner (ATP) e.g., manufacturer, wholesaler, dispenser</td>
+            <td>Authorized Trading Partner (ATP) e.g., manufacturer, wholesaler, dispenser, repackager, 3PL</td>
             <td>
               <ul>
                 <li>Uses VRS systems to automate generation and routing of verification request and response messages
@@ -591,16 +591,24 @@
       </p>
       <ul>
         <li>
+          <dfn><abbr title="Third-Party Logistics Provider">3PL</abbr></dfn>
+          (Third-Party Logistics Provider): As defined in the statute, "an entity that provides or coordinates
+    warehousing, or other logistics services of a product in interstate
+    commerce on behalf of a manufacturer, wholesale distributor, or
+    dispenser of a product, but does not take ownership of the product,
+    nor have responsibility to direct the sale or disposition of the
+    product."
+        </li>
+        <li>
           <dfn><abbr title="Authorized Trading Partner">ATP</abbr></dfn>
           (Authorized Trading Partner): The Drug Supply Chain Security Act
           (DSCSA) restricts access to the distribution system for prescription
-          drug products by requiring that trading partners of manufacturers,
-          wholesale distributors, dispensers, and repackagers meet the
+          drug products by requiring that trading partners of manufacturers, repackagers,
+          wholesale distributors, 3PLs, and dispensers meet the
           applicable requirements for being Authorized Trading Partners.
           <a>DSCSA</a>
           includes definitions for authorized and trading partner with respect
-          to manufacturers, repackagers, wholesaler distributors, third-party
-          logistics providers (3PLs), and dispensers. For example: “To be
+          to these categories. For example: “To be
           considered an authorized trading partner, a wholesale distributor
           must have a valid license under State law or section 583 of the FD&C
           Act, in accordance with section 582(a)(6) of the FD&C Act, comply
@@ -1003,7 +1011,7 @@
       <section>
         <h2><a>DID</a> Resolution</h2>
         <p>
-          Digital Wallet Providers SHALL integrate <a>DID</a> resolver functionality for resolving <a>DID</a> documents. The
+          Digital Wallet Providers SHALL integrate a <a>DID</a> resolver service for resolving <a>DID</a> documents. The
           <a>DID</a> resolver
           SHALL support all <a>DID</a> methods endorsed by the OCI as defined in Table 3 in section 3.1.2. It SHALL be a
           trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
@@ -2521,7 +2529,7 @@
             <p>The <a>Digital Wallet</a> SHALL provide an API accepting a request body with the following values:</p>
             <ul>
               <li>
-                <b>VerifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
+                <b>Verifiable Presentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
                 <ul>
                   <li>
                     The verifiable presentation to verify in JWT base64 encoded format.
