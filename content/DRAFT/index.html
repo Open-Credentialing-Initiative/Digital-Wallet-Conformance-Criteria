@@ -2453,7 +2453,7 @@
                 <b>errors</b> | <i>array</i> | <b>required</b>
                 <ul>
                   <li>
-                    a list of error messages describing the error code(s) as specified in section 4.2.1 encountered
+                    a list of error messages describing the error code(s) as specified by OCI encountered
                     while attempting to generate VP
                   </li>
                 </ul>
@@ -2462,7 +2462,7 @@
                 <b>errorCodes</b> | <i>array</i> | <b>required</b>
                 <ul>
                   <li>
-                    a list of error code(s) as specified in section 5.3 encountered while attempting
+                    a list of error code(s) as specified by OCI encountered while attempting
                     to generate VP
                   </li>
                 </ul>
@@ -2474,8 +2474,7 @@
           <td>HTTP Status Codes</td>
           <td>
             <p>
-              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to
-              section 4.2
+              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance with the 
               Cloud Wallet Interfaces and Open API Integration:
             </p>
             <ul>
@@ -2614,7 +2613,7 @@
                 <b>errors</b> | <i>array</i> | <b>required</b>
                 <ul>
                   <li>
-                    a list of error messages describing the error code(s) as specified in section 4.2.1 encountered
+                    a list of error messages describing the error code(s) as specified by OCI encountered
                     while attempting to generate VP
                   </li>
                 </ul>
@@ -2623,7 +2622,7 @@
                 <b>errorCodes</b> | <i>array</i> | <b>required</b>
                 <ul>
                   <li>
-                    a list of error code(s) as specified in section 5.3 encountered while attempting
+                    a list of error code(s) as specified by OCI encountered while attempting
                     to generate VP
                   </li>
                 </ul>
@@ -2635,8 +2634,7 @@
           <td>HTTP Status Codes</td>
           <td>
             <p>
-              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to
-              4.2
+              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance with
               Cloud Wallet Interfaces and Open API Integration:
             </p>
             <ul>
@@ -2661,20 +2659,17 @@
       </table>
     </section>
     <section>
-      <h2>API specific Error Codes</h2>
+      <h2>API-specific Error Codes</h2>
       <p>
-        Digital Wallet Providers SHALL return the following error codes if a verification (or if applicable in the
-        generation) fails due to
-        certain scenarios. The above defined response data structure SHALL be used to transport the code to a requesting
-        client.
-        An implementer SHALL use the field ‘errorCodes’ for transporting one (1) or multiple codes.
-        It is RECOMMENDED to use the field ‘errors’ for transporting human readable error messages further explaining
-        the reason why a verification has failed.
+        A Digital Wallet provider SHALL use the response data structure defined in the previous section to transport the 
+        error codes to the requesting client.
+        A Digital Wallet provider SHALL use the field ‘errorCodes’ for transporting one (1) or multiple codes.
+        It is RECOMMENDED to use the field ‘errors’ for transporting human-readable error messages further explaining
+        the reason why a verification (or generation if applicable) has failed.
       </p>
       <p>
-        Given these scenarios, the following error codes MUST be included in the ‘errorCodes’ field in the verification
-        (or if applicable in the generation)
-        response. It is RECOMMENDED to include multiple errors in the response as applicable.
+        Digital Wallet providers SHALL return the following error codes in the ‘errorCodes’ field if a verification (or generation if applicable) fails. 
+        It is RECOMMENDED to include multiple errors in the response as applicable.
       </p>
       <ul>
         <li>
