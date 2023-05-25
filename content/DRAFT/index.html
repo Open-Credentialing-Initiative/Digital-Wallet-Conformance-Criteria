@@ -734,7 +734,7 @@
     <p>
       Digital Wallet Providers desiring to participate in DSCSA initiatives that were designed, tested, and proven by
       OCI can begin by understanding and embracing the underlying open standards for decentralized identifiers (W3C),
-      verifiable credentials (W3C), well-known standards (IETF), protocol standards (Hyperledger, Decentralized Identity
+      verifiable credentials (W3C), protocol standards (Hyperledger, Decentralized Identity
       Foundation), and Lightweight Messaging Standard (GS1). These standards serve as anchoring points for OCI to
       establish an identity ecosystem that is fit for purpose.
     </p>
@@ -849,15 +849,11 @@
         </tr>
         <tr>
           <td>Verifiable Data Registry & <a>DID</a> Methods</td>
-          <td>Use of a common set of <a>DID</a> Methods endorsed by OCI (e.g. ETHR <a>DID</a> Method Specification,
-            did:web Method
-            Specification)</td>
+          <td>Use of <a>DID</a> methods endorsed by OCI</td>
         </tr>
         <tr>
           <td><a>DID</a> Resolution</td>
-          <td>Decentralized Identifier Resolution (<a>DID</a> Resolution) using the <a
-              href="https://github.com/decentralized-identity/universal-resolver">DIF universal resolver</a>, SpruceID,
-            or another valid resolver.</td>
+          <td><a>DID</a> resolution using means permissible by OCI</td>
         </tr>
         <tr>
           <td>Vetted Credential Issuer & Root of Trust</td>
@@ -913,8 +909,7 @@
         <tr>
           <td>Revocation</td>
           <td>
-            Directory Service (LDAP) based mechanism for revoking Verifiable Credentials (<a
-              href="https://spherity.github.io/vc-status-2021-ldap/">vc-status-2021-ldap</a>)
+            Verifiable Credentials revocation using means permissible by OCI
           </td>
         </tr>
         <tr>
@@ -973,7 +968,7 @@
         </p>
         <p>
           To ensure resolution of <a>DID</a> methods, Digital Wallet Providers SHALL support the resolving of all DID methods endorsed by OCI, 
-          and SHALL implement at least one DID method. OCI endorses the following <a>DID</a> methods:
+          and SHALL implement at least one such DID method. OCI endorses the following <a>DID</a> methods:
         </p>
         <table class="simple">
           <tr>
@@ -1019,10 +1014,9 @@
         <p>
           Digital Wallet Providers SHALL integrate <a>DID</a> resolver functionality for resolving <a>DID</a> documents. The
           <a>DID</a> resolver
-          SHALL support all <a>DID</a> methods endorsed by the OCI as defined in section 4.1.2. It SHALL be a
+          SHALL support all <a>DID</a> methods endorsed by OCI. It SHALL be a
           trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
-          DIDKit)
-          vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
+          DIDKit) vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
           use public instances of resolvers, instead using their own implementations.
         </p>
       </section>      
