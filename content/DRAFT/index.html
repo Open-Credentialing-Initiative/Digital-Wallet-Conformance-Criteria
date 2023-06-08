@@ -848,32 +848,32 @@
           <td>W3C Decentralized Identifiers (DIDs) v1.0 (W3C DIDs)</td>
         </tr>
         <tr>
-          <td>Verifiable Data Registry & <a>DID</a> Methods</td>
+          <td>Endorsed <a>DID</a> Methods</td>
           <td>Use of <a>DID</a> methods endorsed by OCI</td>
-        </tr>
-        <tr>
+        </tr>    
+         <tr>
           <td><a>DID</a> Resolution</td>
           <td><a>DID</a> resolution using means permissible by OCI</td>
         </tr>
-        <tr>
-          <td>Vetted Credential Issuer & Root of Trust</td>
+         <tr>
+          <td>Trusted Credential Issuer Registry</td>
           <td>Registry for vetted, trusted Credential Issuer maintained by OCI</td>
         </tr>
         <tr>
           <td><a>Credential</a> Structure</td>
-          <td>W3C Verifiable Credentials Data Model 1.0 (W3C VCs)</td>
+          <td>Based on W3C Verifiable Credentials Data Model 1.0 (W3C VCs)</td>
         </tr>
         <tr>
           <td><a>Credential</a> Serialization & Schemas</td>
           <td>OCI <a>Credential</a> Schema Definition (OCI <a>Credential</a> Schemas)</td>
         </tr>
         <tr>
-          <td>Signatures & Verification</td>
+          <td>Proof & Verification</td>
           <td>Cryptographic primitives used for VC creation/verification, JWT creation/verification and wallet-to-wallet
             communication.</td>
         </tr>
         <tr>
-          <td>Wallet to Wallet communication (for cloud wallets)</td>
+          <td>Credential Issuance & Exchange</td>
           <td>
             <p>Hyperledger Aries RFCs<a
                 href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
@@ -909,7 +909,7 @@
         <tr>
           <td>Revocation</td>
           <td>
-            Verifiable Credentials revocation using means permissible by OCI
+            Verifiable Credential revocation using means permissible by OCI
           </td>
         </tr>
         <tr>
@@ -993,7 +993,7 @@
           </tr>
         </table>
         <section>
-          <h2>Securing did:web</h2>
+          <h3>Securing did:web</h3>
           <p>
             DNS presents many of the attack vectors that enable active security and privacy attacks on the did:web
             method and it is important that implementers address these concerns via proper configuration of DNS. For
@@ -1050,7 +1050,7 @@
           implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>.
         </p>
         <section>
-          <h2>Digital Wallet Requirements</h2>
+          <h3>Verifying the Credential Issuer</h3>
           <p>
             At each generation and verification of a Verifiable Presentation, a Digital Wallet SHALL check if the respective Verifiable
             Credential has indeed been issued by a Trusted Issuer. To accomplish this, a wallet SHALL
