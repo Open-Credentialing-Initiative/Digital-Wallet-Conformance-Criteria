@@ -1874,22 +1874,22 @@
         <tr>
           <td>Description</td>
           <td>
-            The system must prevent the initiator of a transaction from later disputing the creation of a given
-            transaction.
+            The system collects evidence of user actions to inform disputes over proof of the origin and authenticity of data.
           </td>
         </tr>
         <tr>
           <td>Rationale</td>
           <td>
-            Standard pharma compliance requirement
+            Common compliance requirement that supports accountability and data integrity
           </td>
         </tr>
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            Solution SHOULD implement an audit trail including non-repudiable digital signatures for all <a>ATP</a>
-            <a>Credential</a>
-            transactions realized on the system.
+            At a minimum, the wallet solution SHALL record interface access by registered users. 
+            The solution SHOULD also record important actions performed by registered users.
+            The solution SHOULD implement an audit trail including non-repudiable digital signatures for all <a>ATP</a>
+            <a>Credential</a> transactions realized on the system.
             User authentication and activities SHALL be logged. Audit trail SHALL be available for user inspection.
           </td>
         </tr>
@@ -2178,80 +2178,38 @@
         </tr>
         <tr>
           <td>NFR Type</td>
-          <td>Audit Requirements</td>
+          <td>Transaction Logs</td>
         </tr>
         <tr>
           <td>Description</td>
           <td>
-            The solution must be able to support audit log requirements
+            The solution provides auditable transactions logs
           </td>
         </tr>
         <tr>
           <td>Rationale</td>
           <td>
-            Data and industry regulations require support for investigations and compliance
+            Data and industry regulations require support for investigations and compliance. These records constitute an audit trail 
+            to be used, for example, in the event of an investigation into 
+            credential-related activities of the credential holder. 
           </td>
         </tr>
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            Solution SHALL provide audit logs of interface access as well as of generation and verification of
-            verifiable presentations. Solution SHALL log corrUUID so that transactions are correlatable across systems
-            and wallets of the trading partners.
+            The Wallet Provider SHALL be capable of generating detailed records of all verifiable presentation (VP) generation and 
+            verification events for each Trading Partner. These records SHALL include the corrUUID so that transactions are correlatable across systems. 
+            The Wallet Provider SHALL be capable of transferring such records to the Trading Partner or another party with legitimate interest and right to obtain such data.
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            Testing of audit logs. Checking that audit logs can be retrieved, are accessible and can be processed.
+            Testing of transaction logs and data archive (if applicable). Checking that logs can be retrieved, are accessible, and can be processed.
           </td>
         </tr>
-      </table>
-
-      <br>
-      <br>
-      <table class="simple">
-        <tr>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>ID</td>
-          <td>NFR010</td>
-        </tr>
-        <tr>
-          <td>NFR Type</td>
-          <td>Archiving</td>
-        </tr>
-        <tr>
-          <td>Description</td>
-          <td>
-            The solution can support data archiving requirements
-          </td>
-        </tr>
-        <tr>
-          <td>Rationale</td>
-          <td>
-            Data and industry regulations require support for investigations
-          </td>
-        </tr>
-        <tr>
-          <td>Conformance Criteria</td>
-          <td>
-            The Wallet Provider SHALL be capable of keeping detailed records of all VP generation and verification events 
-            as well as relevant monitoring activities. These detailed records constitute an audit trail to be used in the event of 
-            an investigation into credential-related activities of the credential holder. The Wallet Provider SHALL be capable 
-            of transferring such records to the user.
-          </td>
-        </tr>
-        <tr>
-          <td>Measurement</td>
-          <td>
-            Testing of archiving features. Checking that archived data can be retrieved, are accessible and can be
-            processed.
-          </td>
-        </tr>
-      </table>
+      </table>    
+      
     </section>
   </section>
   <section>
