@@ -1888,16 +1888,14 @@
           <td>
             At a minimum, the wallet solution SHALL record interface access by registered users. 
             The solution SHOULD also record important actions performed by registered users.
-            The solution SHOULD implement an audit trail including non-repudiable digital signatures for all <a>ATP</a>
-            <a>Credential</a> transactions realized on the system.
-            User authentication and activities SHALL be logged. Audit trail SHALL be available for user inspection.
+            The solution SHALL record the initiating entity for each credential-related transaction.
+            The solution SHALL be capable of making auditable records available for inspection.
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            Application security testing against these features documented in User Acceptance Testing (UAT). Review of
-            operational audit logs created by the solution and compared with user activity in a test scenario.
+            Testing of action logs and, if applicable, archive. Checking that logs can be retrieved, are accessible, and can be processed.
           </td>
         </tr>
       </table>
@@ -2190,8 +2188,7 @@
           <td>Rationale</td>
           <td>
             Data and industry regulations require support for investigations and compliance. These records constitute an audit trail 
-            to be used, for example, in the event of an investigation into 
-            credential-related activities of the credential holder. 
+            to be used, for example, in the event of an investigation into credential-related activities. 
           </td>
         </tr>
         <tr>
@@ -2205,7 +2202,7 @@
         <tr>
           <td>Measurement</td>
           <td>
-            Testing of transaction logs and data archive (if applicable). Checking that logs can be retrieved, are accessible, and can be processed.
+            Testing of transaction logs and, if applicable, archive. Checking that logs can be retrieved, are accessible, and can be processed.
           </td>
         </tr>
       </table>    
