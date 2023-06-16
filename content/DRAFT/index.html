@@ -1887,15 +1887,16 @@
           <td>Conformance Criteria</td>
           <td>
             The wallet solution SHALL record user authentication and important activities by registered users. 
-            The solution SHALL record the initiating entity for each credential-related transaction, 
+            The solution SHOULD record the initiating entity for each credential-related transaction, 
             including non-repudiable digital signatures for all <a>ATP</a> <a>Credential</a> transactions.
-            The solution SHALL be capable of making auditable records available for inspection.
+            The Wallet Provider SHALL be capable of transferring or making available such auditable records to 
+            the Trading Partner or another party with legitimate interest and right to obtain such data.
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            Testing of action logs and, if applicable, archive. Checking that logs can be retrieved, are accessible, and can be processed.
+            Activity logs and, if applicable, archives can be retrieved, are accessible, and can be processed.
           </td>
         </tr>
       </table>
