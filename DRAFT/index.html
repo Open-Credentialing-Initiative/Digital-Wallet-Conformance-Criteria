@@ -782,26 +782,7 @@
         For more information, please visit the <a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials
           page</a> on the W3C website.
       </p>
-    </section>
-    <section>
-      <h2>GS1 Lightweight Messaging Standard </h2>
-      <p>
-        GS1 is a neutral, not-for-profit, international organization developing and maintaining standards including
-        barcodes. The best known of these standards is the barcode, a symbol printed on products that can be scanned
-        electronically. Over 100 million products carry GS1 barcodes and they are scanned more than six billion times
-        every day.
-      </p>
-      <p>
-        GS1 Lightweight Messaging Standard for Verification of Product Identifiers specifies requests and responses for
-        Verification of Product Identifiers, especially for pharmaceuticals. Lightweight Messaging Standard is currently
-        being used for DSCSA-compliant <a>PI</a> verification.
-      </p>
-      <p>
-        For more information, please visit the <a
-          href="https://www.gs1.org/sites/default/files/docs/standards/gs1_lightweight_verification_messaging_standard_v1-1.pdf">Lightweight
-          Messaging Standard specification</a> on the GS1 website.
-      </p>
-    </section>
+    </section>   
   </section>
   <!-- TECHNOLOGY CONFORMANCE CRITERIA -->
   <section id="conformance">
@@ -819,7 +800,7 @@
       The OCI conformance criteria are based on a set of identity standards (W3C standards, IETF standards, Hyperledger
       Aries), open API standards, and existing industry standards for <a>PI</a> message exchange (GS1 Lightweight
       Messaging
-      Standard for Verification of Product Identifiers ) described in this section.
+      Standard for Verification of Product Identifiers).
     </p>
     <p>
       It shall be noted that the OCI Digital Wallet Conformance Criteria distinguishes between Cloud- and <a>Edge
@@ -917,17 +898,7 @@
             Directory Service (LDAP) based mechanism for revoking Verifiable Credentials (<a
               href="https://spherity.github.io/vc-status-2021-ldap/">vc-status-2021-ldap</a>)
           </td>
-        </tr>
-        <tr>
-          <td>Messaging Standard to exchange <a>ATP</a> Credentials</td>
-          <td>
-            <a
-              href="https://www.gs1us.org/DesktopModules/Bring2mind/DMX/Download.aspx?Command=Core_Download&EntryId=1897&language=en-US&PortalId=0&TabId=134">
-              GS1 US Implementation Guideline for Applying the GS1 Lightweight Messaging Standard for DSCSA Verification
-              of Returned Product Identifiers
-            </a>
-          </td>
-        </tr>
+        </tr>       
       </table>
       <section>
         <h2>Identifiers for Enterprise Identity</h2>
@@ -1189,14 +1160,12 @@
           verification API.
         </p>
         <p>
-          The OCI SHALL document and publish a list of approved (active), revised, and decommissioned versions of the
+          OCI documents and publishes approved (active), revised, and decommissioned versions of the
           identity and <a>ATP</a> credential schemas on <a
             href="https://open-credentialing-initiative.github.io/schemas/">https://open-credentialing-initiative.github.io/schemas/</a>.
-          Implementers
-          SHALL follow the schema requirements defined by OCI credential schema requirements.
         </p>
         <p>
-          Digital Wallet Providers SHALL support the OCI approved credential schema for processing, validation, and
+          Digital Wallet Providers SHALL support the applicable OCI-approved credential schema for processing, validation, and
           interpretation that are published on the <a href="https://github.com/Open-Credentialing-Initiative/oci">OCI
             Github</a> for:
         </p>
@@ -1211,23 +1180,7 @@
               href="https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAATPCredential-v1.0.0.jsonld">DSCSA
               <a>ATP</a> Credential </a>
           </li>
-        </ul>
-        <i><u>Outlook</u></i>
-        <p>
-          GS1 maintains a web vocabulary that is designed to extend the work done by schema.org and makes use of similar
-          concepts (Product, Offer, Organization), extending them with many more details. As the definitions defined in
-          the vocabulary are already used in attributes of GS1 B2B messages and EPCIS events, OCI is working with GS1 on
-          normalizing the definitions of the OCI <a>Credential</a> schemas with GS1.
-        </p>
-        <p>
-          At a later process of the OCI ecosystem development, OCI may decide to move the <a>Credential</a> schemas to a
-          GS1
-          schema repository (e.g. GS1 web vocabulary on Github). To be consistent with GS1 requirements, OCI might want
-          to introduce further validation tools such as <a href="https://www.w3.org/TR/shacl/">SHACL</a>. If and when
-          these changes happen, <a>Digital Wallet</a>
-          Providers SHOULD support the GS1 schema repository and the <a href="https://www.w3.org/TR/shacl/">SHACL</a>
-          instruments.
-        </p>
+        </ul>           
       </section>
       <section>
         <h2>Proofs & Verifications</h2>
@@ -1274,7 +1227,7 @@
             <td>Trading Partner: <a>ATP</a> <a>PI</a> Verify Workflow</td>
             <td>
               Generation and Verification of a Verifiable Presentation that proves the possession of “DSCSA ATP
-              Credential” in the context of the GS1 Lightweight Messaging Standard Protocol.
+              Credential” in the context of the <a href="https://www.gs1us.org/DesktopModules/Bring2mind/DMX/Download.aspx?Command=Core_Download&EntryId=1897&language=en-US&PortalId=0&TabId=134">GS1 Lightweight Messaging Standard</a>.
             </td>
             <td>
               Verifiable Presentations SHALL be encoded as JSON Web Tokens [[RFC7519]] per <a
