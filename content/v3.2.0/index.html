@@ -1076,7 +1076,13 @@
         <p>
           As described above, the trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
           ensure that this key role is not exploited, the trust is anchored
-          in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have satisfied OCI’s <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">Credential Issuer Conformance Criteria</a>, are to be trusted is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum Smart Contracts.
+          in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have
+          satisfied OCI’s
+          <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">
+            Credential Issuer Conformance Criteria
+          </a>
+          , are to be trusted is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum
+          Smart Contracts.
         </p>
         <p>
           OCI maintains multiple versions of the Trusted Issuer Registry for production and demo/testing purposes.
@@ -1084,22 +1090,30 @@
         </p>
         <ul>
           <li>
-            <a href="https://goerli.etherscan.io/address/0xDfC7aCC61c532350a562018d627c6fe6aBBca5e8" target="_blank" rel="noopener noreferrer">Development (Goerli)</a>
+            <a href="https://goerli.etherscan.io/address/0xDfC7aCC61c532350a562018d627c6fe6aBBca5e8" target="_blank" rel="noopener noreferrer">Development STK-INT (Goerli)</a>
           </li>
           <li>
-            <a href="https://goerli.etherscan.io/address/0x07a79C830352ab30d7C3241F2d16db7e33D1f197" target="_blank" rel="noopener noreferrer">Development (Goerli Sandbox)</a>
+            <a href="https://goerli.etherscan.io/address/0xfAc0eac761d4b589b471e461F247059b2f9A8B85" target="_blank" rel="noopener noreferrer">Development WLT-INT (Goerli)</a>
+          </li>
+          <li>
+            <a href="https://goerli.etherscan.io/address/0x2b219C6e76A8Df00Aa90155620078d56a6e3f26c" target="_blank" rel="noopener noreferrer">Development PBL-INT (Goerli)</a>
           </li>
         </ul>
-        <p>The Goerli Sandbox Contract has been modified to not require any OCI mechanisms to add and remove trusted
-          issuer DIDs. This may be used for testing by anyone who is interested.</p>
-        <p>In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
+        <p>
+          The development environments SHALL be deployed on the Goerli testnet or Sepolia after its EOL. STK-INT SHALL
+          mirror the production environment and SHALL only be used for testing purposes by approved OCI statekeepers.
+          WLT-INT SHALL be used only by OCI digital wallets for testing purposes without voting processes. PBL-INT SHALL
+          be generally open without any restrictions to make quick testing easy.
+        </p>
+        <p>
+          In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
           implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>.
         </p>
         <section>
           <h2>Digital Wallet Requirements</h2>
           <p>
             At each generation and verification of a Verifiable Presentation, a Digital Wallet SHALL check if the respective Verifiable
-            Credential has indeed been issued by a Trusted Issuer. To accomplish this, a wallet SHALL
+            Credential has indeed been issued by a Trusted Issuer. To accomplish this, a wallet MAY
             call one of the following contract method signatures to verify the status of the Credential Issuer:
           </p>
           <ul>
@@ -1138,6 +1152,11 @@
               </ul>
             </li>
           </ul>
+          <p>
+            A Digital Wallet MAY also subscribe to changes on the Trusted Issuer Registry by listening to events emitted
+            by the contract. This way, the wallet can be notified of changes to the Trusted Issuer Registry and update
+            its local state accordingly.
+          </p>
           <p>
             By deriving this information from the contract, the Digital Wallet SHALL check that the issuer stated within the claims of the respective
             <a>ATP</a> credential matches one of those trusted issuers recorded in the Trusted Issuer Registry.
