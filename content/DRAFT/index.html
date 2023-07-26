@@ -15,7 +15,7 @@
   <title>Digital Wallet Conformance Criteria</title>
   <h2 id="subtitle">v3.2.0</h2>
 
-  
+
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script type="text/javascript" class="remove">
     var respecConfig = {
@@ -375,7 +375,7 @@
           returning data necessary to produce <a>DID</a> documents is called a verifiable data registry. Examples
           include
           distributed ledgers, decentralized file systems, databases of any kind, peer-to-peer networks, and other forms
-          of trusted data storage. The system facilitates the creation, verification, updating, and/or deactivation of
+          of trusted data storage. The system facilitates the creation, verification, updating, and deactivation of
           the <a>DID</a> documents for corresponding decentralized identifiers.
         </li>
       </ul>
@@ -387,7 +387,7 @@
     <p>
       Digital Wallet Providers desiring to participate in DSCSA initiatives that were designed, tested, and proven by
       OCI can begin by understanding and embracing the underlying open standards for decentralized identifiers (W3C),
-      verifiable credentials (W3C), well-known standards (IETF), protocol standards (Hyperledger, Decentralized Identity
+      Verifiable Credentials (W3C), well-known standards (IETF), protocol standards (Hyperledger, Decentralized Identity
       Foundation), and Lightweight Messaging Standard (GS1). These standards serve as anchoring points for OCI to
       establish an identity ecosystem that is fit for purpose.
     </p>
@@ -396,7 +396,7 @@
       <p>
         The World Wide Web Consortium (W3C) is an international community where member organizations, full-time staff,
         and the public work together to develop Web standards. One of the many standards put forth by the consortium
-        establishes generally accepted specifications for decentralized identifiers (DIDs) for verifiable credentials
+        establishes generally accepted specifications for decentralized identifiers (DIDs) for Verifiable Credentials
         (VCs).
       </p>
       <p>
@@ -434,7 +434,7 @@
         For more information, please visit the <a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials
           page</a> on the W3C website.
       </p>
-    </section>   
+    </section>
   </section>
   <!-- TECHNOLOGY CONFORMANCE CRITERIA -->
   <section id="conformance">
@@ -446,7 +446,7 @@
     <p>
       OCI uses decentralized public key infrastructure (PKI) technology for <a>Digital Wallets</a> and for
       electronically
-      signed verifiable credentials about the enterprises involved in the <a>ATP</a> verification process.
+      signed Verifiable Credentials about the enterprises involved in the <a>ATP</a> verification process.
     </p>
     <p>
       The OCI conformance criteria are based on a set of identity standards (W3C standards, IETF standards, Hyperledger
@@ -491,11 +491,11 @@
           <td><a>DID</a> Resolution</td>
           <td>Decentralized Identifier Resolution (<a>DID</a> Resolution) using the <a
               href="https://github.com/decentralized-identity/universal-resolver">DIF universal resolver</a>, SpruceID,
-            or another valid resolver.</td>
+            Veramo, or another valid resolver.</td>
         </tr>
         <tr>
-          <td>Vetted Credential Issuer & Root of Trust</td>
-          <td>Registry for vetted, trusted Credential Issuer maintained by OCI</td>
+          <td>Vetted Credential Issuers & Root of Trust</td>
+          <td>Registry for vetted, trusted Credential Issuers maintained by OCI</td>
         </tr>
         <tr>
           <td><a>Credential</a> Structure</td>
@@ -513,13 +513,15 @@
         <tr>
           <td>Wallet to Wallet communication (for cloud wallets)</td>
           <td>
-            <p>Hyperledger Aries RFCs<a
-                href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
-                Credential Protocol v2.</a></p>
+            <p>Hyperledger Aries RFCs.</p>
             <ul>
               <li>
-                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">Credential
-                  ManifestCredential-Manifest Attachment format for requesting and presenting credentials</a>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
+                  Credential Protocol v2</a>
+              </li>
+              <li>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">
+                  Credential-Manifest Attachment format for requesting and presenting credentials</a>
               </li>
               <li>
                 <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0454-present-proof-v2">Present
@@ -543,22 +545,21 @@
               </li>
             </ul>
           </td>
-        </tr>        
+        </tr>
         <tr>
           <td>Revocation</td>
           <td>
             Directory Service (LDAP) based mechanism for revoking Verifiable Credentials (<a
               href="https://spherity.github.io/vc-status-2021-ldap/">vc-status-2021-ldap</a>)
           </td>
-        </tr>       
+        </tr>
       </table>
       <section>
         <h2>Identifiers for Enterprise Identity</h2>
         <p>
-          A <a>DID</a> is a globally unique identifier developed specifically for decentralized systems as defined by
-          the W3C
-          <a>DID</a> specification. DIDs enable interoperable decentralized self-sovereign identity management using
-          standardized <a>Digital Wallets</a>.
+          A <a>DID</a> is a globally unique and location-independent identifier defined by the W3C <a>DID</a>
+          specification. DIDs enable interoperable decentralized self-sovereign identity management using standardized
+          <a>Digital Wallets</a>.
         </p>
         <p>
           Implementers of <a>Digital Wallets</a> for OCI credentialing SHALL follow the <a href="W3C Decentralized Identifiers (DIDs)
@@ -588,11 +589,11 @@
           To be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or network of
           some
           kind. Regardless of the specific technology used, any such system that facilitates the creation, verification,
-          updating, and/or deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
+          updating, and deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
           data
           registry (<a>VDR</a>). A verifiable data registry might also be used for other cryptographically-verifiable
           data
-          structures such as verifiable credentials. Examples for VDRs include distributed ledgers, decentralized file
+          structures such as Verifiable Credentials. Examples for VDRs include distributed ledgers, decentralized file
           systems, databases of any kind, peer-to-peer networks, and other forms of trusted data storage.
         </p>
         <p>
@@ -647,7 +648,7 @@
       <section>
         <h2>Vetted Credential Issuer, Root of Trust & Securing DID:web</h2>
         <p>
-          Credential Issuers verify trading partner identity and license status. They are proving verifiable credentials
+          Credential Issuers verify trading partner identity and license status. They are proving Verifiable Credentials
           within their trust domain and are therefore root of trust in their respective trust domain.
         </p>
         <p>
@@ -797,7 +798,7 @@
         <h2>Credential Serialization & Schemas</h2>
         <p>
           Credentials that are issued by the Credential Issuer are created in accordance with the W3C JSON-LD format for
-          schema serialization. To ensure processing, validation, and interpretation of verifiable credentials by
+          schema serialization. To ensure processing, validation, and interpretation of Verifiable Credentials by
           different implementers, JSON-LD schemas for identity and <a>ATP</a> credentials are introduced. <a>Digital
             Wallet</a>
           Providers SHALL support the JSON-LD format and SHALL support JSON-LD schema validation.
@@ -832,7 +833,7 @@
               href="https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAATPCredential-v1.0.0.jsonld">DSCSA
               <a>ATP</a> Credential </a>
           </li>
-        </ul>           
+        </ul>
       </section>
       <section>
         <h2>Proofs & Verifications</h2>
@@ -918,7 +919,7 @@
         <p>
           Communication between Credential Issuer’s <a>Digital Wallet</a> and Trading Partner’s <a>Digital Wallet</a> or
           between trading parties for the exchange of credentials may be required to issue and exchange credentials.
-        </p>        
+        </p>
         <section>
           <h2>DIDComm</h2>
           <p>
@@ -993,7 +994,7 @@
               </td>
             </tr>
           </table>
-        </section>        
+        </section>
       </section>
       <section>
         <h2><a>Credential</a> Revocation</h2>
@@ -1231,7 +1232,7 @@
         </tr>
         <tr>
           <td>Description</td>
-          <td>Requesting verifiable credential issuance from Credential Issuer</td>
+          <td>Requesting Verifiable Credential issuance from Credential Issuer</td>
         </tr>
         <tr>
           <td>Type</td>
@@ -1317,7 +1318,7 @@
         </p>
         <ul>
           <li>
-            On-boarding includes a secure process to assign a role to a verified user. This process SHOULD include secure 
+            On-boarding includes a secure process to assign a role to a verified user. This process SHOULD include secure
             provisioning of 2FA or multi-factor authentication access credentials to a given user.
           </li>
           <li>
@@ -1325,7 +1326,7 @@
             removed.
           </li>
           <li>
-            User <a>Credential</a> management includes a secure process to reset and/or rescind access credentials and
+            User <a>Credential</a> management includes a secure process to reset and rescind access credentials and
             change
             user roles (where multiple user roles exist).
           </li>
