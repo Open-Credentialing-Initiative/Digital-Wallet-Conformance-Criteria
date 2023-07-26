@@ -387,7 +387,7 @@
     <p>
       Digital Wallet Providers desiring to participate in DSCSA initiatives that were designed, tested, and proven by
       OCI can begin by understanding and embracing the underlying open standards for decentralized identifiers (W3C),
-      verifiable credentials (W3C), well-known standards (IETF), protocol standards (Hyperledger, Decentralized Identity
+      Verifiable Credentials (W3C), well-known standards (IETF), protocol standards (Hyperledger, Decentralized Identity
       Foundation), and Lightweight Messaging Standard (GS1). These standards serve as anchoring points for OCI to
       establish an identity ecosystem that is fit for purpose.
     </p>
@@ -396,7 +396,7 @@
       <p>
         The World Wide Web Consortium (W3C) is an international community where member organizations, full-time staff,
         and the public work together to develop Web standards. One of the many standards put forth by the consortium
-        establishes generally accepted specifications for decentralized identifiers (DIDs) for verifiable credentials
+        establishes generally accepted specifications for decentralized identifiers (DIDs) for Verifiable Credentials
         (VCs).
       </p>
       <p>
@@ -446,7 +446,7 @@
     <p>
       OCI uses decentralized public key infrastructure (PKI) technology for <a>Digital Wallets</a> and for
       electronically
-      signed verifiable credentials about the enterprises involved in the <a>ATP</a> verification process.
+      signed Verifiable Credentials about the enterprises involved in the <a>ATP</a> verification process.
     </p>
     <p>
       The OCI conformance criteria are based on a set of identity standards (W3C standards, IETF standards, Hyperledger
@@ -491,11 +491,11 @@
           <td><a>DID</a> Resolution</td>
           <td>Decentralized Identifier Resolution (<a>DID</a> Resolution) using the <a
               href="https://github.com/decentralized-identity/universal-resolver">DIF universal resolver</a>, SpruceID,
-            or another valid resolver.</td>
+            Veramo, or another valid resolver.</td>
         </tr>
         <tr>
-          <td>Vetted Credential Issuer & Root of Trust</td>
-          <td>Registry for vetted, trusted Credential Issuer maintained by OCI</td>
+          <td>Vetted Credentials Issuer & Root of Trust</td>
+          <td>Registry for vetted, trusted Credential Issuers maintained by OCI</td>
         </tr>
         <tr>
           <td><a>Credential</a> Structure</td>
@@ -513,13 +513,15 @@
         <tr>
           <td>Wallet to Wallet communication (for cloud wallets)</td>
           <td>
-            <p>Hyperledger Aries RFCs<a
-                href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
-                Credential Protocol v2.</a></p>
+            <p>Hyperledger Aries RFCs.</p>
             <ul>
               <li>
-                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">Credential
-                  ManifestCredential-Manifest Attachment format for requesting and presenting credentials</a>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
+                  Credential Protocol v2</a>
+              </li>
+              <li>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">
+                  Credential-Manifest Attachment format for requesting and presenting credentials</a>
               </li>
               <li>
                 <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0454-present-proof-v2">Present
@@ -555,10 +557,9 @@
       <section>
         <h2>Identifiers for Enterprise Identity</h2>
         <p>
-          A <a>DID</a> is a globally unique identifier developed specifically for decentralized systems as defined by
-          the W3C
-          <a>DID</a> specification. DIDs enable interoperable decentralized self-sovereign identity management using
-          standardized <a>Digital Wallets</a>.
+          A <a>DID</a> is a globally unique and location-independent identifier defined by the W3C <a>DID</a>
+          specification. DIDs enable interoperable decentralized self-sovereign identity management using standardized
+          <a>Digital Wallets</a>.
         </p>
         <p>
           Implementers of <a>Digital Wallets</a> for OCI credentialing SHALL follow the <a href="W3C Decentralized Identifiers (DIDs)
@@ -588,11 +589,11 @@
           To be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or network of
           some
           kind. Regardless of the specific technology used, any such system that facilitates the creation, verification,
-          updating, and/or deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
+          updating, and deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
           data
           registry (<a>VDR</a>). A verifiable data registry might also be used for other cryptographically-verifiable
           data
-          structures such as verifiable credentials. Examples for VDRs include distributed ledgers, decentralized file
+          structures such as Verifiable Credentials. Examples for VDRs include distributed ledgers, decentralized file
           systems, databases of any kind, peer-to-peer networks, and other forms of trusted data storage.
         </p>
         <p>
@@ -639,7 +640,7 @@
           <a>DID</a> resolver
           SHALL support all <a>DID</a> methods endorsed by the OCI as defined in Table 3 in section 3.1.2. It SHALL be a
           trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
-          DIDKit)
+          DIDKit, Veramo)
           vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
           use public instances of resolvers, instead using their own implementations.
         </p>
@@ -647,7 +648,7 @@
       <section>
         <h2>Vetted Credential Issuer, Root of Trust & Securing DID:web</h2>
         <p>
-          Credential Issuers verify trading partner identity and license status. They are proving verifiable credentials
+          Credential Issuers verify trading partner identity and license status. They are proving Verifiable Credentials
           within their trust domain and are therefore root of trust in their respective trust domain.
         </p>
         <p>
@@ -677,21 +678,33 @@
           Issuers only.
         </p>
         <section>
-          <h2>Securing DID:web</h2>
+          <h2>Securing did:web</h2>
           <p>
-            DNS presents many of the attack vectors that enable active security and privacy attacks on the did:web
-            method and it's important that implementers address these concerns via proper configuration of DNS. For
-            example, without proper security of the DNS resolution via DNS over HTTPS it's possible for active attackers
-            to intercept the result of the DNS resolution via a Man in the Middle attack which would point at a
-            malicious server with the incorrect <a>DID</a> Document.
+            Implementers of the <a>DID</a> method SHALL implement measures to cover the security and privacy
+            considerations outlined in the
+            <a href="https://w3c-ccg.github.io/did-method-web/#security-and-privacy-considerations">
+              did:web method specification.
+            </a> This includes possible attack vectors for Man-in-the-middle attacks, DNS record spoofing, <a>DID</a>
+            document integrity, and in-transit security. Providers of did:web <a>VDRs</a> SHALL not correlate usage
+            of another subjects <a>DID</a> during resolution for credential verification for privacy reasons.
           </p>
           <p>
-            Implementers should be aware of issues presented by Spoofed DNS records where the record returned by a
-            malicious DNS Server is inauthentic and allows the record to be pointed at a malicious server which contains
-            a different <a>DID</a> Document. To prevent this type of issue, wallet implementers and verifiable
-            credential
-            issuers SHALL use DNSSEC which is defined in [[RFC4033]], [[RFC4034]], and [[RFC4035]].
+            Due to the centralized nature of this <a>DID</a> method, implementors SHALL make sure that the <a>VDR</a>
+            is highly available and resilient to availability attacks. If <a>DID</a> resolutions fails, digital wallets
+            are unable to verify credentials and trading partners ATP status.
           </p>
+        </section>
+        <section>
+          <h2>Securing did:ethr</h2>
+          <p>
+            Implementers of the <a>DID</a> method SHALL implement measures to cover common security attacks. This
+            includes private key hijacking on the wallet, Man-in-the-middle attacks,and in-transit security while
+            communicating with an Ethereum node. Enterprise-grade blockchain
+            infrastructure-as-a-service platforms MAY be used to mitigate some of those attack vectors. Self-hosted or
+            OCI-owned Ethereums SHOULD used.
+          </p>
+          <p>Due to DID document related metadata being persisted on the Ethereum-blockchain, measures to make the
+            <a>DID</a> document generally available NEED NOT be employed.</p>
         </section>
       </section>
       <section>
@@ -699,7 +712,13 @@
         <p>
           As described above, the trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
           ensure that this key role is not exploited, the trust is anchored
-          in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have satisfied OCI’s <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">Credential Issuer Conformance Criteria</a>, are to be trusted is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum Smart Contracts.
+          in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have
+          satisfied OCI’s
+          <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">
+            Credential Issuer Conformance Criteria
+          </a>
+          , are to be trusted is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum
+          Smart Contracts.
         </p>
         <p>
           OCI maintains multiple versions of the Trusted Issuer Registry for production and demo/testing purposes.
@@ -707,22 +726,30 @@
         </p>
         <ul>
           <li>
-            <a href="https://goerli.etherscan.io/address/0xDfC7aCC61c532350a562018d627c6fe6aBBca5e8" target="_blank" rel="noopener noreferrer">Development (Goerli)</a>
+            <a href="https://goerli.etherscan.io/address/0xDfC7aCC61c532350a562018d627c6fe6aBBca5e8" target="_blank" rel="noopener noreferrer">Development STK-INT (Goerli)</a>
           </li>
           <li>
-            <a href="https://goerli.etherscan.io/address/0x07a79C830352ab30d7C3241F2d16db7e33D1f197" target="_blank" rel="noopener noreferrer">Development (Goerli Sandbox)</a>
+            <a href="https://goerli.etherscan.io/address/0xfAc0eac761d4b589b471e461F247059b2f9A8B85" target="_blank" rel="noopener noreferrer">Development WLT-INT (Goerli)</a>
+          </li>
+          <li>
+            <a href="https://goerli.etherscan.io/address/0x2b219C6e76A8Df00Aa90155620078d56a6e3f26c" target="_blank" rel="noopener noreferrer">Development PBL-INT (Goerli)</a>
           </li>
         </ul>
-        <p>The Goerli Sandbox Contract has been modified to not require any OCI mechanisms to add and remove trusted
-          issuer DIDs. This may be used for testing by anyone who is interested.</p>
-        <p>In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
+        <p>
+          The development environments are deployed on an Ethereum test network. STK-INT mirrors the production
+          environment and should only be used for testing purposes by approved OCI statekeepers. WLT-INT should be used
+          only by OCI digital wallets for testing purposes without voting processes. PBL-INT is generally open without
+          any restrictions to make quick testing easy.
+        </p>
+        <p>
+          In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
           implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>.
         </p>
         <section>
           <h2>Digital Wallet Requirements</h2>
           <p>
             At each generation and verification of a Verifiable Presentation, a Digital Wallet SHALL check if the respective Verifiable
-            Credential has indeed been issued by a Trusted Issuer. To accomplish this, a wallet SHALL
+            Credential has indeed been issued by a Trusted Issuer. To accomplish this, a wallet MAY
             call one of the following contract method signatures to verify the status of the Credential Issuer:
           </p>
           <ul>
@@ -762,6 +789,11 @@
             </li>
           </ul>
           <p>
+            A Digital Wallet MAY also subscribe to changes on the Trusted Issuer Registry by listening to events emitted
+            by the contract. This way, the wallet can be notified of changes to the Trusted Issuer Registry and update
+            its local state accordingly.
+          </p>
+          <p>
             By deriving this information from the contract, the Digital Wallet SHALL check that the issuer stated within the claims of the respective
             <a>ATP</a> credential matches one of those trusted issuers recorded in the Trusted Issuer Registry.
           </p>
@@ -797,7 +829,7 @@
         <h2>Credential Serialization & Schemas</h2>
         <p>
           Credentials that are issued by the Credential Issuer are created in accordance with the W3C JSON-LD format for
-          schema serialization. To ensure processing, validation, and interpretation of verifiable credentials by
+          schema serialization. To ensure processing, validation, and interpretation of Verifiable Credentials by
           different implementers, JSON-LD schemas for identity and <a>ATP</a> credentials are introduced. <a>Digital
             Wallet</a>
           Providers SHALL support the JSON-LD format and SHALL support JSON-LD schema validation.
@@ -1231,7 +1263,7 @@
         </tr>
         <tr>
           <td>Description</td>
-          <td>Requesting verifiable credential issuance from Credential Issuer</td>
+          <td>Requesting Verifiable Credential issuance from Credential Issuer</td>
         </tr>
         <tr>
           <td>Type</td>
