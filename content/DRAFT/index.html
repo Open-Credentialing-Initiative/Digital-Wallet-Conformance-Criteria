@@ -1,0 +1,2451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <meta http-equiv=" Content-Type" content="text/html;charset=utf-8" />
+
+  <title>Digital Wallet Conformance Criteria</title>
+  <h2 id="subtitle">v3.2.0</h2>
+
+  
+  <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+  <script type="text/javascript" class="remove">
+    var respecConfig = {
+      specStatus: 'base',
+      shortName: 'Digital Wallet Conformance Criteria',
+      publishDate: "5 May 2023",
+      latestVersion: "https://open-credentialing-initiative.github.io/Digital-Wallet-Conformance-Criteria/latest",
+      maxTocLevel: 3,
+      logos: [],
+      lint: {
+        "check-punctuation": true,
+        "no-http-props": true
+      },
+      editors: [
+        {
+          name: 'Dr. Carsten Stöcker',
+          url: 'https://www.linkedin.com/in/dr-carsten-st%C3%B6cker-1145871/',
+          company: 'Spherity',
+          companyURL: 'https://spherity.com/',
+        },
+        {
+          name: 'Lauritz Leifermann',
+          url: 'https://spherity.com/',
+          company: 'Spherity',
+          companyURL: 'https://spherity.com/',
+        },
+        {
+          name: 'Georg Jürgens',
+          url: 'https://www.linkedin.com/in/georg-j%C3%BCrgens/',
+          company: 'Spherity',
+          companyURL: 'https://spherity.com/',
+        },
+        {
+          name: 'Dr. Christiane Wirrig',
+          url: 'https://www.linkedin.com/in/chriswirrig/',
+          company: 'Spherity',
+          companyURL: 'https://spherity.com/',
+        },
+        {
+          name: 'David Kessler',
+          url: 'https://www.linkedin.com/in/dwkessler/',
+          company: 'Legsiym',
+          companyURL: 'https://legisym.com/',
+        },
+        {
+          name: 'Penny Hendrix',
+          url: 'https://legisym.com/',
+          company: 'Legisym',
+          companyURL: 'https://legisym.com/',
+        },
+        {
+          name: 'Elizabeth Waldorf',
+          url: 'https://www.linkedin.com/in/elizabethwaldorf/',
+          company: 'TraceLink',
+          companyURL: 'https://tracelink.com/',
+        },
+        {
+          name: 'Alex Colgan',
+          url: 'https://www.linkedin.com/in/alexcolgan/',
+          company: 'LedgerDomain',
+          companyURL: 'https://ledgerdomain.com/',
+        },
+      ],
+      github: "https://github.com/Open-Credentialing-Initiative/Digital-Wallet-Conformance-Criteria",
+      logos: [
+        {
+          src: "https://avatars.githubusercontent.com/u/79323216?s=200&v=4",
+          url: "https://github.com/Open-Credentialing-Initiative/Digital-Wallet-Conformance-Criteria",
+          alt: "OCI Logo",
+          width: 100,
+          height: 100,
+          id: "oci-logo",
+        },
+      ],
+      otherLinks: [
+        {
+          key: "Document Status",
+          data: [
+            {
+              value: "Approved",
+            },
+          ],
+        },
+      ],
+    };
+  </script>
+  <style>
+    body {
+      background: white !important;
+    }
+
+    table {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- sotd -->
+  <p class="copyright">Copyright © 2023 Named editors. Contributors to the Open Credentialing Initiative.</p>
+  <section>
+    <h2>Status of this Document</h2>
+    <p>
+      This section describes the status of this document at the time of its
+      publication. Other documents may supersede this document.
+    </p>
+    <p>
+      This is a living document developed by OCl's Founding Members with input
+      from other OCI Charter Members, DSCSA Trading Partners, Solution
+      Providers, Associations, Standards Bodies and others interested in
+      implementing and contributing to the betterment of the W3C Verifiable
+      Credentials architecture piloted by the DSCSA <a>ATP</a> Pilot. It is
+      anticipated that the contents of this document will be reviewed and
+      updated to address feedback related to compliance, business operations,
+      W3C and GS1 Standards, interoperability, changing legislation,
+      regulations, and policy.
+    </p>
+  </section>
+  <!-- Abstract -->
+  <section id="abstract">
+    <p>
+      The purpose of this document is to clearly outline the conformance criteria for service providers who wish to be
+      recognized by the Open Credentialing Initiative (OCI) as Digital Wallet providers.
+    </p>
+  </section>
+  <!-- Introduction -->
+  <section>
+    <h2>Introduction</h2>
+    <section>
+      <h2>Intended Audience</h2>
+      <p>
+        The publication is intended for Digital Wallet implementers or service providers who wish to be recognized by
+        the Open Credentialing Initiative (OCI) as <b>Digital Wallet Providers</b> in the OCI interoperable environment.
+        <br/><br/>
+        This document specifies the Conformance Criteria for a <b>Digital Wallet Provider</b>. It includes definitions
+        of key terms and concepts, W3C standards requirements, technical wallet implementation requirements, and requirements
+        for integration with VRS providers. For a general introduction to OCI, please refer to our <a
+        href="https://open-credentialing-initiative.github.io/getting-started/">Getting Started guide </a> or the <a href="https://www.oc-i.org/">Open Credentialing Initiative website.</a>
+      </p>
+    </section>
+    <section>
+      <h2>Purpose of <a>Digital Wallet</a></h2>
+      <p>
+        The dark side of the digital world is professionalizing its malicious activities at an amazing speed, launching
+        sophisticated cyberattacks to compromise endpoints and sell stolen access credentials through Initial Access
+        Brokers to others who then launch ransomware attacks on (supply chain) systems or steal, sell and manipulate
+        internal information. The biggest struggle for API security lies with the building blocks of authentication and
+        authorization. This thread has grown in importance with APIs' increased access to critical data in the US Pharma
+        supply chain.
+      </p>
+      <p>
+        OCI leverages decentralized public key infrastructure (PKI) and credentials to protect Product Identifier
+        (<a>PI</a>)
+        verification API calls by providing tools to sign <a>PI</a> verification request and response messages while
+        blending
+        these messages with <a>ATP</a> credentials. With these tools in place, a responder API can check the
+        counterparty’s ATP
+        license status prior to responding to a <a>PI</a> verification call. As a result, only authorized parties with
+        valid
+        <a>ATP</a> credentials will receive a response. OCI applies the same mechanism for the verification of the
+        response
+        origin.
+      </p>
+      <p>
+        <a>Digital Wallet</a> infrastructure is used to protect the private key, acquire, store and exchange credentials
+        of a
+        given supply chain actor. As these wallets are integrated with the GS1 Lightweight Messaging Standard for
+        Verification of Product Identifiers and VRS infrastructure, they allow a US DSCSA-compliant implementation of
+        the <a>ATP</a> regulatory requirements. Decentralized PKI mechanisms of the system are designed to mitigate
+        reuse of
+        API access credentials, which further contributes to improved security.
+      </p>
+    </section>
+    <section>
+      <h2>Purpose of Conformance Criteria</h2>
+      <p>
+        The primary purpose of this publication is to communicate Conformance Criteria. Conformance Criteria establish
+        the trusted processes that are to be followed for an organization to be recognized and accepted by OCI as a
+        <a>Digital Wallet</a> provider. This ensures interoperability among all OCI-compliant service providers.
+      </p>
+      <p>
+        Adherence is important for:
+      </p>
+      <ul>
+        <li>interoperability and <a>Credential</a> portability,</li>
+        <li>ease of implementation by VRS providers,</li>
+        <li>system security, and</li>
+        <li>DSCSA compliance of the pharma supply chain system.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Keywords</h2>
+      <p>
+        The following keywords indicate the precedence and general rigidity of
+        a given conformance criterion, and are to be interpreted as:
+      </p>
+      <li>
+        <b>SHALL</b> and <b>SHALL NOT</b> indicate strict requirements from which no
+        deviation is permitted.
+      </li>
+      <li>
+        <b>SHOULD</b> and <b>SHOULD NOT</b> indicate preferred approaches; among several
+        possibilities one is recommended as particularly suitable, without
+        mentioning or excluding others, but is not necessarily required, or
+        that (in the negative form) a certain course of action is discouraged
+        but not prohibited.
+      </li>
+      <li>
+        <b>MAY</b> and <b>NEED NOT</b> indicate possible and permissible approaches that are
+        not necessarily preferred.
+      </li>
+      <li>
+        <b>CAN</b> and <b>CANNOT</b> indicate a capability, whether material, physical or
+        causal or, in the negative, the absence of that capability.
+      </li>
+      Keywords appear in <b>bold</b> and <b>ALL CAPS</b> in the Conformance Criteria. The key words <i>MAY</i>,
+      <i>RECOMMENDED</i>, <i>REQUIRED</i>,
+      <i>OPTIONAL</i>, <i>SHALL</i>, <i>SHALL NOT</i>, <i>SHOULD</i>, and <i>SHOULD NOT</i> in this document are to be
+      interpreted as described in BCP 14
+      [[RFC2119]] [[RFC8174]] when, and only when, they appear in all capitals.
+    </section>
+    <section>
+      <h2>Terms and Abbreviations</h2>
+      <p>
+        The following terms and abbreviations appear throughout this <a>Digital Wallet</a> Conformance Criteria:
+      </p>
+      <ul>
+        <li>
+          <dfn><abbr title="Third-Party Logistics Provider">3PL</abbr></dfn>
+          (Third-Party Logistics Provider): As defined in the statute, "an entity that provides or coordinates
+    warehousing, or other logistics services of a product in interstate
+    commerce on behalf of a manufacturer, wholesale distributor, or
+    dispenser of a product, but does not take ownership of the product,
+    nor have responsibility to direct the sale or disposition of the
+    product."
+        </li>
+        <li>
+          <dfn><abbr title="Authorized Trading Partner">ATP</abbr></dfn>
+          (Authorized Trading Partner): The Drug Supply Chain Security Act
+          (DSCSA) restricts access to the distribution system for prescription
+          drug products by requiring that trading partners of manufacturers, repackagers,
+          wholesale distributors, 3PLs, and dispensers meet the
+          applicable requirements for being Authorized Trading Partners.
+          <a>DSCSA</a>
+          includes definitions for authorized and trading partner with respect
+          to these categories. For example: “To be
+          considered an authorized trading partner, a wholesale distributor
+          must have a valid license under State law or section 583 of the FD&C
+          Act, in accordance with section 582(a)(6) of the FD&C Act, comply
+          with the licensure reporting requirements in section 503(e) of the
+          FD&C Act, as amended by DSCSA, and accept or transfer direct
+          ownership of a product from or to a manufacturer, repackager,
+          wholesale distributor, or dispenser.”
+        </li>
+        <li>
+          <dfn>Cloud wallet</dfn>:
+          A digital cloud wallet which manages the lifecycle, creation and storage of cryptographic key material for a
+          single or multiple users hosted on a secure cloud infrastructure environment.
+        </li>
+        <li>
+          <dfn>Digital wallet</dfn>:
+          A digital wallet which manages the lifecycle, creation and storage of cryptographic key material for a single
+          or multiple users hosted on a secure cloud infrastructure environment. <a>Digital Wallets</a> can be either
+          hosted on
+          a cloud environment or on an edge device.
+        </li>
+        <li>
+          <dfn>Edge wallet</dfn>:
+          A <a>Digital Wallet</a> in which cryptographic key material and credentials are held on a local device (e.g.
+          mobile
+          device) rather than being controlled by a server. While public keys and other data may be stored on the cloud,
+          the private key remains on the local device, so that new presentations of a <a>Credential</a> can only be
+          initiated
+          by the user via their local device.
+        </li>
+        <li>
+          <dfn>Credential</dfn>
+          : A digital assertion containing a set of claims (e.g., about a
+          state license or FDA Establishment Identifier) made by an entity
+          about itself or another entity. Credentials are a subset of identity
+          data. The entity described by the claims is called the subject of
+          the credential.
+        </li>
+        <li>
+          <dfn><abbr title="Credential Service Provider">CSP</abbr></dfn>
+          (Credential Service Provider): An entity that issues verifiable
+          credentials. Also known as a Credential Issuer.
+        </li>
+        <li>
+          <dfn><abbr title="Decentralized Identifier">DID</abbr></dfn>
+          (Decentralized Identifier)
+          A type of identifier specified by the World Wide Web Consortium (W3C) that enables verifiable, decentralized
+          digital identity. In contrast to typical, federated identifiers, DIDs can be decoupled from centralized
+          registries, identity providers, and certificate authorities. This takes the form of a Uniform Resource
+          Identifier (URI) that associates a <a>DID</a> subject with a <a>DID</a> document, allowing trustable
+          interactions associated
+          with that subject.
+        </li>
+        <li>
+          <dfn><abbr title="Product Identifier">PI</abbr></dfn>
+          (Product Identifier)
+          DSCSA defines the term “product identifier” as, “a standardized graphic that includes, in both human-readable
+          form and on a machine-readable data carrier that conforms to the standards developed by a widely recognized
+          international standards development organization, the standardized numerical identifier (SNI), lot number, and
+          expiration date of the product.” Per this definition, a DSCSA product identifier comprises the following four
+          data elements: National Drug Code (NDC), Serial Number, Batch or Lot Number, Expiration Date. Product
+          Identifiers are affixed to, or printed on a package or homogeneous case corresponding to the SNI assigned to
+          the product by the manufacturer or the repackager.
+        </li>
+        <li>
+          <dfn><abbr title="Drug Supply Chain Security Act">DSCSA</abbr></dfn>
+          (Drug Supply Chain Security Act): An act of the U.S. Congress that
+          mandates an electronic, interoperable system to identify and trace
+          certain prescription drugs as they are distributed in the United
+          States. The DSCSA imposes a number of current and emerging
+          requirements on pharmaceutical supply chain stakeholders as part of
+          a mandate to protect consumers from exposure to drugs that may be
+          counterfeit, stolen, contaminated, or otherwise harmful.
+        </li>
+        <li>
+          <dfn><abbr title="Identity and Access Management">IAM</abbr></dfn>
+          (Identity and Access Management)
+          Identity management, also known as identity and access management (IAM), is a framework of policies and
+          technologies to ensure that the right human or system users in an enterprise have the appropriate access to
+          technology resources.
+        </li>
+        <li>
+          <dfn>Identity Proofing</dfn>
+          : The process by which a
+          <a>CSP</a>
+          collects, validates, and verifies information about an entity.
+        </li>
+        <li>
+          <dfn>
+            <abbr title="National Institute of Standards and Technology">
+              NIST
+            </abbr>
+          </dfn>
+          (National Institute of Standards and Technology): An agency that is
+          part of the U.S. Department of Commerce. Congress established the
+          agency in 1901 to build a measurement infrastructure and establish
+          standards for a wide range of products and services.
+        </li>
+        <li>
+          <dfn><abbr title="Transaction Information">TI</abbr></dfn>
+          (Transaction Information)
+          For each transaction, product tracing information should be exchanged. Product tracing information include
+          Transaction Information including lot number of product, number of containers, date of transaction, date of
+          the shipment, business name and address of the seller and the purchaser.
+        </li>
+        <li>
+          <dfn><abbr title="Verifiable data registry">VDR</abbr></dfn>
+          (Verifiable data registry)
+          In order to be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or
+          network of
+          some kind. Regardless of the specific technology used, any such system that supports recording DIDs and
+          returning data necessary to produce <a>DID</a> documents is called a verifiable data registry. Examples
+          include
+          distributed ledgers, decentralized file systems, databases of any kind, peer-to-peer networks, and other forms
+          of trusted data storage. The system facilitates the creation, verification, updating, and/or deactivation of
+          the <a>DID</a> documents for corresponding decentralized identifiers.
+        </li>
+      </ul>
+    </section>
+  </section>
+  <!-- CONFORMANCE THROUGH RECOGNIZED STANDARDS -->
+  <section id="conformance">
+    <h2>CONFORMANCE THROUGH RECOGNIZED STANDARDS</h2>
+    <p>
+      Digital Wallet Providers desiring to participate in DSCSA initiatives that were designed, tested, and proven by
+      OCI can begin by understanding and embracing the underlying open standards for decentralized identifiers (W3C),
+      verifiable credentials (W3C), well-known standards (IETF), protocol standards (Hyperledger, Decentralized Identity
+      Foundation), and Lightweight Messaging Standard (GS1). These standards serve as anchoring points for OCI to
+      establish an identity ecosystem that is fit for purpose.
+    </p>
+    <section>
+      <h2>W3C Standards for Decentralized Identifier & Verifiable Credentials</h2>
+      <p>
+        The World Wide Web Consortium (W3C) is an international community where member organizations, full-time staff,
+        and the public work together to develop Web standards. One of the many standards put forth by the consortium
+        establishes generally accepted specifications for decentralized identifiers (DIDs) for verifiable credentials
+        (VCs).
+      </p>
+      <p>
+        <i>The abstract from the W3C website Verifiable Credentials Data Model page states:</i>
+      </p>
+      <blockquote cite="https://www.w3.org/TR/did-core/">
+        “Decentralized identifiers (DIDs) are a new type of identifier that enables verifiable, decentralized digital
+        identity. A DID refers to any subject (e.g., a person, organization, thing, data model, abstract entity, etc.)
+        as determined by the controller of the DID. In contrast to typical, federated identifiers, DIDs have been
+        designed so that they may be decoupled from centralized registries, identity providers, and certificate
+        authorities. Specifically, while other parties might be used to help enable the discovery of information related
+        to a DID, the design enables the controller of a DID to prove control over it without requiring permission from
+        any other party. DIDs are URIs that associate a DID subject with a DID document allowing trustable interactions
+        associated with that subject. <br> <br>
+        Each DID document can express cryptographic material, verification methods, or services, which provide a set of
+        mechanisms enabling a DID controller to prove control of the DID. Services enable trusted interactions
+        associated with the DID subject. A DID might provide the means to return the DID subject itself, if the DID
+        subject is an information resource such as a data model. This document specifies the DID syntax, a common data
+        model, core properties, serialized representations, DID operations, and an explanation of the process of
+        resolving DIDs to the resources that they represent.”
+      </blockquote>
+      <p>For more information, please visit the <a href="https://www.w3.org/TR/did-core/">Decentralized Identifiers
+          page</a> on the W3C website.</p>
+      <p>
+        <i>The abstract from the W3C website Verifiable Credentials Data Model page states:</i>
+      </p>
+      <blockquote>
+        “Credentials are a part of our daily lives; driver's licenses are used to assert that we are capable of
+        operating a motor vehicle, university degrees can be used to assert our level of education, and
+        government-issued passports enable us to travel between countries. This specification provides a mechanism to
+        express these sorts of credentials on the Web in a way that is cryptographically secure, privacy respecting, and
+        machine-verifiable.”
+      </blockquote>
+      <p>
+        For more information, please visit the <a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials
+          page</a> on the W3C website.
+      </p>
+    </section>   
+  </section>
+  <!-- TECHNOLOGY CONFORMANCE CRITERIA -->
+  <section id="conformance">
+    <h2>TECHNOLOGY CONFORMANCE CRITERIA</h2>
+    <p>
+      To establish trust, verifiability, and auditability among the trading partners involved in the OCI ecosystem, an
+      open, interoperable, portable, standards-based, decentralized identity framework is essential.
+    </p>
+    <p>
+      OCI uses decentralized public key infrastructure (PKI) technology for <a>Digital Wallets</a> and for
+      electronically
+      signed verifiable credentials about the enterprises involved in the <a>ATP</a> verification process.
+    </p>
+    <p>
+      The OCI conformance criteria are based on a set of identity standards (W3C standards, IETF standards, Hyperledger
+      Aries), open API standards, and existing industry standards for <a>PI</a> message exchange (GS1 Lightweight
+      Messaging
+      Standard for Verification of Product Identifiers).
+    </p>
+    <p>
+      It shall be noted that the OCI Digital Wallet Conformance Criteria distinguishes between Cloud- and <a>Edge
+        wallets</a>
+      as
+      illustrated below.
+    </p>
+    <img src="assets/wallets.png" style="width: 100%; height: 100%;"></img>
+    <p>This diagram shows the basic differences between edge and <a>Cloud wallet</a> implementations. While public keys
+      and
+      other data are stored on the cloud, the private keys of Trading Partners and Credential Issuers may be located
+      either on a local edge device, or managed by a (Cloud wallet) provider. Interoperability occurs at the level of
+      verifiable presentations created and exchanged between wallets. Where potential interoperability between multiple
+      Wallet Providers and Credential Issuers is desired, the OCI Digital Wallet Conformance Criteria include specific
+      DIDcomm requirements.
+    </p>
+    <section>
+      <h2>Digital Wallet Standards</h2>
+      <p>The following is a high-level overview of the technologies used by <a>Digital Wallet</a> providers as part of this specification:</p>
+      <table class="simple">
+        <tr>
+          <th>Component</th>
+          <th>Realization and References</th>
+        </tr>
+        <tr>
+          <td>Identifiers</td>
+          <td>W3C Decentralized Identifiers (DIDs) v1.0 (W3C DIDs)</td>
+        </tr>
+        <tr>
+          <td>Verifiable Data Registry & <a>DID</a> Methods</td>
+          <td>Use of a common set of <a>DID</a> Methods endorsed by OCI (e.g. ETHR <a>DID</a> Method Specification,
+            did:web Method
+            Specification)</td>
+        </tr>
+        <tr>
+          <td><a>DID</a> Resolution</td>
+          <td>Decentralized Identifier Resolution (<a>DID</a> Resolution) using the <a
+              href="https://github.com/decentralized-identity/universal-resolver">DIF universal resolver</a>, SpruceID,
+            or another valid resolver.</td>
+        </tr>
+        <tr>
+          <td>Vetted Credential Issuer & Root of Trust</td>
+          <td>Registry for vetted, trusted Credential Issuer maintained by OCI</td>
+        </tr>
+        <tr>
+          <td><a>Credential</a> Structure</td>
+          <td>W3C Verifiable Credentials Data Model 1.0 (W3C VCs)</td>
+        </tr>
+        <tr>
+          <td><a>Credential</a> Serialization & Schemas</td>
+          <td>OCI <a>Credential</a> Schema Definition (OCI <a>Credential</a> Schemas)</td>
+        </tr>
+        <tr>
+          <td>Signatures & Verification</td>
+          <td>Cryptographic primitives used for VC creation/verification, JWT creation/verification and wallet-to-wallet
+            communication.</td>
+        </tr>
+        <tr>
+          <td>Wallet to Wallet communication (for cloud wallets)</td>
+          <td>
+            <p>Hyperledger Aries RFCs<a
+                href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
+                Credential Protocol v2.</a></p>
+            <ul>
+              <li>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">Credential
+                  ManifestCredential-Manifest Attachment format for requesting and presenting credentials</a>
+              </li>
+              <li>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0454-present-proof-v2">Present
+                  Proof Protocol v2</a>
+              </li>
+              <li>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0510-dif-pres-exch-attach">Presentation-Exchange
+                  Attachment format for requesting and presenting proofs Presentation Exchange</a>
+              </li>
+            </ul>
+            <p>Decentralized Identity Foundation specs.</p>
+            <ul>
+              <li>
+                <a href="https://identity.foundation/didcomm-messaging/spec/">DIDComm Messaging v2</a>
+              </li>
+              <li>
+                <a href="https://identity.foundation/credential-manifest/">Credential Manifest</a>
+              </li>
+              <li>
+                <a href="https://identity.foundation/presentation-exchange/">Presentation Exchange</a>
+              </li>
+            </ul>
+          </td>
+        </tr>        
+        <tr>
+          <td>Revocation</td>
+          <td>
+            Directory Service (LDAP) based mechanism for revoking Verifiable Credentials (<a
+              href="https://spherity.github.io/vc-status-2021-ldap/">vc-status-2021-ldap</a>)
+          </td>
+        </tr>       
+      </table>
+      <section>
+        <h2>Identifiers for Enterprise Identity</h2>
+        <p>
+          A <a>DID</a> is a globally unique identifier developed specifically for decentralized systems as defined by
+          the W3C
+          <a>DID</a> specification. DIDs enable interoperable decentralized self-sovereign identity management using
+          standardized <a>Digital Wallets</a>.
+        </p>
+        <p>
+          Implementers of <a>Digital Wallets</a> for OCI credentialing SHALL follow the <a href="W3C Decentralized Identifiers (DIDs)
+          v1.0"></a> specification on how <a>DID</a> documents are created and used.
+        </p>
+        <p><a>DID</a> documents have the following characteristics:</p>
+        <ul>
+          <li><a>DID</a> documents contain information associated with a <a>DID</a>.</li>
+          <li>They express verification methods, such as cryptographic public keys, and services relevant to
+            interactions with the <a>DID</a> subject (wallet-to-wallet communication).
+          </li>
+          <li>The properties present in a <a>DID</a> document and applicable operations to update these properties are
+            described in <a>DID</a> methods.
+          </li>
+        </ul>
+        <p>
+          <a>DID</a> methods are the mechanism by which a particular type of <a>DID</a> and its associated <a>DID</a>
+          document are created,
+          resolved, updated, and deactivated. <a>DID</a> methods are defined using separate <a>DID</a> method
+          specifications as
+          described in the following chapter.
+        </p>
+      </section>
+      <section>
+        <h2>Verifiable Data Registry & Endorsed <a>DID</a> Methods</h2>
+        <p>
+          To be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or network of
+          some
+          kind. Regardless of the specific technology used, any such system that facilitates the creation, verification,
+          updating, and/or deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
+          data
+          registry (<a>VDR</a>). A verifiable data registry might also be used for other cryptographically-verifiable
+          data
+          structures such as verifiable credentials. Examples for VDRs include distributed ledgers, decentralized file
+          systems, databases of any kind, peer-to-peer networks, and other forms of trusted data storage.
+        </p>
+        <p>
+          There are multiple VDRs used in today’s <a>DID</a> implementations that support different security protocols,
+          discoverability, and linkage to existing trust networks. To avoid complexity and enable interoperability, OCI
+          supports selected <a>DID</a> methods and establishes a process for maintaining a <a>DID</a> method
+          endorsement.
+        </p>
+        <p>
+          To ensure resolution of <a>DID</a> methods, Digital Wallet Providers SHALL implement and support all
+          <a>DID</a> methods
+          endorsed by OCI. OCI endorses the following <a>DID</a> methods:
+        </p>
+        <table class="simple">
+          <tr>
+            <th>#</th>
+            <th><a>DID</a> Method</th>
+            <th>Reference</th>
+            <th><a>VDR</a></th>
+            <th>OCI Credentialing Actor</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>did:ethr</td>
+            <td><a
+                href="https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md">did:ethr
+                Method Specification</a></td>
+            <td>Ethereum Mainnet</td>
+            <td>Trading Partner</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>did:web</td>
+            <td><a href="https://w3c-ccg.github.io/did-method-web/">did:web Method Specification</a></td>
+            <td>Secure data store maintained by the implementer</td>
+            <td>Credentialing Issuer</td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2><a>DID</a> Resolution</h2>
+        <p>
+          Digital Wallet Providers SHALL integrate <a>DID</a> resolver functionality for resolving <a>DID</a> documents. The
+          <a>DID</a> resolver
+          SHALL support all <a>DID</a> methods endorsed by the OCI as defined in Table 3 in section 3.1.2. It SHALL be a
+          trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
+          DIDKit)
+          vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
+          use public instances of resolvers, instead using their own implementations.
+        </p>
+      </section>
+      <section>
+        <h2>Vetted Credential Issuer, Root of Trust & Securing DID:web</h2>
+        <p>
+          Credential Issuers verify trading partner identity and license status. They are proving verifiable credentials
+          within their trust domain and are therefore root of trust in their respective trust domain.
+        </p>
+        <p>
+          To qualify for an OCI Credential Issuer, the Credential Issuer shall fulfill the <a
+            href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">conformance
+            criteria for
+            Credential Issuers defined by OCI.</a>
+        </p>
+        <p>
+          To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
+          SHALL implement and maintain a Trusted Credential Issuer registry (see
+          next section). Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
+          Credential Issuer that is endorsed via the specified OCI registry.
+        </p>
+        <p>
+          Credential Issuers SHALL use a <a>DID</a> method implementation that supports a <a
+            href="https://datatracker.ietf.org/doc/html/rfc8615">Well-Known Uniform Resource
+            Identifier [[RFC8615]]</a> to make the identifiers well-known among the OCI trading partner.
+        </p>
+        <p>
+          To provide the well-known mechanism, Digital Wallet Providers SHALL support the DID:web method for Credential
+          Issuers.
+        </p>
+        <p>
+          Digital Wallet Providers SHALL put controls in place to ensure that <a>ATP</a> credentials are from vetted
+          Credential
+          Issuers only.
+        </p>
+        <section>
+          <h2>Securing DID:web</h2>
+          <p>
+            DNS presents many of the attack vectors that enable active security and privacy attacks on the did:web
+            method and it's important that implementers address these concerns via proper configuration of DNS. For
+            example, without proper security of the DNS resolution via DNS over HTTPS it's possible for active attackers
+            to intercept the result of the DNS resolution via a Man in the Middle attack which would point at a
+            malicious server with the incorrect <a>DID</a> Document.
+          </p>
+          <p>
+            Implementers should be aware of issues presented by Spoofed DNS records where the record returned by a
+            malicious DNS Server is inauthentic and allows the record to be pointed at a malicious server which contains
+            a different <a>DID</a> Document. To prevent this type of issue, wallet implementers and verifiable
+            credential
+            issuers SHALL use DNSSEC which is defined in [[RFC4033]], [[RFC4034]], and [[RFC4035]].
+          </p>
+        </section>
+      </section>
+      <section>
+        <h2>Trusted Credential Issuer Registry</h2>
+        <p>
+          As described above, the trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
+          ensure that this key role is not exploited, the trust is anchored
+          in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have satisfied OCI’s <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">Credential Issuer Conformance Criteria</a>, are to be trusted is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum Smart Contracts.
+        </p>
+        <p>
+          OCI maintains multiple versions of the Trusted Issuer Registry for production and demo/testing purposes.
+          You can find the deployed contracts at these addresses:
+        </p>
+        <ul>
+          <li>
+            <a href="https://goerli.etherscan.io/address/0xDfC7aCC61c532350a562018d627c6fe6aBBca5e8" target="_blank" rel="noopener noreferrer">Development (Goerli)</a>
+          </li>
+          <li>
+            <a href="https://goerli.etherscan.io/address/0x07a79C830352ab30d7C3241F2d16db7e33D1f197" target="_blank" rel="noopener noreferrer">Development (Goerli Sandbox)</a>
+          </li>
+        </ul>
+        <p>The Goerli Sandbox Contract has been modified to not require any OCI mechanisms to add and remove trusted
+          issuer DIDs. This may be used for testing by anyone who is interested.</p>
+        <p>In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
+          implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>.
+        </p>
+        <section>
+          <h2>Digital Wallet Requirements</h2>
+          <p>
+            At each generation and verification of a Verifiable Presentation, a Digital Wallet SHALL check if the respective Verifiable
+            Credential has indeed been issued by a Trusted Issuer. To accomplish this, a wallet SHALL
+            call one of the following contract method signatures to verify the status of the Credential Issuer:
+          </p>
+          <ul>
+            <li>
+              Retrieve the full list of all Trusted Issuer <a>DIDs</a>.
+              <ul>
+                <li>
+                  Signature:
+                  <code>
+                    function getTrustedIssuers() public view returns (string[] memory)
+                  </code>
+                </li>
+                <li>
+                  Returns a string array:
+                  <code>
+                    ["did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74", "did:web:example.com", "did:key:0c498d9e26865f34fcaa50c498d9e26865f34fcaa5"]
+                  </code>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Retrieve the Trusted Issuer status of given a supplied <a>DID</a>.
+              <ul>
+                <li>
+                  Signature:
+                  <code>
+                    function isTrustedIssuer(string memory _DID) public view returns (bool)
+                  </code>
+                </li>
+                <li>
+                  Returns a boolean:
+                  <code>
+                    true/false
+                  </code>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p>
+            By deriving this information from the contract, the Digital Wallet SHALL check that the issuer stated within the claims of the respective
+            <a>ATP</a> credential matches one of those trusted issuers recorded in the Trusted Issuer Registry.
+          </p>
+          <p>
+            The Digital Wallet SHALL have measures in place to request other Ethereum nodes in case the requested node is down or does
+            not respond in a reasonable amount of time.
+          </p>
+        </section>
+      </section>
+      <section>
+        <h2>Credential Structure</h2>
+        <p>
+          Working groups at the W3C author, host, and maintain the <a href="https://www.w3.org/TR/vc-data-model/">W3C
+            Verifiable Credential Data Model 1.0 specification.</a>
+          This W3C VC Standard is now a <a href="https://en.wikipedia.org/wiki/World_Wide_Web_Consortium">W3C
+            recommendation</a> (the most mature stage of the W3C standards
+          process). VCs are issued for identifiers that may be associated with cryptographic operations, be they DIDs,
+          self-certifying identifiers, or legacy identities backed with traditional PKI. The structure of a VC is an
+          important component of interoperability.
+        </p>
+        <p>
+          CI relies on an implementation of a common standard for the credential structure. Digital Wallet Providers
+          SHALL implement Verifiable Credential Data Model 1.0.
+        </p>
+        <p>
+          At time of writing, there are only early, non-standard and experimental implementations that combine
+          traditional PKI with VCs and DIDs. Therefore Digital Wallet Providers SHALL implement DIDs as cryptographic
+          identifiers. It shall be understood that DIDs can be blended with X.509 DEA signing certificates within the
+          Identity Verification Process in the form of wrapped or nested credentials.
+        </p>
+      </section>
+      <section>
+        <h2>Credential Serialization & Schemas</h2>
+        <p>
+          Credentials that are issued by the Credential Issuer are created in accordance with the W3C JSON-LD format for
+          schema serialization. To ensure processing, validation, and interpretation of verifiable credentials by
+          different implementers, JSON-LD schemas for identity and <a>ATP</a> credentials are introduced. <a>Digital
+            Wallet</a>
+          Providers SHALL support the JSON-LD format and SHALL support JSON-LD schema validation.
+        </p>
+        <p>
+          The <a>Digital Wallet</a> provider SHALL have mechanisms in place to support multiple valid versions of
+          credential
+          schemas endorsed and published by OCI. Such a mechanism will allow handling transition periods when new
+          credential schema versions are released and the industry has to adopt changes to schemas. It shall be
+          understood that there can be multiple schema versions active, decommissioned, and revised versions can have an
+          expiration date. Decommissioned schema versions SHALL return an error by the <a>ATP</a> credential
+          verification API.
+        </p>
+        <p>
+          OCI documents and publishes approved (active), revised, and decommissioned versions of the
+          identity and <a>ATP</a> credential schemas on <a
+            href="https://open-credentialing-initiative.github.io/schemas/">https://open-credentialing-initiative.github.io/schemas/</a>.
+        </p>
+        <p>
+          Digital Wallet Providers SHALL support the applicable OCI-approved credential schema for processing, validation, and
+          interpretation that are published on the <a href="https://github.com/Open-Credentialing-Initiative/oci">OCI
+            Github</a> for:
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://open-credentialing-initiative.github.io/schemas/credentials/IdentityCredential-v1.0.0.jsonld">Identity
+              Credential</a>
+          </li>
+          <li>
+            <a
+              href="https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAATPCredential-v1.0.0.jsonld">DSCSA
+              <a>ATP</a> Credential </a>
+          </li>
+        </ul>           
+      </section>
+      <section>
+        <h2>Proofs & Verifications</h2>
+        <p>
+          Electronic signatures are captured in three places during a digital transaction to verify its authorization.
+          The <a>Digital Wallet</a> Provider SHALL implement the following signature suites and algorithms for signing
+          and
+          verification:
+        </p>
+        <table class="simple">
+          <tr>
+            <th>#</th>
+            <th>Signing Entity</th>
+            <th>Use Cases</th>
+            <th>Proof and Verification</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Credential Issuer: Credential Issuance</td>
+            <td>
+              <p>
+                Issuance of a Verifiable Credential from Credential Issuer’s wallet to a Trading Partner’s wallet via
+                DIDComm protocol i.e., “issue-credential” v2.0.
+              </p>
+              <ol>
+                <li>
+                  Verifiable Credential of “Identity Credential” type
+                </li>
+                <li>
+                  Verifiable Credential of “DSCSA <a>ATP</a> Credential” type
+                </li>
+              </ol>
+            </td>
+            <td>
+              <p>
+                Verifiable Credential’s proof SHALL be generated and verified in conformance with <a
+                  href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519 Signature 2018</a>
+                Linked-Data Signature Suite.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Trading Partner: <a>ATP</a> <a>PI</a> Verify Workflow</td>
+            <td>
+              Generation and Verification of a Verifiable Presentation that proves the possession of “DSCSA ATP
+              Credential” in the context of the <a href="https://www.gs1us.org/DesktopModules/Bring2mind/DMX/Download.aspx?Command=Core_Download&EntryId=1897&language=en-US&PortalId=0&TabId=134">GS1 Lightweight Messaging Standard</a>.
+            </td>
+            <td>
+              Verifiable Presentations SHALL be encoded as JSON Web Tokens [[RFC7519]] per <a
+                href="https://www.w3.org/TR/vc-data-model/#jwt-encoding">vc-data-model</a> and signed using
+              JSON Web Algorithm <b>ES256K</b> and verified accordingly. See [[RFC7518]] Section 3 for more information
+              on the
+              <b>ES256K</b> Digital Signature.
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Trading Partner: Direct Presentation Exchange</td>
+            <td>
+              <p>
+                Presentation of a Verifiable Presentation between Trading Partner wallets or from Trading Partner’s
+                wallet to Credential Issuer’s wallet via DIDComm protocol i.e., “present-proof” v2.0.
+              </p>
+              <ol>
+                <li>
+                  Verifiable Presentation that holds “Identity Credential”
+                </li>
+                <li>
+                  Verifiable Presentation that holds “DSCSA <a>ATP</a> Credential”
+                </li>
+              </ol>
+            </td>
+            <td>
+              Verifiable Presentation’s proof SHALL be generated and verified in conformance with <a
+                href="https://w3c-ccg.github.io/lds-jws2020/">JSON Web Signature 2020</a> Linked-Data Signature Suite.
+            </td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>Credential Issuance & Exchange</h2>
+        <p>
+          Communication between Credential Issuer’s <a>Digital Wallet</a> and Trading Partner’s <a>Digital Wallet</a> or
+          between trading parties for the exchange of credentials may be required to issue and exchange credentials.
+        </p>        
+        <section>
+          <h2>DIDComm</h2>
+          <p>
+            The DIDComm Messaging Specification is a secure method for credential issuance based on a set of
+            interoperable and <a>DID</a> method-agnostic Aries RFCs are working items of the Hyperledger and
+            Decentralized
+            Identity Foundation (DIF) that define technical standards specifications. It may be used to support
+            wallet-to-wallet communication between organizations (e.g. Credential Issuer and <a>Digital Wallet</a>
+            Provider),
+            or facilitate secure message exchange within an organization.
+          </p>
+          <p>
+            Digital Wallet Providers SHALL implement DIDComm capabilities to meet the functional requirements outlined
+            in the OCI <a>Digital Wallet</a> Conformance Criteria.
+          </p>
+          <p>
+            This high-level chart may be used as guidance for the subject workflow for credential issuance and exchange.
+          </p>
+          <img src="assets/didcomm.png" style="width: 100%; height: 100%;"></img>
+          <p>
+            Beyond this, Trading Partners SHOULD be able to exchange Verifiable Presentations of their Identity
+            Credentials with other Trading Partners using DIDcomm. This is important when a trading partner receives an
+            <a>ATP</a> <a>Credential</a> from a previously unknown trading partner and wishes to request the
+            corresponding identity
+            <a>Credential</a>. Having established a trusted communication channel between Trading Partner wallets,
+            future use
+            cases that require exchanging credentials can be facilitated more easily.
+          </p>
+          <table class="simple">
+            <tr>
+              <th>#</th>
+              <th>Specification Source</th>
+              <th>Specifications</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Hyperledger Aries RFCs</td>
+              <td>
+                <ul>
+                  <li>
+                    <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
+                      Credential Protocol v2</a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">Credential-Manifest
+                      Attachment format for requesting and presenting credentials</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0454-present-proof-v2">Present
+                      Proof Protocol v2</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0510-dif-pres-exch-attach">Presentation-Exchange
+                      Attachment format for requesting and presenting proofs</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Decentralized Identity Foundation Specifications</td>
+              <td>
+                <ul>
+                  <li>
+                    <a href="https://identity.foundation/credential-manifest/">Credential Manifest</a>
+                  </li>
+                  <li>
+                    <a href="https://identity.foundation/presentation-exchange/">Presentation Exchange</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </section>        
+      </section>
+      <section>
+        <h2><a>Credential</a> Revocation</h2>
+        <p>
+          OCI can potentially support multiple methods for communicating when a <a>Credential</a> has been revoked. At
+          the
+          current stage, OCI supports a proven revocation management method based on LDAP <a>Credential</a> Revocation
+          Lists
+          (CRLs). Consequently, Digital Wallet Providers SHALL implement the OCI Directory Service (LDAP)-based
+          mechanism for determining if a Verifiable <a>Credential</a> has been revoked (<a
+            href="https://spherity.github.io/vc-status-2021-ldap/">vc-status-2021-ldap</a>).
+        </p>
+        <p>
+          A <a>Digital Wallet</a> Provider MAY implement a caching mechanism for <a>Credential</a> revocation data to
+          cache LDAP data
+          for 24 hours. <a>Credential</a> revocation data SHALL not be older than 24 hours during normal operations of
+          the OCI
+          Directory Service.
+        </p>
+        <p>
+          It shall be understood that existing cached data can be used when the OCI Directory Service is not available
+          for an update of the local cache due to a technical downtime. A <a>Digital Wallet</a> Provider SHALL store
+          communication request data when OCI Directory Service is not available to establish an audit trail and
+          document why revocation data older than 24 hours were potentially used for checking the revocation status over
+          the time period of the OCI Directory Service downtime.
+        </p>
+        <p>
+          To mitigate man-in-the-middle attack vectors, Credential Issuer and Digital Identity providers SHALL implement
+          LDAPS, which is LDAP secured by communication over Transport Layer Security (TLS) protocol.
+        </p>
+      </section>
+    </section>
+    <section>
+      <h2>Cloud Wallet Interfaces and Open API Integration</h2>
+      <p>
+        OCI wallet providers that provide a cloud wallet SHALL implement the interfaces and Open API integration defined
+        below.
+      </p>
+      <table class="simple">
+        <tr>
+          <th>ID</th>
+          <th>Specification Source</th>
+          <th>Bidirectional Communication</th>
+        </tr>
+        <tr>
+          <td>IF001</td>
+          <td>Interface for Human Users</td>
+          <td>Digital Wallet Solution ⬄ Wallet Administrator</td>
+        </tr>
+        <tr>
+          <td>IF002</td>
+          <td>API Integration with VRS Provider</td>
+          <td>Digital Wallet Solution ⬄ VRS Provider</td>
+        </tr>
+        <tr>
+          <td>IF003</td>
+          <td>API Integration with Revocation DB</td>
+          <td>Digital Wallet Solution ⬄ Revocation DB of Credential Issuer</td>
+        </tr>
+        <tr>
+          <td>IF004</td>
+          <td>API Integration with <a>VDR</a></td>
+          <td>Digital Wallet Solution ⬄ Verifiable Data Registry (<a>VDR</a>)</td>
+        </tr>
+        <tr>
+          <td>IF005</td>
+          <td>API Integration with Credential Issuer</td>
+          <td>Digital Wallet Solution ⬄ Credential Issuer</td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>IF001</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>Interface for Human Users</td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td>Manual interface, authentication via Two-Factor Authentication (2FA), Connection: HTTPS</td>
+        </tr>
+        <tr>
+          <td>Information flow Direction</td>
+          <td>Bidirectional: Human User ⬄ Enterprise Digital Wallet</td>
+        </tr>
+        <tr>
+          <td>Input Data</td>
+          <td>Enterprise Digital Wallet Administration Data, User and Role Management Data, Onboarding Data for
+            <a>Credential</a> acquisition
+          </td>
+        </tr>
+        <tr>
+          <td>Output Data</td>
+          <td>ATP Monitoring Data (list of connections with ATP counterparties, identity credentials of ATP
+            counterparties, status of VPs, ATP validation of individual <a>PI</a> verify requests), Wallet
+            Administration Data
+            (users and roles, my company identity and ATP credentials).</td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>IF002</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>API Integration with VRS Provider, API Interface for creating and verifying ATP Credential Presentations
+            (See Section 5.1.7 Proof & Verifications )</td>
+        </tr>
+        <tr>
+          <td>OpenAPI Specification</td>
+          <td><a
+              href="https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationVerification">https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationVerification</a>>
+          </td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td>REST API, authentication via OAuth2.0 bearer token, Encryption: SSL TLS v1.2+, Connection: REST on HTTPS
+          </td>
+        </tr>
+        <tr>
+          <td>Information flow Direction</td>
+          <td>Bidirectional, VRS ⬄ Enterprise Digital Wallet</td>
+        </tr>
+        <tr>
+          <td>Input Data</td>
+          <td>Request creation of ATP <a>Credential</a> Presentation, Verify ATP Credential Presentation</td>
+        </tr>
+        <tr>
+          <td>Output Data</td>
+          <td>ATP Credential Presentation (JWT), ATP credential presentation verification response.</td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>IF003</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>API Integration with Credential Issuer Revocation Database</td>
+        </tr>
+        <tr>
+          <td>Specification</td>
+          <td><a
+              href="https://spherity.github.io/vc-status-2021-ldap/">https://spherity.github.io/vc-status-2021-ldap/</a>>
+          </td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td>REST API, public API with no authentication, Encryption: SSL TLS v1.2+, Connection: REST on HTTPS</td>
+        </tr>
+        <tr>
+          <td>Information flow Direction</td>
+          <td>Bidirectional, Credential Issuer Revocation DB ⬄ Enterprise Digital Wallet</td>
+        </tr>
+        <tr>
+          <td>Input Data</td>
+          <td>Request VC revocation status</td>
+        </tr>
+        <tr>
+          <td>Output Data</td>
+          <td>Response VC revocation status</td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>IF004</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td><a>DID</a> Transactions with <a>DID</a> Registry on Public Ledger, <a>DID</a> document read transactions
+            via a universal
+            resolver</td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td>DLT RPC calls, <a>VDR</a> , no authentication required</td>
+        </tr>
+        <tr>
+          <td>Information flow Direction</td>
+          <td>Bidirectional, <a>VDR</a> ⬄ Enterprise Digital Wallet</td>
+        </tr>
+        <tr>
+          <td>Input Data</td>
+          <td><a>DID</a> transactions: creation, revocation, update </td>
+        </tr>
+        <tr>
+          <td>Output Data</td>
+          <td><a>DID</a> transaction (creation, revocation, update) confirmations or <a>DID</a> documents</td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>IF005</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>Requesting verifiable credential issuance from Credential Issuer</td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td>REST API, wallet-to-wallet communication</td>
+        </tr>
+        <tr>
+          <td>Information flow Direction</td>
+          <td>
+            Bidirectional, Credential Issuer Wallet ⬄ Enterprise Digital Wallet, Encryption: SSL TLS v1.2+, Connection:
+            Issuance of Credentials via DIDcomm V2 with Encrypted Messaging Envelope as specified in the DIDComm
+            Messaging Specification based on Aries Protocols
+          </td>
+        </tr>
+        <tr>
+          <td>Input Data</td>
+          <td>Request identity or ATP credential issuance</td>
+        </tr>
+        <tr>
+          <td>Output Data</td>
+          <td>Identity or ATP <a>Credential</a></td>
+        </tr>
+      </table>
+
+      <p>
+        APIs implemented for IF002 SHALL follow the OCI OpenAPI specification for
+        Digital Wallet Providers. See <a href="https://github.com/Open-Credentialing-Initiative/api-specifications">OpenAPI specification</a> for further details.
+      </p>
+      <p>
+        The <a>Digital Wallet</a> Provider SHALL provide API concepts for:
+      </p>
+      <ol>
+        <li>
+          <b>Authentication</b>: Endpoints of the <a>Digital Wallets</a> require authentication that is secured via a
+          JWT. To
+          obtain a
+          token and start making requests, the implementer SHALL provide an authentication provider that can process
+          requests to obtain authentication token.
+        </li>
+        <li>
+          <b>Status Codes</b>: <a>Digital Wallets</a> SHALL use HTTP status codes to indicate the success or failure of
+          API
+          requests.
+          If a request fails, it returns an error using the appropriate status code.
+        </li>
+      </ol>
+      <p>
+        Implementers MUST conform to [[RFC7231]] and [[RFC2616]] when processing and returning HTTP Status Codes to a
+        requesting client. From <a href="https://datatracker.ietf.org/doc/html/rfc7231#section-6">RFC7231 Section 6</a>
+        - Response Status Codes:
+      </p>
+      <blockquote>
+        <ul>
+          <li>
+            1xx (Informational): The request was received, continuing process
+          </li>
+          <li>
+            2xx (Successful): The request was successfully received, understood, and accepted
+          </li>
+          <li>
+            3xx (Redirection): Further action needs to be taken in order to complete the request
+          </li>
+          <li>
+            4xx (Client Error): The request contains bad syntax or cannot be fulfilled
+          </li>
+          <li>
+            5xx (Server Error): The server failed to fulfill an apparently valid request
+          </li>
+        </ul>
+      </blockquote>
+    </section>
+    <section>
+      <h2>
+        Functional Wallet Features
+      </h2>
+      <section>
+        <h2>Wallet User Management</h2>
+        <p>
+          A solution SHALL integrate an Identity and Access Management (<a>IAM</a>) solution for User and Role
+          Management into
+          the <a>Digital Wallet</a> infrastructure. A solution SHALL support user on-boarding, off-boarding and user
+          <a>Credential</a>
+          management features and workflows.
+        </p>
+        <ul>
+          <li>
+            On-boarding includes a secure process to assign a role to a verified user. This process SHOULD include secure 
+            provisioning of 2FA or multi-factor authentication access credentials to a given user.
+          </li>
+          <li>
+            Off-boarding includes an authorized process where an existing user's access to the <a>Digital Wallet</a> is
+            removed.
+          </li>
+          <li>
+            User <a>Credential</a> management includes a secure process to reset and/or rescind access credentials and
+            change
+            user roles (where multiple user roles exist).
+          </li>
+        </ul>
+        <p>
+          The wallet MAY be integrated with existing trading partner identity and access management (<a>IAM</a>)
+          solutions.
+          Implementers of solutions for smaller trading partners MAY simplify the user management solution by merging
+          administrator and user roles, as users and administrators can be the same person.
+        </p>
+      </section>
+      <section>
+        <h2>Identity & <a>ATP</a> <a>Credential</a> Management</h2>
+        <p>
+          A solution SHALL provide a process workflow for acquiring identity and <a>ATP</a> credentials from a vetted
+          Credential Issuer.
+        </p>
+        <p>
+          A solution SHOULD provide a feature for users of the trading partner to request and log identity credentials
+          from another counterparty.
+        </p>
+        <p>
+          A solution SHALL provide a data store for storing identity and <a>ATP</a> credentials and transaction log data
+          to
+          support analysis, archive and auditing requirements for DSCSA.
+        </p>
+      </section>
+    </section>
+    <section>
+      <h2>Non-functional Wallet Features</h2>
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR001</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>Authentication & Authorization</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            Only an authorized user can manually access the <a>Digital Wallet</a> application.
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            <ul>
+              <li>
+                Authentication should be configurable in accordance with enterprise ISRM (Information Security and Risk
+                management) requirements as well as policy rules.
+              </li>
+              <li>
+                Authorization: Access to the system features must be based on privileges and roles of the user.
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            Two-Factor Authentication (2FA) SHOULD be implemented. For operational systems, single sign-on with
+            enterprise IAMs or identity providers MAY be integrated. Role-based access control MAY be configured for
+            user role-based access.
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            Above-mentioned authentication mechanisms when users access the application
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR002</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>Security - Data Authorization & Encryption</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            Data at rest and in transit shall be protected
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            Any sensitive data must be encrypted and protected
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            <ul>
+              <li>
+                Data at rest SHALL be secured using multiple methods as applicable to use cases such as encryption,
+                authorization, and Role Based Access Control (RBAC).
+              </li>
+              <li>
+                All customer data and metadata at rest SHALL be encrypted using the industry standard AES-256 encryption
+                algorithm (256 bits key length) </li>
+              <li>
+                Connection to the solution for data in transit SHALL be encrypted using TLS 1.2+
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            Functional testing
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR003</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>Security - Non-repudiation</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            The system must prevent the initiator of a transaction from later disputing the creation of a given
+            transaction.
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            Standard pharma compliance requirement
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            Solution SHOULD implement an audit trail including non-repudiable digital signatures for all <a>ATP</a>
+            <a>Credential</a>
+            transactions realized on the system.
+            User authentication and activities SHALL be logged. Audit trail SHALL be available for user inspection.
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            Application security testing against these features documented in User Acceptance Testing (UAT). Review of
+            operational audit logs created by the solution and compared with user activity in a test scenario.
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR004</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>Security - Key Management & Rotation</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            Key rotation best practices applied to regularly change signing and encryption keys.
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            Protect application against theft of signing keys
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            <ul>
+              <li>
+                Solution SHALL provide secure key management for encryption and signing keys
+              </li>
+              <li>
+                Solution SHALL provide features to update <a>DID</a> documents and to rotate keys in accordance with the
+                W3C
+                <a>DID</a> standards and best practices/implementation guidelines on a regular basis, keys SHALL be
+                rotated no
+                less often than once every 12 months.
+              </li>
+              <li>
+                Solution SHALL provide rotation features for encryption keys (e.g. database encryption, certificate
+                renewal)
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            Application security testing against these features
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR005</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>Security – Platform & Network Security</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            The system must adhere to platform security requirements.
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            Cloud architecture should ensure VRS and trading partner systems are secured from attack. Since the system
+            handles business critical data, the measures taken to protect data need to be defined. Privileged access to
+            system components is minimized and strictly controlled.
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            <p>
+              Security is critical to a solution deployed as Cloud Service. Implementers SHALL focus on security
+              features:
+            </p>
+            <ul>
+              <li>
+                Platform Security: Relevant security procedures provided by the cloud platform shall be enabled
+              </li>
+              <li>
+                PAM: Privileged Accounts must be managed securely.
+              </li>
+              <li>
+                Logging & Monitoring: Logs should be maintained and reviewed
+              </li>
+              <li>
+                Network Security: Infrastructure components must be protected by implementing relevant network security
+                features including
+                <ul>
+                  <li>Web Application Firewall</li>
+                  <li>Secure DNS</li>
+                  <li>DDOS Protection</li>
+                  <li>VPC infrastructure</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            Application security testing against these features
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR006</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>High Availability</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            <a>Digital Wallet</a> and credentialing solution systems must be resilient to single points of failure or
+            outages
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            When integrated into operations, <a>ATP</a> credentialing is a critical business system
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            DevOps infrastructure and cloud services SHALL
+            be designed in a redundant manner so that the system will continue to
+            work in production mode (i.e., no degraded performance) if one
+            component fails. Digital Wallet Providers SHOULD aim for 99.5%
+            availability
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            Infrastructure designed for high availability,
+            resilience and failover with ability to monitor and report on availability
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR007</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>Maximum system response time </td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            The maximum time taken by the system as a whole to send any information back to the end user who triggered a
+            query (and out of the transit/transmission overhead). Average time for performing the two API calls to
+            generate and verify <a>ATP</a> VPs SHALL be in total less than 1500 ms. Maximum time for both calls SHALL be
+            in
+            total less than 3000 ms.
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            Solution SHOULD be easily scalable to handle high volumes of Product Identity Verification Requests and
+            Responses as well as a high number of trading partners without making changes to the overall architecture.
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            Solution SHALL provide low-latency APIs.
+            Solution MAY apply caching methods (e.g., revocation lists, DID
+            documents, credential verification events) where technically and
+            legally possible to reduce throughput times of processing the APIs.
+            Cached data SHALL be valid no longer than 48 hours.
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            API performance designed for low-latency with built-in ability to measure performance, throughput and latency.
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR008</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>Disaster recovery</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            The solution must survive a critical data center incident and large scale outage events.
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            ISMS Standards dictate disaster recovery solution
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            The solution SHOULD be replicated in an alternative datacenter. It SHOULD provide back-up and restore
+            mechanisms.
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            Recurring disaster recovery tests
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR009</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>Audit Requirements</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            The solution must be able to support audit log requirements.
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            Data and industry regulations require support for investigations and compliance
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            Solution SHALL provide audit logs of interface access as well as of generation and verification of
+            verifiable presentations. Solution SHALL log corrUUID so that transactions are correlatable across systems
+            and wallets of the trading partners.
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            Testing of audit logs. Checking that audit logs can be retrieved, are accessible and can be processed.
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <br>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>NFR010</td>
+        </tr>
+        <tr>
+          <td>NFR Type</td>
+          <td>Archiving</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            The solution can support audit archiving requirements.
+          </td>
+        </tr>
+        <tr>
+          <td>Rationale</td>
+          <td>
+            Data and industry regulations require support for investigations and compliance with data archiving
+            regulations.
+          </td>
+        </tr>
+        <tr>
+          <td>Conformance Criteria</td>
+          <td>
+            The Wallet Provider SHALL keep detailed records of all VP generation and verification events as well as
+            monitoring activities for a period of not less than six (6) years. These detailed records constitute an
+            audit trail to be used in the event of an investigation into credential-related activities of the credential
+            holder
+          </td>
+        </tr>
+        <tr>
+          <td>Measurement</td>
+          <td>
+            Testing of archiving features. Checking that archived data can be retrieved, are accessible and can be
+            processed.
+          </td>
+        </tr>
+      </table>
+    </section>
+  </section>
+  <section>
+    <h2>INTEGRATION WITH VRS PROVIDERS</h2>
+    <!-- Generation Endpoint -->
+    <section>
+      <h2>API to generate a Verifiable Presentation of <a>ATP</a> Credential</h2>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>API Name</td>
+          <td>Generate ATP Verifiable Presentation of ATP Credential</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>The HTTP endpoint used to generate a Verifiable Presentation of a DSCSA ATP Credential.</td>
+        </tr>
+        <tr>
+          <td>OpenAPI Specification</td>
+          <td><a
+              href="https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationGeneration">https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationGeneration</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Request Body</td>
+          <td>
+            <p>The <a>Digital Wallet</a> SHALL provide an API consuming a JSON request body with the following values:
+            </p>
+            <ul>
+              <li>
+                <b>corrUUID</b> | <i>string</i> | <b>required</b>
+                <ul>
+                  <li>
+                    Correlation UUID which is obtained from the <a>PI</a> Message
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>holderDID</b> | <i>string</i> | <b>required</b>
+                <ul>
+                  <li>
+                    The <a>DID</a> that holds the requested <a>Credential</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>credentialType</b> | <i>string (enum)</i> | <b>required</b>
+                <ul>
+                  <li>
+                    IdentityCredential or DSCSA-ATP-Credential
+                    The type of <a>Credential</a> that should be requested
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p>
+              <b>Note:</b> It shall be understood that a counterparty VRS can be unavailable at any given time. If this
+              is the
+              case, the first VRS provider needs to regenerate a JWT token for resending the <a>PI</a> verify request to
+              the
+              counterparty VRS at a later time to retry the <a>PI</a> verification request.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>Request Parameters</td>
+          <td>
+            <p>The <a>Digital Wallet</a> SHALL provide the following OPTIONAL query request parameters. During the
+              generation
+              of a VP these checks MAY be omitted and only be used for other use cases. In standard mode of operations
+              verifiable presentations can be generated without any additional checks. Checks will always be done on the
+              receiving side. Therefore and to reuse overall latency checks can be neglected on the sender side. The
+              following optional checks can be done by the sender to check that the presentation generation is working
+              properly and the underlying credentials are valid (e.g. for Periodical checking the validity of a
+              <a>Credential</a>):
+            </p>
+            <ul>
+              <li>
+                <b>vc-expirationDate</b> | <i>boolean</i> | <b>optional</b> | default 'false'
+                <ul>
+                  <li>
+                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the expiration date of the
+                    ATP
+                    <a>Credential</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>vc-proof</b> | <i>boolean</i> | <b>optional</b> | default 'false'
+                <ul>
+                  <li>
+                    The <a>Digital Wallet</a> SHALL provide this parameter to check the cryptographic proof of the ATP
+                    <a>Credential</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>vc-issuanceDate</b> | <i>boolean</i> | <b>optional</b> | default 'false'
+                <ul>
+                  <li>
+                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the issuance date of the
+                    ATP
+                    <a>Credential</a>
+                  </li>
+                </ul>
+              </li>
+              <b>vc-credentialStatus</b> | <i>boolean</i> | <b>optional</b> | default 'false'
+              <ul>
+                <li>
+                  The <a>Digital Wallet</a> SHALL provide this optional parameter to check the revocation status (incl.
+                  expiration) of the ATP <a>Credential</a>
+                </li>
+              </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Body</td>
+          <td>
+            <p>
+              Depending on whether the VP generation is successful or not, The <a>Digital Wallet</a> SHALL either return
+              a
+              response body representing positive or negative generation.
+            </p>
+            <p>
+              For Positive Generation Response, the response body SHALL contain the following fields:
+            </p>
+            <ul>
+              <li>
+                <b>success</b> | <i>boolean</i> | <b>required</b> <i>with value</i> <b>true</b>
+                <ul>
+                  <li>
+                    Indicating wheter or not the request has been successfull or not.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>verifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
+                <ul>
+                  <li>
+                    The JWT formatted and base64 encoded Verifiable Presentation.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>holderDID</b> | <i>string</i> | <b>optional</b>
+                <ul>
+                  <li>
+                    The holderDID that was used to generate the verifiable presentation.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>corrUUID</b> | <i>string</i> | <b>optional</b>
+                <ul>
+                  <li>
+                    The corrUUID that was used to generate the verifiable presentation.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>credentialType</b> | <i>string</i> | <i>enum</i> | <b>optional</b>
+                <ul>
+                  <li>
+                    The credentialType that was used to generate the verifiable presentation. Either of type
+                    <b>IdentityCredential</b> OR <b>DSCSAATPCredential</b>.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>message</b> | <i>string</i> | <b>optional</b>
+                <ul>
+                  <li>
+                    Additional message to be included
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p>
+              For Negative Generation Response, the response body SHALL contain the following fields:
+            </p>
+            <ul>
+              <li>
+                <b>success</b> | <i>boolean</i> | <b>required</b> <i>with value</i> <b>false</b>
+                <ul>
+                  <li>
+                    Indicating wheter or not the request has been successfull or not.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>errors</b> | <i>array</i> | <b>required</b>
+                <ul>
+                  <li>
+                    a list of error messages describing the error code(s) as specified in section 4.2.1 encountered
+                    while attempting to generate VP
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>errorCodes</b> | <i>array</i> | <b>required</b>
+                <ul>
+                  <li>
+                    a list of error code(s) as specified in section 5.3 encountered while attempting
+                    to generate VP
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>HTTP Status Codes</td>
+          <td>
+            <p>
+              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to
+              section 4.2
+              Cloud Wallet Interfaces and Open API Integration:
+            </p>
+            <ul>
+              <li>
+                1xx (Informational): The request was received, continuing process
+              </li>
+              <li>
+                2xx (Successful): The request was successfully received, understood, and accepted
+              </li>
+              <li>
+                3xx (Redirection): Further action needs to be taken in order to complete the request
+              </li>
+              <li>
+                4xx (Client Error): The request contains bad syntax or cannot be fulfilled
+              </li>
+              <li>
+                5xx (Server Error): The server failed to fulfill an apparently valid request
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Verification Endpoint -->
+    <section>
+      <h2>API to Verify Verifiable Presentation of ATP Credential</h2>
+      <table class="simple">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>API Name</td>
+          <td>Verify ATP Verifiable Presentation of ATP Credential</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>To check the authenticity, integrity, revocation & expiration status of a Verifiable Presentation of an
+            ATP Credential.</td>
+        </tr>
+        <tr>
+          <td>OpenAPI Specification</td>
+          <td><a
+              href="https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationVerification">https://open-credentialing-initiative.github.io/api-specifications/v2.0.0/#/VerifiablePresentation/postVerfiablePresentationVerification</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Request Body</td>
+          <td>
+            <p>The <a>Digital Wallet</a> SHALL provide an API accepting a request body with the following values:</p>
+            <ul>
+              <li>
+                <b>VerifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
+                <ul>
+                  <li>
+                    The verifiable presentation to verify in JWT base64 encoded format.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>verifierDID</b> | <i>string</i> | <b>required</b>
+                <ul>
+                  <li>
+                    The <a>DID</a> that requests a verification of the provided <b>Verifiable Presentation</b>.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Request Parameters</td>
+          <td>
+            <p>None.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Body</td>
+          <td>
+            <p>
+              Depending on whether the verification is successful or not, the <a>Digital Wallet</a> SHALL either return
+              a
+              response body representing positive verification or negative verification.
+            </p>
+            <p>
+              For Positive Verification Response, the response body SHALL contain the following fields:
+            </p>
+            <ul>
+              <li>
+                <b>success</b> | <i>boolean</i> | <b>required</b> <i>with value</i> <b>true</b>
+                <ul>
+                  <li>
+                    Indicating wheter or not the request has been successfull or not.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>verifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>optional</b>
+                <ul>
+                  <li>
+                    The JWT formatted and base64 encoded Verifiable Presentation which has been verified
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>verifierDID</b> | <i>string</i> | <b>optional</b>
+                <ul>
+                  <li>
+                    The <a>DID</a> that requested a verification of the provided <b>Verifiable Presentation</b>.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>message</b> | <i>string</i> | <b>optional</b>
+                <ul>
+                  <li>
+                    Additional message to be included
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p>
+              For Negative Verification Response, the response body SHALL contain the following fields:
+            </p>
+            <ul>
+              <li>
+                <b>success</b> | <i>boolean</i> | <b>required</b> <i>with value</i> <b>false</b>
+                <ul>
+                  <li>
+                    Indicating wheter or not the request has been successfull or not.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>errors</b> | <i>array</i> | <b>required</b>
+                <ul>
+                  <li>
+                    a list of error messages describing the error code(s) as specified in section 4.2.1 encountered
+                    while attempting to generate VP
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>errorCodes</b> | <i>array</i> | <b>required</b>
+                <ul>
+                  <li>
+                    a list of error code(s) as specified in section 5.3 encountered while attempting
+                    to generate VP
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>HTTP Status Codes</td>
+          <td>
+            <p>
+              The <a>Digital Wallet</a> SHALL return the following HTTP status codes and descriptions in accordance to
+              4.2
+              Cloud Wallet Interfaces and Open API Integration:
+            </p>
+            <ul>
+              <li>
+                1xx (Informational): The request was received, continuing process
+              </li>
+              <li>
+                2xx (Successful): The request was successfully received, understood, and accepted
+              </li>
+              <li>
+                3xx (Redirection): Further action needs to be taken in order to complete the request
+              </li>
+              <li>
+                4xx (Client Error): The request contains bad syntax or cannot be fulfilled
+              </li>
+              <li>
+                5xx (Server Error): The server failed to fulfill an apparently valid request
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h2>API specific Error Codes</h2>
+      <p>
+        Digital Wallet Providers SHALL return the following error codes if a verification (or if applicable in the
+        generation) fails due to
+        certain scenarios. The above defined response data structure SHALL be used to transport the code to a requesting
+        client.
+        An implementer SHALL use the field ‘errorCodes’ for transporting one (1) or multiple codes.
+        It is RECOMMENDED to use the field ‘errors’ for transporting human readable error messages further explaining
+        the reason why a verification has failed.
+      </p>
+      <p>
+        Given these scenarios, the following error codes MUST be included in the ‘errorCodes’ field in the verification
+        (or if applicable in the generation)
+        response. It is RECOMMENDED to include multiple errors in the response as applicable.
+      </p>
+      <ul>
+        <li>
+          Determine if the decodation of the provided JWT-formatted Verifiable Presentation fails, and it is not
+          possible to derive
+          meaningful data from the input. This includes, but is not limited to, not readable JWT headers or signatures.
+          This error SHALL also be returned if it is concluded that the decoded structure of the JWT is missing required
+          fields.
+          <ul>
+            <li><b>jwt_invalid</b></li>
+          </ul>
+        </li>
+        <li>
+          The field <b>exp</b> (VC expiration date) of the decoded JWT is either concluded to be in the past -
+          <ul>
+            <li>
+              <b>vc_exp_expired</b> | <b>or</b> the field is concluded to be unreadable/unprocessable in which case
+              <b>vc_exp_invalid</b> needs to be returned
+            </li>
+          </ul>
+        </li>
+        <li>
+          The field <b>nbf</b> (VC issuance date) of the decoded JWT is either concluded to be in the future -
+          <ul>
+            <li>
+              <b>vc_nbf_expired</b> | <b>or</b> the field is concluded to be unreadable/unprocessable in which case
+              <b>vc_nbf_invalid</b> needs to be returned
+            </li>
+          </ul>
+        </li>
+        <li>
+          The field <b>iat</b> (VP generation date) of the decoded JWT, factoring in the current approved VP lifetime,
+          is concluded to be in the past -
+          <ul>
+            <li>
+              <b>vp_iat_expired</b> | <b>or</b> the field is concluded to be unreadable/unprocessable in which case
+              <b>vp_iat_invalid</b>
+              needs to be returned
+            </li>
+          </ul>
+        </li>
+        <li>
+          The field <b>iss</b> (holder <a>DID</a> generating the VP) of the decoded JWT is concluded to <i>not</i> be a
+          <a>DID</a>-compliant
+          formatted identifier. See <a
+            href="https://www.w3.org/TR/did-core/#did-syntax">https://www.w3.org/TR/did-core/#did-syntax</a> for ABNF
+          syntax rules for forming and
+          parsing a correct <a>DID</a>.
+          <ul>
+            <li>
+              <b>vp_iss_invalid</b>
+            </li>
+          </ul>
+        </li>
+        <li>
+          The field <b>nonce</b> of the decoded JWT is concluded to not contain a valid UUID Version 4 Format as
+          specified in [[RFC4122]].
+          <ul>
+            <li>
+              <b>vp_nonce_invalid</b>
+            </li>
+          </ul>
+        </li>
+        <li>
+          The field <b>vp.verifiableCredential</b> (The Verifiable <a>Credential</a> in json-ld format) is evaluated and
+          either
+          concluded to be incomplete, non-parsable or fails sanity checks for expiration- and or issuanceDate.
+          <ul>
+            <li>
+              <b>vc_invalid</b>
+            </li>
+          </ul>
+        </li>
+        <li>
+          The field <b>vp.verifiableCredential.issuer</b> (Issuer of the Verifiable <a>Credential</a>) is concluded to
+          not be part of the OCI
+          <b>Trusted Issuer</b> list state at the time of verification.
+          <ul>
+            <li>
+              <b>vc_non_trusted_issuer</b>
+            </li>
+          </ul>
+        </li>
+        <li>
+          The field <b>vp.verifiableCredential.credentialStatus</b> (Revocation of the Verifiable <a>Credential</a>) is
+          evaluated,
+          the revocation checked and concluded to be revoked.
+          <ul>
+            <li>
+              <b>vc_revoked</b>
+            </li>
+          </ul>
+        </li>
+        <li>
+          The field <b>vp.verifiableCredential.proof</b> (Proof of the Verifiable <a>Credential</a>) is concluded to be
+          invalid
+          given the signed body or does not yield a valid or resolvable result.
+          <ul>
+            <li>
+              <b>vc_proof_invalid</b>
+            </li>
+          </ul>
+        </li>
+        <li>
+          The Digital Wallet Solution is not able to find a valid Verifiable <a>Credential</a> to be used for
+          generating a Verifiable Presentation given the specified DID.
+          <ul>
+            <li>
+              <b>vc_not_found</b>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Protection against <a>Credential</a> Replay Attacks and VP Lifetime</h2>
+      <p>
+        It was decided by OCI members not to use the verifiable presentation approach employing a nonce created by the
+        verifier as developed in the pilot phase, but instead to use a JWT with a given lifetime that then defines the
+        expiration date/time of the JWT. The verifiable presentation approach of the ATP pilot is documented in the
+        pilot documentation. This approach was designed to fulfill low-latency requirements. The rationale behind this
+        decision is based on confidentiality considerations on an overall <a>PI</a> verification system level.
+      </p>
+      <p>
+        The JWT VP SHALL have a lifetime (or time to live) attribute. The lifetime for JWT VPs used in <a>PI</a>
+        verifications
+        SHALL not be longer than 5 minutes or 300,000 ms. The JWT VP verification API will use this VP lifetime
+        threshold to check if a VP is expired. This VP lifetime threshold will be added to the issuance date of the VP,
+        iat attribute of VP, to determine whether the VP verification time is within the acceptable time window for
+        using the generated VP.
+      </p>
+    </section>
+  </section>
+  <section>
+    <h2>ORGANIZATION CONTROLS</h2>
+    <section>
+      <h2>Documentation</h2>
+      <p>It is RECOMMENDED that the <a>Digital Wallet</a> provider offers the following documentation to support any
+        validation
+        process: </p>
+      <ul>
+        <li>
+          Functional documentation
+        </li>
+        <li>
+          End User documentation
+        </li>
+      </ul>
+      <p>
+        The <a>Digital Wallet</a> Provider SHALL establish a process to create installation qualification documentation
+        (IQ).
+        Digital Wallet Providers SHALL provide individual IQ documentation to trading partners during the onboarding
+        process. IQ should instruct about how the <a>Digital Wallet</a> components are installed and integrated
+        correctly. This
+        includes documentation of the software deployment process, installed system components and the host
+        environments.
+      </p>
+    </section>
+    <section>
+      <h2>Information technology controls and security</h2>
+      <p>
+        The <a>Digital Wallet</a> provider SHOULD enable independent assurance over business and information technology
+        controls. This MAY be in the form of acquiring a Service Organization Controls (SOC) Report based on the American Institute of Certified
+        Public Accountants (AICPA) Statement on Standards for Attestation Engagements No. 18 (SSAE 18) (“SOC
+        Report”). Such SOC Report generally covers all controls and comes in the form of a SOC 1 Type II and SOC 2
+        Type II report. A further option is to have a certified Information Security Management System according to
+        International Standard Organization (ISO) 27001 in place.
+      </p>
+    </section>
+  </section>
+</body>
+
+</html>
