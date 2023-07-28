@@ -228,7 +228,7 @@
         not necessarily preferred.
       </li>
       <li>
-        <b>CAN</b> and <b>CANNOT</b> indicate a capability, whether material, physical or
+        <b><i>CAN</i></b> and <b><i>CANNOT</i></b> indicate a capability, whether material, physical or
         causal or, in the negative, the absence of that capability.
       </li>
       Keywords appear in <b>bold</b> and <b>ALL CAPS</b> in the Conformance Criteria. The key words <i>MAY</i>,
@@ -449,10 +449,9 @@
       signed Verifiable Credentials about the enterprises involved in the <a>ATP</a> verification process.
     </p>
     <p>
-      The OCI conformance criteria are based on a set of identity standards (W3C standards, IETF standards, Hyperledger
-      Aries), open API standards, and existing industry standards for <a>PI</a> message exchange (GS1 Lightweight
-      Messaging
-      Standard for Verification of Product Identifiers).
+      The OCI conformance criteria are based on a set of identity standards (W3C standards, IETF standards, DIF
+      standards, Hyperledger Aries), open API standards, and existing industry standards for <a>PI</a> message exchange
+      (GS1 Lightweight Messaging Standard for Verification of Product Identifiers).
     </p>
     <p>
       It shall be noted that the OCI Digital Wallet Conformance Criteria distinguishes between Cloud- and <a>Edge
@@ -465,7 +464,7 @@
       and
       other data are stored on the cloud, the private keys of Trading Partners and Credential Issuers may be located
       either on a local edge device, or managed by a (Cloud wallet) provider. Interoperability occurs at the level of
-      verifiable presentations created and exchanged between wallets. Where potential interoperability between multiple
+      Verifiable Presentations created and exchanged between wallets. Where potential interoperability between multiple
       Wallet Providers and Credential Issuers is desired, the OCI Digital Wallet Conformance Criteria include specific
       DIDcomm requirements.
     </p>
@@ -544,6 +543,12 @@
                 <a href="https://identity.foundation/presentation-exchange/">Presentation Exchange</a>
               </li>
             </ul>
+            <div class="advisement">
+              <p>
+                <b>Warning:</b> OCI has not standardized wallet to wallet communication. This is merely an overview of
+                technologies OCI expects to be used for wallet to wallet communication in the future.
+              </p>
+            </div>
           </td>
         </tr>
         <tr>
@@ -613,7 +618,6 @@
             <th><a>DID</a> Method</th>
             <th>Reference</th>
             <th><a>VDR</a></th>
-            <th>OCI Credentialing Actor</th>
           </tr>
           <tr>
             <td>1</td>
@@ -622,14 +626,12 @@
                 href="https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md">did:ethr
                 Method Specification</a></td>
             <td>Ethereum Mainnet</td>
-            <td>Trading Partner</td>
           </tr>
           <tr>
             <td>2</td>
             <td>did:web</td>
             <td><a href="https://w3c-ccg.github.io/did-method-web/">did:web Method Specification</a></td>
             <td>Secure data store maintained by the implementer</td>
-            <td>Credentialing Issuer</td>
           </tr>
         </table>
       </section>
@@ -639,8 +641,8 @@
           Digital Wallet Providers SHALL integrate <a>DID</a> resolver functionality for resolving <a>DID</a> documents. The
           <a>DID</a> resolver
           SHALL support all <a>DID</a> methods endorsed by the OCI as defined in Table 3 in section 3.1.2. It SHALL be a
-          trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
-          DIDKit)
+          trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver,
+          DIDKit, or Veramo)
           vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
           use public instances of resolvers, instead using their own implementations.
         </p>
@@ -655,22 +657,13 @@
           To qualify for an OCI Credential Issuer, the Credential Issuer shall fulfill the <a
             href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">conformance
             criteria for
-            Credential Issuers defined by OCI.</a>
+            Credential Issuers defined by OCI</a>.
         </p>
         <p>
           To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
           SHALL implement and maintain a Trusted Credential Issuer registry (see
           next section). Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
           Credential Issuer that is endorsed via the specified OCI registry.
-        </p>
-        <p>
-          Credential Issuers SHALL use a <a>DID</a> method implementation that supports a <a
-            href="https://datatracker.ietf.org/doc/html/rfc8615">Well-Known Uniform Resource
-            Identifier [[RFC8615]]</a> to make the identifiers well-known among the OCI trading partner.
-        </p>
-        <p>
-          To provide the well-known mechanism, Digital Wallet Providers SHALL support the DID:web method for Credential
-          Issuers.
         </p>
         <p>
           Digital Wallet Providers SHALL put controls in place to ensure that <a>ATP</a> credentials are from vetted
@@ -683,28 +676,27 @@
             Implementers of the <a>DID</a> method SHALL implement measures to cover the security and privacy
             considerations outlined in the
             <a href="https://w3c-ccg.github.io/did-method-web/#security-and-privacy-considerations">
-              did:web method specification.
-            </a> This includes possible attack vectors for Man-in-the-middle attacks, DNS record spoofing, <a>DID</a>
+              did:web method specification</a>.
+            This includes possible attack vectors for man-in-the-middle attacks, DNS record spoofing, <a>DID</a>
             document integrity, and in-transit security. Providers of did:web <a>VDRs</a> SHALL not correlate usage
             of another subjects <a>DID</a> during resolution for credential verification for privacy reasons.
           </p>
           <p>
             Due to the centralized nature of this <a>DID</a> method, implementors SHALL make sure that the <a>VDR</a>
             is highly available and resilient to availability attacks. If <a>DID</a> resolutions fails, digital wallets
-            are unable to verify credentials and trading partners ATP status.
+            are unable to verify credentials and trading partner ATP statuses.
           </p>
         </section>
         <section>
           <h2>Securing did:ethr</h2>
           <p>
             Implementers of the <a>DID</a> method SHALL implement measures to cover common security attacks. This
-            includes private key hijacking on the wallet, Man-in-the-middle attacks,and in-transit security while
-            communicating with an Ethereum node. Enterprise-grade blockchain
-            infrastructure-as-a-service platforms MAY be used to mitigate some of those attack vectors. Self-hosted or
-            OCI-owned Ethereums SHOULD used.
+            includes private key hijacking on the wallet, man-in-the-middle attacks, and in-transit security while
+            communicating with an Ethereum node. Self-hosted or OCI-owned Ethereum nodes SHOULD be used to mitigate
+            some of those attack vectors. Enterprise-grade blockchain infrastructure-as-a-service platforms MAY be used.
           </p>
           <p>Due to DID document related metadata being persisted on the Ethereum-blockchain, measures to make the
-            <a>DID</a> document generally available NEED NOT be employed.</p>
+            <a>DID</a> document generally available NEED NOT to be employed.</p>
         </section>
       </section>
       <section>
@@ -800,22 +792,18 @@
         <h2>Credential Structure</h2>
         <p>
           Working groups at the W3C author, host, and maintain the <a href="https://www.w3.org/TR/vc-data-model/">W3C
-            Verifiable Credential Data Model 1.0 specification.</a>
-          This W3C VC Standard is now a <a href="https://en.wikipedia.org/wiki/World_Wide_Web_Consortium">W3C
-            recommendation</a> (the most mature stage of the W3C standards
-          process). VCs are issued for identifiers that may be associated with cryptographic operations, be they DIDs,
-          self-certifying identifiers, or legacy identities backed with traditional PKI. The structure of a VC is an
-          important component of interoperability.
+            Verifiable Credential Data Model specification.</a> VCs are issued for identifiers that may be associated
+          with cryptographic operations, be they DIDs, self-certifying identifiers, or legacy identities backed with
+          traditional PKI. The structure of a VC is an important component of interoperability.
         </p>
         <p>
-          CI relies on an implementation of a common standard for the credential structure. Digital Wallet Providers
+          OCI relies on an implementation of a common standard for the credential structure. Digital Wallet Providers
           SHALL implement Verifiable Credential Data Model 1.0.
         </p>
         <p>
           At time of writing, there are only early, non-standard and experimental implementations that combine
           traditional PKI with VCs and DIDs. Therefore Digital Wallet Providers SHALL implement DIDs as cryptographic
-          identifiers. It shall be understood that DIDs can be blended with X.509 DEA signing certificates within the
-          Identity Verification Process in the form of wrapped or nested credentials.
+          identifiers.
         </p>
       </section>
       <section>
@@ -879,8 +867,7 @@
             <td>Credential Issuer: Credential Issuance</td>
             <td>
               <p>
-                Issuance of a Verifiable Credential from Credential Issuer’s wallet to a Trading Partner’s wallet via
-                DIDComm protocol i.e., “issue-credential” v2.0.
+                Issuance of a Verifiable Credential from Credential Issuer’s wallet to a Trading Partner’s wallet.
               </p>
               <ol>
                 <li>
@@ -893,9 +880,12 @@
             </td>
             <td>
               <p>
-                Verifiable Credential’s proof SHALL be generated and verified in conformance with <a
-                  href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519 Signature 2018</a>
-                Linked-Data Signature Suite.
+                Verifiable Credential’s proof SHALL be generated and verified in conformance with
+                <a href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519Signature2018</a>
+                or
+                <a href="https://github.com/decentralized-identity/EcdsaSecp256k1RecoverySignature2020">
+                EcdsaSecp256k1RecoverySignature2020
+                </a>.
               </p>
             </td>
           </tr>
@@ -910,8 +900,7 @@
               Verifiable Presentations SHALL be encoded as JSON Web Tokens [[RFC7519]] per <a
                 href="https://www.w3.org/TR/vc-data-model/#jwt-encoding">vc-data-model</a> and signed using
               JSON Web Algorithm <b>ES256K</b> and verified accordingly. See [[RFC7518]] Section 3 for more information
-              on the
-              <b>ES256K</b> Digital Signature.
+              on the <b>ES256K</b> Digital Signature.
             </td>
           </tr>
           <tr>
@@ -920,7 +909,7 @@
             <td>
               <p>
                 Presentation of a Verifiable Presentation between Trading Partner wallets or from Trading Partner’s
-                wallet to Credential Issuer’s wallet via DIDComm protocol i.e., “present-proof” v2.0.
+                wallet to Credential Issuer’s wallet.
               </p>
               <ol>
                 <li>
@@ -943,6 +932,7 @@
         <p>
           Communication between Credential Issuer’s <a>Digital Wallet</a> and Trading Partner’s <a>Digital Wallet</a> or
           between trading parties for the exchange of credentials may be required to issue and exchange credentials.
+          This can be achieved through a variety of methods including DIDComm, or any other secured exchange protocol.
         </p>
         <section>
           <h2>DIDComm</h2>
@@ -956,16 +946,16 @@
             or facilitate secure message exchange within an organization.
           </p>
           <p>
-            Digital Wallet Providers SHALL implement DIDComm capabilities to meet the functional requirements outlined
+            Digital Wallet Providers <i>CAN</i> implement DIDComm capabilities to meet the functional requirements outlined
             in the OCI <a>Digital Wallet</a> Conformance Criteria.
           </p>
           <p>
-            This high-level chart may be used as guidance for the subject workflow for credential issuance and exchange.
+            This high-level chart <i>CAN</i> be used as guidance for the subject workflow for credential issuance and exchange.
           </p>
           <img src="assets/didcomm.png" style="width: 100%; height: 100%;"></img>
           <p>
-            Beyond this, Trading Partners SHOULD be able to exchange Verifiable Presentations of their Identity
-            Credentials with other Trading Partners using DIDcomm. This is important when a trading partner receives an
+            Beyond this, Trading Partners <i>CAN</i> exchange Verifiable Presentations of their Identity
+            Credentials with other Trading Partners using DIDComm. This is important when a trading partner receives an
             <a>ATP</a> <a>Credential</a> from a previously unknown trading partner and wishes to request the
             corresponding identity
             <a>Credential</a>. Having established a trusted communication channel between Trading Partner wallets,
@@ -1018,6 +1008,13 @@
               </td>
             </tr>
           </table>
+          <div class="advisement">
+            <p>
+              <b>Warning:</b> OCI has not fully standardized wallet to wallet communication. The high-level view can be used
+              to implement custom DIDComm flows that might be off-standard in the future. For the time being, OCI
+              does <b>not</b> endorse any specific low-level DIDComm or other credential exchange flows.
+            </p>
+          </div>
         </section>
       </section>
       <section>
@@ -1041,9 +1038,8 @@
         <p>
           It shall be understood that existing cached data can be used when the OCI Directory Service is not available
           for an update of the local cache due to a technical downtime. A <a>Digital Wallet</a> Provider SHALL store
-          communication request data when OCI Directory Service is not available to establish an audit trail and
-          document why revocation data older than 24 hours were potentially used for checking the revocation status over
-          the time period of the OCI Directory Service downtime.
+          communication request data when OCI Directory Service is not available to establish an audit trail. Revocation
+          data older than 24 hours SHALL be considered invalid and result in a failed credential verification.
         </p>
         <p>
           To mitigate man-in-the-middle attack vectors, Credential Issuer and Digital Identity providers SHALL implement
