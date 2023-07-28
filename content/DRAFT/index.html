@@ -1048,7 +1048,7 @@
       </section>
     </section>
     <section>
-      <h2>Cloud Wallet Interfaces and Open API Integration</h2>
+      <h2>Cloud Wallet Interfaces and OpenAPI Integration</h2>
       <p>
         OCI wallet providers that provide a cloud wallet SHALL implement the interfaces and Open API integration defined
         below.
@@ -1218,8 +1218,7 @@
         <tr>
           <td>Description</td>
           <td><a>DID</a> Transactions with <a>DID</a> Registry on Public Ledger, <a>DID</a> document read transactions
-            via a universal
-            resolver</td>
+            via a resolver</td>
         </tr>
         <tr>
           <td>Type</td>
@@ -1262,8 +1261,7 @@
           <td>Information flow Direction</td>
           <td>
             Bidirectional, Credential Issuer Wallet ⬄ Enterprise Digital Wallet, Encryption: SSL TLS v1.2+, Connection:
-            Issuance of Credentials via DIDcomm V2 with Encrypted Messaging Envelope as specified in the DIDComm
-            Messaging Specification based on Aries Protocols
+            Issuance of Credentials via wallet to wallet communication based on DIDComm or direct API calls.
           </td>
         </tr>
         <tr>
@@ -2298,6 +2296,97 @@
         (or if applicable in the generation)
         response. It is RECOMMENDED to include multiple errors in the response as applicable.
       </p>
+
+      <section>
+        <h3>Verifiable Credential Error Codes</h3>
+        <table class="simple">
+          <tr>
+            <th>Error Code</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><b>vc_invalid</b></td>
+            <td>
+              The credential is evaluated and either concluded to be incomplete, non-parsable or generally malformed.
+              Reasons can be, e.g., required fields are malformed, DID resolution failed, DID document is incomplete, or
+              JSON-LD checks failed.
+            </td>
+          </tr>
+          <tr>
+            <td><b>vc_expired</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>vc_revoked</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>vc_proof_invalid</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>vc_issuer_invalid</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>vc_did_invalid</b></td>
+            <td>(or put in vc_invalid?)</td>
+          </tr>
+          <tr>
+            <td><b>vc_ld_invalid</b></td>
+            <td>(or put in vc_invalid?)</td>
+          </tr>
+        </table>
+        <div class="note">
+          <p>
+            OCI allows credentials to have an issuance date in the future. This is to allow for the issuance of
+            credentials that are going to be valid from a future date onwards.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h3>Verifiable Presentation Error Codes</h3>
+        <table class="simple">
+          <tr>
+            <th>Error Code</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><b>vp_invalid</b></td>
+            <td>
+              The presentation is evaluated and either concluded to be incomplete, non-parsable or generally malformed.
+            </td>
+          </tr>
+          <tr>
+            <td><b>vp_expired</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>vp_issued_in_future</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>vp_not_valid_yet</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>vp_nonce_invalid</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>vp_issuer_invalid</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>vp_proof_invalid</b></td>
+            <td></td>
+          </tr>
+        </table>
+      </section>
+
+      <hr>
+
       <ul>
         <li>
           Determine if the decodation of the provided JWT-formatted Verifiable Presentation fails, and it is not
