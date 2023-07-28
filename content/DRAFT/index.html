@@ -13,14 +13,14 @@
   <meta http-equiv=" Content-Type" content="text/html;charset=utf-8" />
 
   <title>Digital Wallet Conformance Criteria</title>
-  <h2 id="subtitle">v3.X.0</h2>
+  <h2 id="subtitle">v3.3.0</h2>
 
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script type="text/javascript" class="remove">
     var respecConfig = {
       specStatus: 'base',
       shortName: 'Digital Wallet Conformance Criteria',
-      publishDate: "23 May 2023",
+      publishDate: "28 July 2023",
       latestVersion: "https://open-credentialing-initiative.github.io/Digital-Wallet-Conformance-Criteria/latest",
       maxTocLevel: 3,
       logos: [],
@@ -31,7 +31,7 @@
       editors: [
         {
           name: 'Dr. Carsten Stöcker',
-          url: 'https://spherity.com/',
+          url: 'https://www.linkedin.com/in/dr-carsten-st%C3%B6cker-1145871/',
           company: 'Spherity',
           companyURL: 'https://spherity.com/',
         },
@@ -43,13 +43,19 @@
         },
         {
           name: 'Georg Jürgens',
-          url: 'https://spherity.com/',
+          url: 'https://www.linkedin.com/in/georg-j%C3%BCrgens/',
+          company: 'Spherity',
+          companyURL: 'https://spherity.com/',
+        },
+        {
+          name: 'Dr. Christiane Wirrig',
+          url: 'https://www.linkedin.com/in/chriswirrig/',
           company: 'Spherity',
           companyURL: 'https://spherity.com/',
         },
         {
           name: 'David Kessler',
-          url: 'https://legisym.com/',
+          url: 'https://www.linkedin.com/in/dwkessler/',
           company: 'Legsiym',
           companyURL: 'https://legisym.com/',
         },
@@ -61,13 +67,13 @@
         },
         {
           name: 'Elizabeth Waldorf',
-          url: 'https://tracelink.com/',
+          url: 'https://www.linkedin.com/in/elizabethwaldorf/',
           company: 'TraceLink',
           companyURL: 'https://tracelink.com/',
         },
         {
           name: 'Alex Colgan',
-          url: 'https://ledgerdomain.com/',
+          url: 'https://www.linkedin.com/in/alexcolgan/',
           company: 'LedgerDomain',
           companyURL: 'https://ledgerdomain.com/',
         },
@@ -88,7 +94,7 @@
           key: "Document Status",
           data: [
             {
-              value: "DRAFT – Please submit feedback to OCI Policy & Architecture Committee",
+              value: "Approved",
             },
           ],
         },
@@ -108,7 +114,7 @@
 
 <body>
   <!-- sotd -->
-  <p class="copyright">Copyright © 2023 Open Credentialing Initiative.</p>
+  <p class="copyright">Copyright © 2023 Named editors. Contributors to the Open Credentialing Initiative.</p>
   <section>
     <h2>Status of this Document</h2>
     <p>
@@ -141,309 +147,13 @@
       <h2>Intended Audience</h2>
       <p>
         The publication is intended for Digital Wallet implementers or service providers who wish to be recognized by
-        the Open Credentialing Initiative (OCI) as <b>Digital Wallet Providers</b> in the OCI interoperable environment,
-        or for
-        anyone associated with the pharmaceutical drug distribution industry who is interested in understanding the
-        statutory definitions, regulatory guidances, and best practices for establishing Authorized Trading Partner
-        (ATP) status under the US Drug Supply Chain Security Act (DSCSA).
-
+        the Open Credentialing Initiative (OCI) as <b>Digital Wallet Providers</b> in the OCI interoperable environment.
+        <br/><br/>
         This document specifies the Conformance Criteria for a <b>Digital Wallet Provider</b>. It includes definitions
-        of key
-        terms and concepts, W3C standards requirements, technical wallet implementation requirements, and requirements
-        for integration with VRS providers. For a general introduction to OCI, please refer to <a
-          href="https://www.oc-i.org/">the Open Credentialing
-          Initiative website.</a>
+        of key terms and concepts, W3C standards requirements, technical wallet implementation requirements, and requirements
+        for integration with VRS providers. For a general introduction to OCI, please refer to our <a
+        href="https://open-credentialing-initiative.github.io/getting-started/">Getting Started guide </a> or the <a href="https://www.oc-i.org/">Open Credentialing Initiative website.</a>
       </p>
-    </section>
-    <section>
-      <h2>History and Purpose of the Open Credentialing Initiative</h2>
-      <p>
-        The OCI was formed by a group of industry service providers, manufacturers, and wholesalers, and dispensers
-        working together to design and deliver an electronic solution for the pharmaceutical industry to achieve
-        compliance with statutory and FDA mandates for supply chain security. Upon successful demonstration of the technical solution
-        and acceptance by the participating manufacturers and wholesalers, the participants formed the OCI to further
-        develop the solution into a set of tools that could be adopted and implemented across the industry.
-      </p>
-      <p>
-        The name OCI was chosen for the following reasons:
-      </p>
-      <ul><li>
-        <b>Open</b> - Non-proprietary and interoperable. OCI is open to all
-        providers, users, and standards organizations that support adoption of
-        the integrated W3C standards and applicable <a>NIST</a> <a>identity proofing</a>
-        standards.
-      </li>
-      <li>
-        <b>Credentialing</b> - A means of providing a <a>Credential</a> (similar to a
-        license or identity card that you carry in your <a>Digital Wallet</a>) that
-        attests to the identity and status of its owner / holder.
-      </li>
-      <li><b>Initiative</b> - Indicates that the work is ongoing.</li></ul>
-      <p>OCI supports pharmaceutical industry compliance with DSCSA
-        requirements for ATP, as well as allowing for interoperability with Authorities (e.g. federal and state regulators) and ATP Equivalents (i.e. trading partners that are not required to register with the FDA or obtain a State license, such as the Veterans Administration, Department of Defense, etc.). These three groups are referred to as "[=DSCSA Stakeholder=]s" (or "Stakeholders") collectively.
-	<p>Beyond supporting the adoption and standardization of the DSCSA Stakeholder architecture, OCI establishes a structure
-        for running further credential-based pilots and incubation projects.
-        Looking to the future, Digital Wallet Providers are encouraged to ensure
-        flexibility and customizability to support additional use cases for authorized
-        trading partner verification, including the exchange of additional enterprise
-        compliance credentials.
-      <p>
-        For additional information, please see the
-        <a href="https://www.oc-i.org/">
-          Open Credentialing Initiative website.
-        </a>
-      </p>
-    </section>
-    <section>
-      <h2>Regulatory Compliance - Federal Mandates</h2>
-      <p>
-        The US Drug Supply Chain Security Act (DSCSA) has the objective of securing pharmaceutical drug distribution,
-        from manufacturers all the way to pharmacies. For patient safety, it is essential to know that only trusted and
-        authorized entities are involved in the manufacturing, repackaging, distribution, and dispensing of prescription drugs. In
-        addition to verification, product tracing, and serialization requirements, each supply chain actor must ensure
-        that their Trading Partners are authorized (including indirect Trading Partners).
-        DSCSA requires that Trading Partners of manufacturers, wholesale distributors, dispensers, repackagers, and third-party logistics providers (<a>3PL</a>s) meet
-        the applicable requirements for being “authorized trading partners” (see sections 582(b)(3), (c)(3), (d)(3), and
-        (e)(3) of the FD&C Act (21 U.S.C. 360eee-1); briefly, “authorized” means registration in accordance with section
-        510 (manufacturers and repackagers), or having a valid license under State law (wholesalers, 3PLs, and dispensers).
-      </p>
-    </section>
-    <section>
-      <h2>Digital Ecosystem</h2>
-      <section>
-        <h2>Identity of Transacting Entities</h2>
-        <p>
-          Verifying that a company is “authorized” is enough to meet the letter of the law. However, in digital
-          ecosystems it is also necessary to establish the identity of the company. Thus, it becomes a two part process
-          - is the counterparty who they say they are, and if so, are they “authorized”? To add to this challenge, DSCSA
-          transactions for Product Identifier (<a>PI</a>) Verification and Transaction Information (<a>TI</a>) Tracing
-          move through
-          any number of intermediaries (solution providers, routing systems, etc.), all of whom fall under the statute.
-          In a digital ecosystem, good design is to limit the opportunity for information leaks, transaction replays,
-          and tampering with the transaction or <a>Credential</a> content throughout the ecosystem.
-        </p>
-      </section>
-      <section>
-        <h2>OCI Credentialing Roles</h2>
-        <p>
-          A <b><a>Credential</a></b> is a digital assertion containing a set of claims (e.g., about a state license or
-          FDA
-          Establishment Identifier) made by an entity about itself or another entity. A subset of identity data,
-          credentials are cryptographically signed and can be verified. Credentials can be used to create selective
-          disclosures of information (known as “verifiable presentations”) to limit personal data exposure. The entity
-          described by the claims is called the subject of the <a>Credential</a>.
-        </p>
-        <p>
-          A <b>holder</b> can refer to the subject, to others who hold a <a>Credential</a> on behalf of the subject, or
-          to
-          third
-          parties authorized to cache or hold a <a>Credential</a> that has been provided to them.
-        </p>
-        <p>
-          A <b>relying party</b> or <b>verifier</b> is generally the entity to whom a verifiable <a>Credential</a> is
-          presented
-          (i.e., the
-          party making decisions based on the claims and their degree of trust in the <a>Credential</a>). A verifier
-          requests a
-          <a>Credential</a> or proof from a holder and verifies it to make a trust decision about the subject entity.
-        </p>
-        <p>
-          A <b>Digital Wallet Provider</b> provides <a>Digital Wallets</a> and connected services to create enterprise
-          identities via
-          decentralized identifiers (<a>DID</a>) for DSCSA Stakeholders and
-          Verifiable
-          Credential Issuers.
-        </p>
-        <p>
-          A <b>Verification Router Service</b> (VRS) provides <a>PI</a> verification routing and <a>PI</a> verification
-          request and
-          response
-          services. The VRS can act on behalf of the holder (when generating a verifiable presentation) or the verifier
-          (when verifying a verifiable presentation).
-        </p>
-        <p>
-          A <b>Credential Issuer</b> is an entity that issues Verifiable Credentials (VC); also known as a Credential
-          Service Provider (CSP). The Credential Issuer is responsible for checking the status of entity registrations
-          and licenses prior to issuing VCs to ATPs.
-        </p>
-        <p>
-          An <b>authority</b> is an entity that establishes a legal requirement for the subject to be registered or
-          licensed (i.e., the FDA and States Board of Pharmacy for DSCSA <a>ATP</a> status, and other enforcement
-          agencies as may be applicable). Authorities have a dual role in OCI specifications: they define which companies are ATPs, and have the option to obtain and use Authority Credentials to support their own interoperability requirements.
-        </p>
-        <p>
-          The following roles shall be established in the OCI:
-        </p>
-        <table class="simple">
-          <tr>
-            <th><b>#</b></th>
-            <th><b>Supply Chain Role</b></th>
-            <th><b>Description</b></th>
-            <th><b>OCI Role</b></th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Identity and <a>DSCSA Stakeholder</a> license verification provider </td>
-            <td>
-              <ul>
-                <li>Performs identity and Stakeholder due diligence in accordance with the OCI Credential Issuer
-                  Conformance
-                  Criteria</li>
-                <li>Issues credentials</li>
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <li>Credential Issuer</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Authorized Trading Partner (ATP) (e.g. manufacturer, wholesaler, dispenser, repackager, 3PL)</td>
-            <td>
-              <ul>
-                <li>Uses VRS systems to automate generation and routing of verification request and response messages
-                </li>
-                <li>Uses <a>Digital Wallets</a> to acquire and manage <a>ATP</a> credentials </li>
-                <li>Requesting <a>ATP</a> sends <a>PI</a> Verification requests. A Requesting <a>ATP</a> may engage a
-                  VRS provider to verify
-                  a product identifier and, consequently, enable VRS provider to present their <a>ATP</a> VC in the
-                  verification request message. </li>
-                <li>Responding <a>ATP</a> sends <a>PI</a> Verification responses. A Responding <a>ATP</a> may engage a
-                  VRS provider to
-                  automate its response to a verification request for a product identifier and, consequently, enable VRS
-                  provider to present their <a>ATP</a> VC in the verification response message.</li>
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <li>Holder</li>
-                <li>Verifier</li>
-              </ul>
-            </td>
-          </tr>
-
-          <tr>
-            <td>3</td>
-            <td>Authorized Trading Partner (ATP) Equivalent (e.g. Veterans Administration, Department of Defense)</td>
-            <td>
-              <ul>
-                <li>May use VRS systems to automate generation and routing of verification request and response messages
-                </li>
-                <li>Uses <a>Digital Wallets</a> to acquire and manage <a>ATP Equivalent</a> credentials </li>
-                <li>Requesting <a>ATP Equivalent</a> sends <a>PI</a> Verification requests. A Requesting <a>ATP Equivalent</a> may engage a
-                  VRS provider to verify
-                  a product identifier and, consequently, enable VRS provider to present their <a>ATP Equivalent</a> VC in the
-                  verification request message. </li>
-                <li>Responding <a>ATP</a> sends <a>PI</a> Verification responses. A Responding <a>ATP</a> may engage a
-                  VRS provider to
-                  automate its response to a verification request for a product identifier and, consequently, enable VRS
-                  provider to present their <a>ATP</a> VC in the verification response message.</li>
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <li>Holder</li>
-                <li>Verifier</li>
-              </ul>
-            </td>
-          </tr>
-
-          <tr>
-            <td>4</td>
-            <td><a>Digital Wallet</a> Provider</td>
-            <td>
-              <ul>
-                <li>
-                  Provides <a>Digital Wallets</a> for DSCSA Stakeholders and Credential Issuers
-                </li>
-                <li>
-                  Provides functionality to issue, revoke and verify credentials
-                </li>
-                <li>
-                  Provides functionality to present and verify verifiable presentations of credentials
-                </li>
-                <li>
-                  Maintains verifiable data registry that ensures auditability and compliance of Credential Issuer's due
-                  diligence (responsibility shared with Credential Issuer in implementation-specific fashion)
-                </li>
-                <li>
-                  General <a>Digital Wallet</a> maintenance
-                </li>
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <li>
-                  <a>Digital Wallet</a> Provider
-                </li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>VRS Provider</td>
-            <td>
-              <ul>
-                <li>
-                  Provides Verification Routing Service following the GS1 Lightweight Messaging Standard (LWMS) for
-                  <a>PI</a>
-                  Verifications
-                </li>
-                <li>
-                  Implements or utilizes <a>Digital Wallet</a> to invoke OCI standard <a>ATP</a> credential Application
-                  Programming
-                  Interface (API) to generate and verify verifiable presentations of <a>ATP</a> credentials
-                </li>
-                <li>
-                  When representing the <a>ATP</a> credential holder, the VRS provider will add the ATP’s credential
-                  presentation to the <a>PI</a> request or response message.
-                </li>
-                <li>
-                  When representing the <a>ATP</a> credential verifier, the VRS provider will send a verifiable
-                  presentation to
-                  the verifier`s <a>Digital Wallet</a> and process the verification result of the <a>ATP</a>
-                  <a>Credential</a></ul>
-              <p>
-                <b>Future direction:</b> It is recommended to investigate the option to use ATP Equivalent and Authority credentials so that these Stakeholders can prove they are indeed government bodies engaging in regulator-initiated DSCSA verification and tracing requests.
-              </p>
-                </li>
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <li>
-                  VRS
-                </li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Authority (e.g. FDA, DEA, State Board of Pharmacy)</td>
-            <td>
-              <p>
-                Acts as a governance body to provide licenses to trading partners and/or as a regulatory body to conduct audits and investigations for monitoring and enforcing DSCSA
-                compliance. The OCI specification includes Authority credentials so that an Authority may present a VP when interacting with <a>ATP</a> application systems, thereby proving they are a recognized body for authority-initiated DSCSA verification and tracing requests.
-            </td>
-            <td>
-              <ul>
-                <li>
-                  Source of truth for <a>ATP</a> status information
-                </li>
-                <li>
-                  Holder of authority credentials
-                </li>
-                <li>
-                  Verifier (requester) of authority-initiated (DSCSA) verification and tracing requests
-                </li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-        </table>
-      </section>
     </section>
     <section>
       <h2>Purpose of <a>Digital Wallet</a></h2>
@@ -485,45 +195,13 @@
         the trusted processes that are to be followed for an organization to be recognized and accepted by OCI as a
         <a>Digital Wallet</a> provider. This ensures interoperability among all OCI-compliant service providers.
       </p>
-      <p>
-        The objective of this publication is to document the conformance requirements that shall be adhered to by
-        implementers of <a>Digital Wallets</a>. Adherence is important for:
+      <p>Adherence is important for:
       </p>
       <ul>
         <li>interoperability and <a>Credential</a> portability,</li>
         <li>ease of implementation by VRS providers,</li>
         <li>system security, and</li>
         <li>DSCSA compliance of the pharma supply chain system.</li>
-      </ul>
-      <p>
-        To ensure consistent implementation of <a>Digital Wallet</a> conformance criteria, their implementation shall be
-        audited by a third party. Only vetted and audited <a>Digital Wallet</a> implementations shall be used by trading
-        partners.
-      </p>
-      <p>
-        Conformance criteria endorsed by the OCI address the following dimensions:
-      </p>
-      <ul>
-        <li>
-          <b>Technology Conformance Criteria</b>
-          <ul>
-            <li>OCI <a>Digital Wallet</a> Standards</li>
-            <li>OCI Wallet Interfaces </li>
-            <li>OCI Functional Wallet Features</li>
-            <li>OCI Non-functional Wallet Features</li>
-          </ul>
-        </li>
-        <li>
-          <b>OCI Wallet Integration Organizational Controls</b>
-          <ul>
-            <li>
-              Documentation
-            </li>
-            <li>
-              Information technology controls and security
-            </li>
-          </ul>
-        </li>
       </ul>
     </section>
     <section>
@@ -767,25 +445,6 @@
           page</a> on the W3C website.
       </p>
     </section>
-    <section>
-      <h2>GS1 Lightweight Messaging Standard </h2>
-      <p>
-        GS1 is a neutral, not-for-profit, international organization developing and maintaining standards including
-        barcodes. The best known of these standards is the barcode, a symbol printed on products that can be scanned
-        electronically. Over 100 million products carry GS1 barcodes and they are scanned more than six billion times
-        every day.
-      </p>
-      <p>
-        GS1 Lightweight Messaging Standard for Verification of Product Identifiers specifies requests and responses for
-        Verification of Product Identifiers, especially for pharmaceuticals. Lightweight Messaging Standard is currently
-        being used for DSCSA-compliant <a>PI</a> verification.
-      </p>
-      <p>
-        For more information, please visit the <a
-          href="https://www.gs1.org/sites/default/files/docs/standards/gs1_lightweight_verification_messaging_standard_v1-1.pdf">Lightweight
-          Messaging Standard specification</a> on the GS1 website.
-      </p>
-    </section>
   </section>
   <!-- TECHNOLOGY CONFORMANCE CRITERIA -->
   <section id="conformance">
@@ -803,7 +462,7 @@
       The OCI conformance criteria are based on a set of identity standards (W3C standards, IETF standards, Hyperledger
       Aries), open API standards, and existing industry standards for <a>PI</a> message exchange (GS1 Lightweight
       Messaging
-      Standard for Verification of Product Identifiers ) described in this section.
+      Standard for Verification of Product Identifiers).
     </p>
     <p>
       It shall be noted that the OCI Digital Wallet Conformance Criteria distinguishes between Cloud- and <a>Edge
@@ -821,8 +480,8 @@
       DIDcomm requirements.
     </p>
     <section>
-      <h2>OCI Digital Wallet Standards</h2>
-      <p><a>Digital Wallet</a> Implementations SHALL adopt the following set of standards:</p>
+      <h2>Digital Wallet Standards</h2>
+      <p>The following is a high-level overview of the technologies used by <a>Digital Wallet</a> providers as part of this specification:</p>
       <table class="simple">
         <tr>
           <th>Component</th>
@@ -900,16 +559,6 @@
           <td>
             Directory Service (LDAP) based mechanism for revoking Verifiable Credentials (<a
               href="https://spherity.github.io/vc-status-2021-ldap/">vc-status-2021-ldap</a>)
-          </td>
-        </tr>
-        <tr>
-          <td>Messaging Standard to exchange <a>ATP</a> Credentials</td>
-          <td>
-            <a
-              href="https://www.gs1us.org/DesktopModules/Bring2mind/DMX/Download.aspx?Command=Core_Download&EntryId=1897&language=en-US&PortalId=0&TabId=134">
-              GS1 US Implementation Guideline for Applying the GS1 Lightweight Messaging Standard for DSCSA Verification
-              of Returned Product Identifiers
-            </a>
           </td>
         </tr>
       </table>
@@ -1173,14 +822,12 @@
           verification API.
         </p>
         <p>
-          The OCI SHALL document and publish a list of approved (active), revised, and decommissioned versions of the
-          identity and <a>ATP</a> credential schemas on <a
+        OCI documents and publishes approved (active), revised, and decommissioned versions of the
+          Identity and Stakeholder credential schemas on <a
             href="https://open-credentialing-initiative.github.io/schemas/">https://open-credentialing-initiative.github.io/schemas/</a>.
-          Implementers
-          SHALL follow the schema requirements defined by OCI credential schema requirements.
         </p>
         <p>
-          Digital Wallet Providers SHALL be capable of interpreting and validating Verifiable Presentations based on the OCI-approved credential schemas published on the <a href="https://github.com/Open-Credentialing-Initiative/oci">OCI
+          Digital Wallet Providers SHALL support the OCI approved credential schema for processing, validation, and interpretation that are published on the <a href="https://github.com/Open-Credentialing-Initiative/oci">OCI
             Github</a> for:
         </p>
         <ul>
@@ -1207,22 +854,6 @@
         </ul>
         <p>
           Digital Wallet Providers SHALL be capable of managing the Identity Credential, and of managing at least one of the three Stakeholder <a>Credential</a> types indicated above.
-        </p>
-        <i><u>Future Outlook</u></i>
-        <p>
-          GS1 maintains a web vocabulary that is designed to extend the work done by schema.org and makes use of similar
-          concepts (Product, Offer, Organization), extending them with many more details. As the definitions defined in
-          the vocabulary are already used in attributes of GS1 B2B messages and EPCIS events, OCI is working with GS1 on
-          normalizing the definitions of the OCI <a>Credential</a> schemas with GS1.
-        </p>
-        <p>
-          At a later process of the OCI ecosystem development, OCI may decide to move the <a>Credential</a> schemas to a
-          GS1
-          schema repository (e.g. GS1 web vocabulary on GitHub). To be consistent with GS1 requirements, OCI might want
-          to introduce further validation tools such as <a href="https://www.w3.org/TR/shacl/">SHACL</a>. If and when
-          these changes happen, <a>Digital Wallet</a>
-          Providers SHOULD support the GS1 schema repository and the <a href="https://www.w3.org/TR/shacl/">SHACL</a>
-          instruments.
         </p>
       </section>
       <section>
@@ -1270,7 +901,7 @@
             <td>Trading Partner: <a>ATP</a> <a>PI</a> Verify Workflow</td>
             <td>
               Generation and Verification of a Verifiable Presentation that proves the possession of “DSCSA ATP
-              Credential” in the context of the GS1 Lightweight Messaging Standard Protocol.
+              Credential” in the context of the <a href="https://www.gs1us.org/DesktopModules/Bring2mind/DMX/Download.aspx?Command=Core_Download&EntryId=1897&language=en-US&PortalId=0&TabId=134">GS1 Lightweight Messaging Standard</a>.
             </td>
             <td>
               Verifiable Presentations SHALL be encoded as JSON Web Tokens [[RFC7519]] per <a
@@ -1647,8 +1278,8 @@
       </table>
 
       <p>
-        APIs implemented for the specifications above (IF002 - IF005) SHALL follow the OCI OpenAPI specification for
-        Digital Wallet Providers. See OpenAPI Spec for further details.
+        APIs implemented for IF002 SHALL follow the OCI OpenAPI specification for
+        Digital Wallet Providers. See <a href="https://github.com/Open-Credentialing-Initiative/api-specifications">OpenAPI specification</a> for further details.
       </p>
       <p>
         The <a>Digital Wallet</a> Provider SHALL provide API concepts for:
@@ -1695,9 +1326,8 @@
     </section>
     <section>
       <h2>
-        OCI Functional Wallet Features
+        Functional Wallet Features
       </h2>
-      <p>The following functional requirements (FRs) SHALL be respected by all Digital Wallet Providers.</p>
       <section>
         <h2>Wallet User Management</h2>
         <p>
@@ -1709,8 +1339,8 @@
         </p>
         <ul>
           <li>
-            On-boarding includes a secure process to assign a role to a verified user of the trading partner. This
-            process includes secure provisioning of 2FA or MFA access credentials to a given user.
+            On-boarding includes a secure process to assign a role to a verified user. This process SHOULD include secure 
+            provisioning of 2FA or multi-factor authentication access credentials to a given user.
           </li>
           <li>
             Off-boarding includes an authorized process where an existing user's access to the <a>Digital Wallet</a> is
@@ -1747,9 +1377,7 @@
       </section>
     </section>
     <section>
-      <h2>OCI Non-functional Wallet Features</h2>
-      <p>The following non-functional requirements (NFRs) SHALL be respected by Digital Wallet Providers:</p>
-
+      <h2>Non-functional Wallet Features</h2>
       <br>
       <br>
       <table class="simple">
@@ -1768,9 +1396,7 @@
         <tr>
           <td>Description</td>
           <td>
-            Only the authorized user of the Stakeholder or credential issuer can manually access the <a>Digital
-              Wallet</a>
-            application.
+            Only an authorized user can manually access the <a>Digital Wallet</a> application.
           </td>
         </tr>
         <tr>
@@ -1779,10 +1405,10 @@
             <ul>
               <li>
                 Authentication should be configurable in accordance with enterprise ISRM (Information Security and Risk
-                management) requirements as well as policy rules
+                management) requirements as well as policy rules.
               </li>
               <li>
-                Authorization: Access to the system features must be based on privileges and roles of the user
+                Authorization: Access to the system features must be based on privileges and roles of the user.
               </li>
             </ul>
           </td>
@@ -1798,7 +1424,7 @@
         <tr>
           <td>Measurement</td>
           <td>
-            2FA authentication when users are accessing the application (single sign-on as optional solution).
+            Above-mentioned authentication mechanisms when users access the application
           </td>
         </tr>
       </table>
@@ -2835,16 +2461,12 @@
     <section>
       <h2>Information technology controls and security</h2>
       <p>
-        The <a>Digital Wallet</a> provider SHALL provide independent assurance over business and information technology
-        controls by providing a Service Organization Controls (SOC) Report based on the American Institute of Certified
+        The <a>Digital Wallet</a> provider SHOULD enable independent assurance over business and information technology
+        controls. This MAY be in the form of acquiring a Service Organization Controls (SOC) Report based on the American Institute of Certified
         Public Accountants (AICPA) Statement on Standards for Attestation Engagements No. 18 (SSAE 18) (“SOC
-        Report(s)”). Such SOC Report(s) will cover all controls and shall be in the form of a SOC 1 Type II and SOC 2
-        Type II report.
-      </p>
-      <p>
-        The <a>Digital Wallet</a> provider SHOULD have a certified Information Security Management System according to
-        International Standard Organization (ISO) 27001 in place. The reporting period for the ISO 27001 Audit Report
-        will be each calendar year.
+        Report”). Such SOC Report generally covers all controls and comes in the form of a SOC 1 Type II and SOC 2
+        Type II report. A further option is to have a certified Information Security Management System according to
+        International Standard Organization (ISO) 27001 in place.
       </p>
     </section>
   </section>
