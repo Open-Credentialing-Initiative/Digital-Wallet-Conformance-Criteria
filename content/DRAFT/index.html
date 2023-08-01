@@ -2264,7 +2264,7 @@
         certain scenarios. The above defined response data structure SHALL be used to transport the code to a requesting
         client.
         An implementer SHALL use the field ‘errorCodes’ for transporting one (1) or multiple codes.
-        It is RECOMMENDED to use the field ‘errors’ for transporting human readable error messages further explaining
+        It is RECOMMENDED to use the field ‘errors’ for transporting human-readable error messages further explaining
         the reason why a verification has failed.
       </p>
       <p>
@@ -2272,128 +2272,195 @@
         (or if applicable in the generation)
         response. It is RECOMMENDED to include multiple errors in the response as applicable.
       </p>
-      <ul>
-        <li>
-          Determine if the decodation of the provided JWT-formatted Verifiable Presentation fails, and it is not
-          possible to derive
-          meaningful data from the input. This includes, but is not limited to, not readable JWT headers or signatures.
-          This error SHALL also be returned if it is concluded that the decoded structure of the JWT is missing required
-          fields.
-          <ul>
-            <li><b>jwt_invalid</b></li>
-          </ul>
-        </li>
-        <li>
-          The field <b>exp</b> (VC expiration date) of the decoded JWT is either concluded to be in the past -
-          <ul>
-            <li>
-              <b>vc_exp_expired</b> | <b>or</b> the field is concluded to be unreadable/unprocessable in which case
-              <b>vc_exp_invalid</b> needs to be returned
-            </li>
-          </ul>
-        </li>
-        <li>
-          The field <b>nbf</b> (VC issuance date) of the decoded JWT is either concluded to be in the future -
-          <ul>
-            <li>
-              <b>vc_nbf_expired</b> | <b>or</b> the field is concluded to be unreadable/unprocessable in which case
-              <b>vc_nbf_invalid</b> needs to be returned
-            </li>
-          </ul>
-        </li>
-        <li>
-          The field <b>iat</b> (VP generation date) of the decoded JWT, factoring in the current approved VP lifetime,
-          is concluded to be in the past -
-          <ul>
-            <li>
-              <b>vp_iat_expired</b> | <b>or</b> the field is concluded to be unreadable/unprocessable in which case
-              <b>vp_iat_invalid</b>
-              needs to be returned
-            </li>
-          </ul>
-        </li>
-        <li>
-          The field <b>iss</b> (holder <a>DID</a> generating the VP) of the decoded JWT is concluded to <i>not</i> be a
-          <a>DID</a>-compliant
-          formatted identifier. See <a
-            href="https://www.w3.org/TR/did-core/#did-syntax">https://www.w3.org/TR/did-core/#did-syntax</a> for ABNF
-          syntax rules for forming and
-          parsing a correct <a>DID</a>.
-          <ul>
-            <li>
-              <b>vp_iss_invalid</b>
-            </li>
-          </ul>
-        </li>
-        <li>
-          The field <b>nonce</b> of the decoded JWT is concluded to not contain a valid UUID Version 4 Format as
-          specified in [[RFC4122]].
-          <ul>
-            <li>
-              <b>vp_nonce_invalid</b>
-            </li>
-          </ul>
-        </li>
-        <li>
-          The field <b>vp.verifiableCredential</b> (The Verifiable <a>Credential</a> in json-ld format) is evaluated and
-          either
-          concluded to be incomplete, non-parsable or fails sanity checks for expiration- and or issuanceDate.
-          <ul>
-            <li>
-              <b>vc_invalid</b>
-            </li>
-          </ul>
-        </li>
-        <li>
-          The field <b>vp.verifiableCredential.issuer</b> (Issuer of the Verifiable <a>Credential</a>) is concluded to
-          not be part of the OCI
-          <b>Trusted Issuer</b> list state at the time of verification.
-          <ul>
-            <li>
-              <b>vc_non_trusted_issuer</b>
-            </li>
-          </ul>
-        </li>
-        <li>
-          The field <b>vp.verifiableCredential.credentialStatus</b> (Revocation of the Verifiable <a>Credential</a>) is
-          evaluated,
-          the revocation checked and concluded to be revoked.
-          <ul>
-            <li>
-              <b>vc_revoked</b>
-            </li>
-          </ul>
-        </li>
-        <li>
-          The field <b>vp.verifiableCredential.proof</b> (Proof of the Verifiable <a>Credential</a>) is concluded to be
-          invalid
-          given the signed body or does not yield a valid or resolvable result.
-          <ul>
-            <li>
-              <b>vc_proof_invalid</b>
-            </li>
-          </ul>
-        </li>
-        <li>
-          The Digital Wallet Solution is not able to find a valid Verifiable <a>Credential</a> to be used for
-          generating a Verifiable Presentation given the specified DID.
-          <ul>
-            <li>
-              <b>vc_not_found</b>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <section>
+        <h3>Verifiable Credential Error Codes</h3>
+        <table class="simple">
+          <tr>
+            <th>Error Code</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><b>VC_EXP_EXPIRED</b></td>
+            <td>
+              The `expirationDate` field of the credential is evaluated and concluded to be in the past.
+              The credential is expired.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_EXP_INVALID</b></td>
+            <td>
+              The `expirationDate` field of the credential is evaluated and concluded to be unreadable.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_IAT_INVALID</b></td>
+            <td>
+              The `issuanceDate` field of the credential is evaluated and concluded to be unreadable.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_ISS_UNTRUSTED</b></td>
+            <td>
+              The `issuer` field of the credential is evaluated and concluded to be untrusted.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_ISS_UNRESOLVABLE</b></td>
+            <td>
+              The `issuer` field of the presentation is evaluated and concluded to be unresolvable. This can be due to the
+              DID not being registered on the VDR or the VDR being unavailable.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_ISS_INVALID</b></td>
+            <td>
+              The `issuer` field of the credential is evaluated and concluded to be unreadable.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_STATUS_REVOKED</b></td>
+            <td>
+              The `credentialStatus` field of the credential is evaluated and concluded to mark the credential
+              as revoked.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_STATUS_INVALID</b></td>
+            <td>
+              The `credentialStatus` field of the credential is evaluated and concluded to be unreadable.
+            </td>
+          </tr>
+          <tr>
+          <tr>
+            <td><b>VC_LD_INVALID</b></td>
+            <td>
+              The `@context` field and their schema definitions is used to evaluate the credential fields and
+              concluded that the credential is not schema-compliant.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_TYPE_REJECTED</b></td>
+            <td>
+              The `type` field of the credential is evaluated and concluded to miss the `VerifiableCredential` and/ or
+              `DSCSAATPCredential` type.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_TYPE_INVALID</b></td>
+            <td>
+              The `type` field of the credential is evaluated and concluded to be unreadable.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_PROOF_REJECTED</b></td>
+            <td>
+              The signature of the credential is evaluated and concluded to be rejected. This might be the case when
+              the signature was being created with a key not present in the DID document of the issuer.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_INVALID</b></td>
+            <td>
+              The credential is evaluated and either concluded to be incomplete, non-parsable or generally malformed.
+              This error code SHALL be used as a fallback if none of the other error codes apply.
+            </td>
+          </tr>
+        </table>
+        <div class="note">
+          <p>
+            OCI allows credentials to have an issuance date in the future. This is to allow for the issuance of
+            credentials that are going to be valid from a future date onwards.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h3>Verifiable Presentation Error Codes</h3>
+        <table class="simple">
+          <tr>
+            <th>Error Code</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><b>VP_EXP_EXPIRED</b></td>
+            <td>
+              The `exp` field of the presentation is evaluated and concluded to be in the past. The presentation is
+              expired.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VP_EXP_INVALID</b></td>
+            <td>The `exp` field of the presentation is evaluated and concluded to be unreadable.</td>
+          </tr>
+          <tr>
+            <td><b>VP_IAT_UPCOMING</b></td>
+            <td>The `iat` field of the presentation is evaluated and concluded to be in the future. Presentations SHALL
+              NOT have an issuance date in the future.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VP_IAT_INVALID</b></td>
+            <td>The `iat` field of the presentation is evaluated and concluded to be unreadable.</td>
+          </tr>
+          <tr>
+            <td><b>VP_NBF_UPCOMING</b></td>
+            <td>The `nbf` field of the presentation is evaluated and concluded to be in the future. The presentation is
+              not valid yet.</td>
+          </tr>
+          <tr>
+            <td><b>VP_NBF_INVALID</b></td>
+            <td>The `nbf` field of the presentation is evaluated and concluded to be unreadable.</td>
+          </tr>
+          <tr>
+            <td><b>VP_ISS_MISMATCH</b></td>
+            <td>
+              The `iss` field of the presentation is evaluated and concluded to not be the holder of the credential.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VP_ISS_UNRESOLVABLE</b></td>
+            <td>
+              The `iss` field of the presentation is evaluated and concluded to be unresolvable. This can be due to the
+              DID not being registered on the VDR or the VDR being unavailable.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VP_ISS_INVALID</b></td>
+            <td>
+              The `iss` field of the presentation is evaluated and concluded to be unreadable.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VP_NONCE_INVALID</b></td>
+            <td>
+              The `nonce` field of the presentation is evaluated and concluded to be unreadable or does not contain a
+              valid UUIDv4 as specified in [[RFC4122]].</td>
+          </tr>
+          <tr>
+            <td><b>VP_PROOF_REJECTED</b></td>
+            <td>
+              The signature of the presentation is evaluated and concluded to be rejected. This might be the case when
+              the signature was being created with a key not present in the DID document of the issuer.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VP_INVALID</b></td>
+            <td>
+              The presentation and their fields are evaluated and either concluded to be incomplete, non-parsable or
+              generally malformed. This error code SHALL be used as a fallback if none of the other error codes apply.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_NOT_FOUND</b></td>
+            <td>
+              The Digital Wallet Solution is not able to find a valid credential to be used for generating
+              a presentation given the specified DID.
+            </td>
+          </tr>
+        </table>
+      </section>
     </section>
     <section>
       <h2>Protection against <a>Credential</a> Replay Attacks and VP Lifetime</h2>
-      <p>
-        It was decided by OCI members not to use the verifiable presentation approach employing a nonce created by the
-        verifier as developed in the pilot phase, but instead to use a JWT with a given lifetime that then defines the
-        expiration date/time of the JWT. The verifiable presentation approach of the ATP pilot is documented in the
-        pilot documentation. This approach was designed to fulfill low-latency requirements. The rationale behind this
-        decision is based on confidentiality considerations on an overall <a>PI</a> verification system level.
-      </p>
       <p>
         The JWT VP SHALL have a lifetime (or time to live) attribute. The lifetime for JWT VPs used in <a>PI</a>
         verifications
