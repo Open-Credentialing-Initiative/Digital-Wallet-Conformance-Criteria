@@ -2488,13 +2488,6 @@
     <section>
       <h2>Protection against <a>Credential</a> Replay Attacks and VP Lifetime</h2>
       <p>
-        It was decided by OCI members not to use the verifiable presentation approach employing a nonce created by the
-        verifier as developed in the pilot phase, but instead to use a JWT with a given lifetime that then defines the
-        expiration date/time of the JWT. The verifiable presentation approach of the ATP pilot is documented in the
-        pilot documentation. This approach was designed to fulfill low-latency requirements. The rationale behind this
-        decision is based on confidentiality considerations on an overall <a>PI</a> verification system level.
-      </p>
-      <p>
         The JWT VP SHALL have a lifetime (or time to live) attribute. The lifetime for JWT VPs used in <a>PI</a>
         verifications
         SHALL not be longer than 5 minutes or 300,000 ms. The JWT VP verification API will use this VP lifetime
