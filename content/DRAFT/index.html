@@ -495,21 +495,27 @@
         <tr>
           <td>Wallet to Wallet communication (for cloud wallets)</td>
           <td>
-            <p>Hyperledger Aries RFCs <a
-                href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
-                Credential Protocol v2.</a></p>
+            <p>Hyperledger Aries RFCs.</p>
             <ul>
               <li>
-                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">Credential
-                  ManifestCredential-Manifest Attachment format for requesting and presenting credentials</a>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">
+                  Issue Credential Protocol v2.
+                </a>
               </li>
               <li>
-                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0454-present-proof-v2">Present
-                  Proof Protocol v2</a>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">
+                  Credential-Manifest Attachment format for requesting and presenting credentials.
+                </a>
               </li>
               <li>
-                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0510-dif-pres-exch-attach">Presentation-Exchange
-                  Attachment format for requesting and presenting proofs Presentation Exchange</a>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0454-present-proof-v2">
+                  Present Proof Protocol v2.
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0510-dif-pres-exch-attach">
+                  Presentation-Exchange Attachment format for requesting and presenting proofs Presentation Exchange.
+                </a>
               </li>
             </ul>
             <p>Decentralized Identity Foundation specs.</p>
@@ -524,6 +530,12 @@
                 <a href="https://identity.foundation/presentation-exchange/">Presentation Exchange</a>
               </li>
             </ul>
+            <div class="advisement">
+              <p>
+                <b>Warning:</b> OCI has not standardized wallet to wallet communication. This is merely an overview of
+                technologies OCI expects to be used for wallet to wallet communication in the future.
+              </p>
+            </div>
           </td>
         </tr>        
         <tr>
@@ -848,8 +860,7 @@
             <td>Credential Issuer: Credential Issuance</td>
             <td>
               <p>
-                Issuance of a Verifiable Credential from Credential Issuer’s wallet to a Trading Partner’s wallet via
-                DIDComm protocol i.e., “issue-credential” v2.0.
+                Issuance of a Verifiable Credential from Credential Issuer’s wallet to a Trading Partner’s wallet.
               </p>
               <ol>
                 <li>
@@ -889,7 +900,7 @@
             <td>
               <p>
                 Presentation of a Verifiable Presentation between Stakeholder wallets or from Stakeholder’s
-                wallet to Credential Issuer’s wallet via DIDComm protocol i.e., “present-proof” v2.0.
+                wallet to Credential Issuer’s wallet.
               </p>
               <ol>
                 <li>
@@ -912,6 +923,7 @@
         <p>
           Communication between Credential Issuer’s <a>Digital Wallet</a> and Stakeholder’s <a>Digital Wallet</a> or
           between trading parties for the exchange of credentials may be required to issue and exchange credentials.
+          This can be achieved through a variety of methods including DIDComm, or any other secured exchange protocol.
         </p>        
         <section>
           <h2>DIDComm</h2>
@@ -925,7 +937,7 @@
             or facilitate secure message exchange within an organization.
           </p>
           <p>
-            Digital Wallet Providers SHALL implement DIDComm capabilities to meet the functional requirements outlined
+            Digital Wallet Providers <i>CAN</i> implement DIDComm capabilities to meet the functional requirements outlined
             in the OCI <a>Digital Wallet</a> Conformance Criteria.
           </p>
           <p>
@@ -933,9 +945,9 @@
           </p>
           <img src="assets/didcomm.png" style="width: 100%; height: 100%;"></img>
           <p>
-            Beyond this, the DSCSA Stakeholder SHOULD be able to exchange Verifiable Presentations of their Identity
-            Credentials with other Stakeholders using DIDcomm. This is important when a trading partner receives a
-            Stakeholder <a>Credential</a> from a previously unknown trading partner and wishes to request the
+            Beyond this, the DSCSA Stakeholder <i>CAN</i> exchange Verifiable Presentations of their Identity
+            Credentials with other Stakeholders using DIDComm. This is important when a trading partner receives a
+            Stakeholder's <a>ATP</a> <a>Credential</a> from a previously unknown trading partner and wishes to request the
             corresponding identity
             <a>Credential</a>. Having established a trusted communication channel between Stakeholder wallets,
             future use
@@ -987,6 +999,13 @@
               </td>
             </tr>
           </table>
+          <div class="advisement">
+            <p>
+              <b>Warning:</b> OCI has not fully standardized wallet to wallet communication. The high-level view can be used
+              to implement custom DIDComm flows that might be off-standard in the future. For the time being, OCI
+              does <b>not</b> endorse any specific low-level DIDComm protocol or other credential exchange flows.
+            </p>
+          </div>
         </section>        
       </section>
       <section>
@@ -1235,8 +1254,7 @@
           <td>Information flow Direction</td>
           <td>
             Bidirectional, Credential Issuer Wallet ⬄ Enterprise Digital Wallet, Encryption: SSL TLS v1.2+, Connection:
-            Issuance of Credentials via DIDcomm V2 with Encrypted Messaging Envelope as specified in the DIDComm
-            Messaging Specification based on Aries Protocols
+            Issuance of credentials via wallet to wallet communication based on DIDComm or direct API calls.
           </td>
         </tr>
         <tr>
