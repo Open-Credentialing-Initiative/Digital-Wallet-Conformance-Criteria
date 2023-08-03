@@ -226,7 +226,7 @@
         not necessarily preferred.
       </li>
       <li>
-        <b>CAN</b> and <b>CANNOT</b> indicate a capability, whether material, physical or
+        <b><i>CAN</i></b> and <b><i>CANNOT</i></b> indicate a capability, whether material, physical or
         causal or, in the negative, the absence of that capability.
       </li>
       Keywords appear in <b>bold</b> and <b>ALL CAPS</b> in the Conformance Criteria. The key words <i>MAY</i>,
@@ -357,7 +357,7 @@
           returning data necessary to produce <a>DID</a> documents is called a verifiable data registry. Examples
           include
           distributed ledgers, decentralized file systems, databases of any kind, peer-to-peer networks, and other forms
-          of trusted data storage. The system facilitates the creation, verification, updating, and/or deactivation of
+          of trusted data storage. The system facilitates the creation, verification, updating, and deactivation of
           the <a>DID</a> documents for corresponding decentralized identifiers.
         </li>
       </ul>
@@ -369,7 +369,7 @@
     <p>
       Digital Wallet Providers desiring to participate in DSCSA initiatives that were designed, tested, and proven by
       OCI can begin by understanding and embracing the underlying open standards for decentralized identifiers (W3C),
-      verifiable credentials (W3C), well-known standards (IETF), protocol standards (Hyperledger, Decentralized Identity
+      Verifiable Credentials (W3C), well-known standards (IETF), protocol standards (Hyperledger, Decentralized Identity
       Foundation), and Lightweight Messaging Standard (GS1). These standards serve as anchoring points for OCI to
       establish an identity ecosystem that is fit for purpose.
     </p>
@@ -378,7 +378,7 @@
       <p>
         The World Wide Web Consortium (W3C) is an international community where member organizations, full-time staff,
         and the public work together to develop Web standards. One of the many standards put forth by the consortium
-        establishes generally accepted specifications for decentralized identifiers (DIDs) for verifiable credentials
+        establishes generally accepted specifications for decentralized identifiers (DIDs) for Verifiable Credentials
         (VCs).
       </p>
       <p>
@@ -428,7 +428,7 @@
     <p>
       OCI uses decentralized public key infrastructure (PKI) technology for <a>Digital Wallets</a> and for
       electronically
-      signed verifiable credentials about the enterprises involved in the <a>ATP</a> verification process.
+      signed Verifiable Credentials about the enterprises involved in the <a>ATP</a> verification process.
     </p>
     <p>
       The OCI conformance criteria are based on a set of identity standards (W3C standards, IETF standards, Hyperledger
@@ -447,7 +447,7 @@
       and
       other data are stored on the cloud, the private keys of Trading Partners and Credential Issuers may be located
       either on a local edge device, or managed by a (Cloud wallet) provider. Interoperability occurs at the level of
-      verifiable presentations created and exchanged between wallets. Where potential interoperability between multiple
+      Verifiable Presentations created and exchanged between wallets. Where potential interoperability between multiple
       Wallet Providers and Credential Issuers is desired, the OCI Digital Wallet Conformance Criteria include specific
       DIDcomm requirements.
     </p>
@@ -473,7 +473,7 @@
           <td><a>DID</a> Resolution</td>
           <td>Decentralized Identifier Resolution (<a>DID</a> Resolution) using the <a
               href="https://github.com/decentralized-identity/universal-resolver">DIF universal resolver</a>, SpruceID,
-            or another valid resolver.</td>
+            Veramo, or another valid resolver.</td>
         </tr>
         <tr>
           <td>Vetted Credential Issuer & Root of Trust</td>
@@ -570,11 +570,11 @@
           To be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or network of
           some
           kind. Regardless of the specific technology used, any such system that facilitates the creation, verification,
-          updating, and/or deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
+          updating, and deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
           data
           registry (<a>VDR</a>). A verifiable data registry might also be used for other cryptographically-verifiable
           data
-          structures such as verifiable credentials. Examples for VDRs include distributed ledgers, decentralized file
+          structures such as Verifiable Credentials. Examples for VDRs include distributed ledgers, decentralized file
           systems, databases of any kind, peer-to-peer networks, and other forms of trusted data storage.
         </p>
         <p>
@@ -620,8 +620,8 @@
           Digital Wallet Providers SHALL integrate a <a>DID</a> resolver service for resolving <a>DID</a> documents. The
           <a>DID</a> resolver
           SHALL support all <a>DID</a> methods endorsed by the OCI as defined in Table 3 in section 3.1.2. It SHALL be a
-          trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
-          DIDKit)
+          trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver,
+          DIDKit, or Veramo)
           vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
           use public instances of resolvers, instead using their own implementations.
         </p>
@@ -629,7 +629,7 @@
       <section>
         <h2>Vetted Credential Issuer, Root of Trust & Securing DID:web</h2>
         <p>
-          Credential Issuers verify Stakeholder identity and activity status (e.g. licensure). They are proving verifiable credentials
+          Credential Issuers verify Stakeholder identity and activity status (e.g. licensure). They are proving Verifiable Credentials
           within their trust domain and are therefore root of trust in their respective trust domain.
         </p>
         <p>
@@ -779,7 +779,7 @@
         <h2>Credential Serialization & Schemas</h2>
         <p>
           Credentials that are issued by the Credential Issuer are created in accordance with the W3C JSON-LD format for
-          schema serialization. To ensure processing, validation, and interpretation of verifiable credentials by
+          schema serialization. To ensure processing, validation, and interpretation of Verifiable Credentials by
           different implementers, JSON-LD schemas for identity and Stakeholder credentials are introduced. <a>Digital
             Wallet</a>
           Providers SHALL support the JSON-LD format and SHALL support JSON-LD schema validation.
@@ -1225,7 +1225,7 @@
         </tr>
         <tr>
           <td>Description</td>
-          <td>Requesting verifiable credential issuance from Credential Issuer</td>
+          <td>Requesting Verifiable Credential issuance from Credential Issuer</td>
         </tr>
         <tr>
           <td>Type</td>
@@ -1793,7 +1793,7 @@
           <td>Conformance Criteria</td>
           <td>
             Solution SHALL provide audit logs of interface access as well as of generation and verification of
-            verifiable presentations. Solution SHALL log corrUUID so that transactions are correlatable across systems
+            Verifiable Presentations. Solution SHALL log corrUUID so that transactions are correlatable across systems
             and wallets of the trading partners.
           </td>
         </tr>
@@ -1924,7 +1924,7 @@
             <p>The <a>Digital Wallet</a> SHALL provide the following OPTIONAL query request parameters. During the
               generation
               of a VP these checks MAY be omitted and only be used for other use cases. In standard mode of operations
-              verifiable presentations can be generated without any additional checks. Checks will always be done on the
+              Verifiable Presentations can be generated without any additional checks. Checks will always be done on the
               receiving side. Therefore and to reuse overall latency checks can be neglected on the sender side. The
               following optional checks can be done by the sender to check that the presentation generation is working
               properly and the underlying credentials are valid (e.g. for Periodical checking the validity of a
@@ -2003,7 +2003,7 @@
                 <b>holderDID</b> | <i>string</i> | <b>optional</b>
                 <ul>
                   <li>
-                    The holderDID that was used to generate the verifiable presentation.
+                    The holderDID that was used to generate the Verifiable Presentation.
                   </li>
                 </ul>
               </li>
@@ -2011,7 +2011,7 @@
                 <b>corrUUID</b> | <i>string</i> | <b>optional</b>
                 <ul>
                   <li>
-                    The corrUUID that was used to generate the verifiable presentation.
+                    The corrUUID that was used to generate the Verifiable Presentation.
                   </li>
                 </ul>
               </li>
@@ -2019,7 +2019,7 @@
                 <b>credentialType</b> | <i>string</i> | <i>enum</i> | <b>optional</b>
                 <ul>
                   <li>
-                    The credentialType that was used to generate the verifiable presentation. Any of type
+                    The credentialType that was used to generate the Verifiable Presentation. Any of type
                     <b>IdentityCredential</b>, </b>DSCSAATPCredential, <b>DSCSAATPEquivalentCredential</b>, or <b>DSCSAAuthorityCredential</b>.
                   </li>
                 </ul>
@@ -2128,7 +2128,7 @@
                 <b>Verifiable Presentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
                 <ul>
                   <li>
-                    The verifiable presentation to verify in JWT base64 encoded format.
+                    The Verifiable Presentation to verify in JWT base64 encoded format.
                   </li>
                 </ul>
               </li>
@@ -2388,9 +2388,9 @@
     <section>
       <h2>Protection against <a>Credential</a> Replay Attacks and VP Lifetime</h2>
       <p>
-        It was decided by OCI members not to use the verifiable presentation approach employing a nonce created by the
+        It was decided by OCI members not to use the Verifiable Presentation approach employing a nonce created by the
         verifier as developed in the pilot phase, but instead to use a JWT with a given lifetime that then defines the
-        expiration date/time of the JWT. The verifiable presentation approach of the ATP pilot is documented in the
+        expiration date/time of the JWT. The Verifiable Presentation approach of the ATP pilot is documented in the
         pilot documentation. This approach was designed to fulfill low-latency requirements. The rationale behind this
         decision is based on confidentiality considerations on an overall <a>PI</a> verification system level.
       </p>
