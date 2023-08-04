@@ -2284,50 +2284,60 @@
           <tr>
             <td><b>VC_EXP_INVALID</b></td>
             <td>
-              The `expirationDate` field of the credential is evaluated and concluded to be unreadable.
+              The `expirationDate` field of the credential is evaluated and does not contain a valid UNIX timestamp. The
+              value is syntactically incorrect.
             </td>
           </tr>
           <tr>
             <td><b>VC_IAT_INVALID</b></td>
             <td>
-              The `issuanceDate` field of the credential is evaluated and concluded to be unreadable.
+              The `issuanceDate` field of the credential is evaluated and does not contain a valid UNIX timestamp.
+              The value is syntactically incorrect.
             </td>
           </tr>
           <tr>
             <td><b>VC_ISS_UNTRUSTED</b></td>
             <td>
-              The `issuer` field of the credential is evaluated and concluded to be untrusted.
+              The `issuer` field of the credential is evaluated and concluded to be untrusted. The issuer is not
+              recorded on the OCI Trusted Issuer Registry.
             </td>
           </tr>
           <tr>
             <td><b>VC_ISS_UNRESOLVABLE</b></td>
             <td>
-              The `issuer` field of the presentation is evaluated and concluded to be unresolvable. This can be due to the
+              The `issuer` field of the credential is evaluated and concluded to be unresolvable. This can be due to the
               DID not being registered on the VDR or the VDR being unavailable.
             </td>
           </tr>
           <tr>
             <td><b>VC_ISS_INVALID</b></td>
             <td>
-              The `issuer` field of the credential is evaluated and concluded to be unreadable.
-            </td>
+              The `issuer` field of the credential is evaluated and does not contain a valid DID string. The value is
+              syntactically incorrect.
           </tr>
           <tr>
             <td><b>VC_STATUS_REVOKED</b></td>
             <td>
-              The `credentialStatus` field of the credential is evaluated and concluded to mark the credential
-              as revoked.
+              The `credentialStatus` field of the credential is evaluated and concluded that the credential is revoked.
             </td>
           </tr>
           <tr>
             <td><b>VC_STATUS_INVALID</b></td>
             <td>
-              The `credentialStatus` field of the credential is evaluated and concluded to be unreadable.
+              The `credentialStatus` field of the credential is evaluated and does not contain a valid
+              `credentialStatus` object. The value is syntactically incorrect.
             </td>
           </tr>
           <tr>
           <tr>
             <td><b>VC_LD_INVALID</b></td>
+            <td>
+              The `@context` field is evaluated and does not contain a valid string URL array. The value is
+              syntactically incorrect.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VC_LD_REJECTED</b></td>
             <td>
               The `@context` field and their schema definitions is used to evaluate the credential fields and
               concluded that the credential is not schema-compliant.
@@ -2343,7 +2353,8 @@
           <tr>
             <td><b>VC_TYPE_INVALID</b></td>
             <td>
-              The `type` field of the credential is evaluated and concluded to be unreadable.
+              The `type` field of the credential is evaluated and concluded to not contain a valid string array. The
+              value is syntactically incorrect.
             </td>
           </tr>
           <tr>
@@ -2356,8 +2367,8 @@
           <tr>
             <td><b>VC_INVALID</b></td>
             <td>
-              The credential is evaluated and either concluded to be incomplete, non-parsable or generally malformed.
-              This error code SHALL be used as a fallback if none of the other error codes apply.
+              The credential is evaluated and either concluded to be unreadable, syntactically incomplete, or generally
+              malformed. This error code SHALL as well be used as a fallback if none of the other error codes apply.
             </td>
           </tr>
         </table>
@@ -2384,31 +2395,44 @@
           </tr>
           <tr>
             <td><b>VP_EXP_INVALID</b></td>
-            <td>The `exp` field of the presentation is evaluated and concluded to be unreadable.</td>
+            <td>
+              The `exp` field of the presentation is evaluated and does not contain a valid UNIX timestamp. The value is
+              syntactically incorrect.
+            </td>
           </tr>
           <tr>
             <td><b>VP_IAT_UPCOMING</b></td>
-            <td>The `iat` field of the presentation is evaluated and concluded to be in the future. Presentations SHALL
+            <td>
+              The `iat` field of the presentation is evaluated and concluded to be in the future. Presentations SHALL
               NOT have an issuance date in the future.
             </td>
           </tr>
           <tr>
             <td><b>VP_IAT_INVALID</b></td>
-            <td>The `iat` field of the presentation is evaluated and concluded to be unreadable.</td>
+            <td>
+              The `iat` field of the presentation is evaluated and does not contain a valid UNIX timestamp. The value
+              is syntactically incorrect.
+            </td>
           </tr>
           <tr>
             <td><b>VP_NBF_UPCOMING</b></td>
-            <td>The `nbf` field of the presentation is evaluated and concluded to be in the future. The presentation is
-              not valid yet.</td>
+            <td>
+              The `nbf` field of the presentation is evaluated and concluded to be in the future. The presentation is
+              not valid yet.
+            </td>
           </tr>
           <tr>
             <td><b>VP_NBF_INVALID</b></td>
-            <td>The `nbf` field of the presentation is evaluated and concluded to be unreadable.</td>
+            <td>
+              The `nbf` field of the presentation is evaluated and does not contain a valid UNIX timestamp. The value
+              is syntactically incorrect.
+            </td>
           </tr>
           <tr>
             <td><b>VP_ISS_MISMATCH</b></td>
             <td>
-              The `iss` field of the presentation is evaluated and concluded to not be the holder of the credential.
+              The `iss` field of the presentation is evaluated and concluded to not be the holder of the credential. The
+              wrong DID was used to sign the presentation.
             </td>
           </tr>
           <tr>
@@ -2421,27 +2445,43 @@
           <tr>
             <td><b>VP_ISS_INVALID</b></td>
             <td>
-              The `iss` field of the presentation is evaluated and concluded to be unreadable.
+              The `iss` field of the presentation is evaluated and does not contain a valid DID string. The value is
+              syntactically incorrect.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VP_TYPE_REJECTED</b></td>
+            <td>
+              The `type` field of the presentation is evaluated and concluded to miss the `VerifiablePresentation` and/
+              or contains another invalid type. It should only contain the `VerifiablePresentation` type.
+            </td>
+          </tr>
+          <tr>
+            <td><b>VP_TYPE_INVALID</b></td>
+            <td>
+              The `type` field of the presentation is evaluated and does not contain a string array. The value is
+              syntactically incorrect.
             </td>
           </tr>
           <tr>
             <td><b>VP_NONCE_INVALID</b></td>
             <td>
               The `nonce` field of the presentation is evaluated and concluded to be unreadable or does not contain a
-              valid UUIDv4 as specified in [[RFC4122]].</td>
+              valid UUIDv4 as specified in [[RFC4122]]. The value is syntactically incorrect.</td>
           </tr>
           <tr>
             <td><b>VP_PROOF_REJECTED</b></td>
             <td>
               The signature of the presentation is evaluated and concluded to be rejected. This might be the case when
-              the signature was being created with a key not present in the DID document of the issuer.
+              the signature was being created with a key not present in the DID document of the presentation issuer.
             </td>
           </tr>
           <tr>
             <td><b>VP_INVALID</b></td>
             <td>
-              The presentation and their fields are evaluated and either concluded to be incomplete, non-parsable or
-              generally malformed. This error code SHALL be used as a fallback if none of the other error codes apply.
+              The presentation and its fields are evaluated and either concluded to be unreadable, syntactically
+              incomplete, or generally malformed. This error code SHALL as well be used as a fallback if none of the
+              other error codes apply.
             </td>
           </tr>
           <tr>
