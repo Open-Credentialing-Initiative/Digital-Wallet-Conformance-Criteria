@@ -2289,6 +2289,13 @@
             </td>
           </tr>
           <tr>
+            <td><b>VC_IAT_UPCOMING</b></td>
+            <td>
+              The `issuanceDate` field of the credential is evaluated and concluded to be in the future. The credential
+              is not yet valid.
+            </td>
+          </tr>
+          <tr>
             <td><b>VC_IAT_INVALID</b></td>
             <td>
               The `issuanceDate` field of the credential is evaluated and does not contain a valid UNIX timestamp.
@@ -2339,15 +2346,15 @@
           <tr>
             <td><b>VC_LD_REJECTED</b></td>
             <td>
-              The `@context` field and their schema definitions is used to evaluate the credential fields and
-              concluded that the credential is not schema-compliant.
+              The schema definitions in the `@context` field are used to evaluate the credential fields and concluded
+              that the credential is not schema-compliant
             </td>
           </tr>
           <tr>
             <td><b>VC_TYPE_REJECTED</b></td>
             <td>
               The `type` field of the credential is evaluated and concluded to miss the `VerifiableCredential` and/ or
-              `DSCSAATPCredential` type.
+              any of the valid OCI credential types.
             </td>
           </tr>
           <tr>
