@@ -307,7 +307,7 @@
         </li>
         <li>
           <dfn><abbr title="Decentralized Identifier">DID</abbr></dfn>
-          (Decentralized Identifier):
+          (Decentralized Identifier): 
           A type of identifier specified by the World Wide Web Consortium (W3C) that enables verifiable, decentralized
           digital identity. In contrast to typical, federated identifiers, DIDs can be decoupled from centralized
           registries, identity providers, and certificate authorities. This takes the form of a Uniform Resource
@@ -332,14 +332,14 @@
         </li>
         <li>
           <dfn><abbr title="Identity and Access Management">IAM</abbr></dfn>
-          (Identity and Access Management):
+          (Identity and Access Management): 
           Identity management, also known as identity and access management (IAM), is a framework of policies and
           technologies to ensure that the right human or system users in an enterprise have the appropriate access to
           technology resources.
         </li>
         <li>
           <dfn><abbr title="Product Identifier">PI</abbr></dfn>
-          (Product Identifier):
+          (Product Identifier): 
           DSCSA defines the term “product identifier” as, “a standardized graphic that includes, in both human-readable
           form and on a machine-readable data carrier that conforms to the standards developed by a widely recognized
           international standards development organization, the standardized numerical identifier (SNI), lot number, and
@@ -350,7 +350,7 @@
         </li>
         <li>
           <dfn><abbr title="Verifiable data registry">VDR</abbr></dfn>
-          (Verifiable data registry):
+          (Verifiable data registry): 
           In order to be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or
           network of
           some kind. Regardless of the specific technology used, any such system that supports recording DIDs and
@@ -369,7 +369,7 @@
     <p>
       Digital Wallet Providers desiring to participate in DSCSA initiatives that were designed, tested, and proven by
       OCI can begin by understanding and embracing the underlying open standards for decentralized identifiers (W3C),
-      verifiable credentials (W3C), protocol standards (Hyperledger, Decentralized Identity
+      verifiable credentials (W3C), well-known standards (IETF), protocol standards (Hyperledger, Decentralized Identity
       Foundation), and Lightweight Messaging Standard (GS1). These standards serve as anchoring points for OCI to
       establish an identity ecosystem that is fit for purpose.
     </p>
@@ -464,32 +464,36 @@
           <td>W3C Decentralized Identifiers (DIDs) v1.0 (W3C DIDs)</td>
         </tr>
         <tr>
-          <td>Endorsed <a>DID</a> Methods</td>
-          <td>Use of <a>DID</a> methods endorsed by OCI</td>
+          <td>Verifiable Data Registry & <a>DID</a> Methods</td>
+          <td>Use of a common set of <a>DID</a> Methods endorsed by OCI (e.g. ETHR <a>DID</a> Method Specification,
+            did:web Method
+            Specification)</td>
         </tr>
-         <tr>
+        <tr>
           <td><a>DID</a> Resolution</td>
-          <td><a>DID</a> resolution using means permissible by OCI</td>
+          <td>Decentralized Identifier Resolution (<a>DID</a> Resolution) using the <a
+              href="https://github.com/decentralized-identity/universal-resolver">DIF universal resolver</a>, SpruceID,
+            or another valid resolver.</td>
         </tr>
-         <tr>
-          <td>Trusted Credential Issuer Registry</td>
+        <tr>
+          <td>Vetted Credential Issuer & Root of Trust</td>
           <td>Registry for vetted, trusted Credential Issuer maintained by OCI</td>
         </tr>
         <tr>
           <td><a>Credential</a> Structure</td>
-          <td>Based on W3C Verifiable Credentials Data Model 1.0 (W3C VCs)</td>
+          <td>W3C Verifiable Credentials Data Model 1.0 (W3C VCs)</td>
         </tr>
         <tr>
           <td><a>Credential</a> Serialization & Schemas</td>
           <td>OCI <a>Credential</a> Schema Definition (OCI <a>Credential</a> Schemas)</td>
         </tr>
         <tr>
-          <td>Proofs & Verifications</td>
+          <td>Signatures & Verification</td>
           <td>Cryptographic primitives used for VC creation/verification, JWT creation/verification and wallet-to-wallet
             communication.</td>
         </tr>
         <tr>
-          <td>Credential Issuance & Exchange</td>
+          <td>Wallet to Wallet communication (for cloud wallets)</td>
           <td>
             <p>Hyperledger Aries RFCs <a
                 href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
@@ -561,21 +565,28 @@
         </p>
       </section>
       <section>
-        <h2>Endorsed <a>DID</a> Methods</h2>
+        <h2>Verifiable Data Registry & Endorsed <a>DID</a> Methods</h2>
         <p>
           To be resolvable to <a>DID</a> documents, DIDs are typically recorded on an underlying system or network of
-          some kind. Regardless of the specific technology used, any such system that facilitates the creation, verification,
+          some
+          kind. Regardless of the specific technology used, any such system that facilitates the creation, verification,
           updating, and/or deactivation of decentralized identifiers and <a>DID</a> documents is called a verifiable
-          data registry (<a>VDR</a>).
+          data
+          registry (<a>VDR</a>). A verifiable data registry might also be used for other cryptographically-verifiable
+          data
+          structures such as verifiable credentials. Examples for VDRs include distributed ledgers, decentralized file
+          systems, databases of any kind, peer-to-peer networks, and other forms of trusted data storage.
         </p>
         <p>
           There are multiple VDRs used in today’s <a>DID</a> implementations that support different security protocols,
           discoverability, and linkage to existing trust networks. To avoid complexity and enable interoperability, OCI
-          endorses selected <a>DID</a> methods.
+          supports selected <a>DID</a> methods and establishes a process for maintaining a <a>DID</a> method
+          endorsement.
         </p>
         <p>
-          Digital Wallet Providers SHALL support the resolving of all <a>DID</a> methods endorsed by OCI, and SHALL implement
-          at least one such <a>DID</a> method, i.e. create and maintain the resulting DIDs. OCI endorses the following <a>DID</a> methods:
+          To ensure resolution of <a>DID</a> methods, Digital Wallet Providers SHALL implement and support all
+          <a>DID</a> methods
+          endorsed by OCI. OCI endorses the following <a>DID</a> methods:
         </p>
         <table class="simple">
           <tr>
@@ -583,6 +594,7 @@
             <th><a>DID</a> Method</th>
             <th>Reference</th>
             <th><a>VDR</a></th>
+            <th>OCI Credentialing Actor</th>
           </tr>
           <tr>
             <td>1</td>
@@ -591,51 +603,83 @@
                 href="https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md">did:ethr
                 Method Specification</a></td>
             <td>Ethereum Mainnet</td>
+            <td>Trading Partner</td>
           </tr>
           <tr>
             <td>2</td>
             <td>did:web</td>
             <td><a href="https://w3c-ccg.github.io/did-method-web/">did:web Method Specification</a></td>
             <td>Secure data store maintained by the implementer</td>
+            <td>Credentialing Issuer</td>
           </tr>
         </table>
-        <section>
-          <h3>Securing did:web</h3>
-          <p>
-            DNS presents many of the attack vectors that enable active security and privacy attacks on the did:web
-            method and it is important that implementers address these concerns via proper configuration of DNS. For
-            example, without proper security of the DNS resolution via DNS over HTTPS it is possible for active attackers
-            to intercept the result of the DNS resolution via a man-in-the-middle attack which would point at a
-            malicious server with the incorrect <a>DID</a> Document.
-          </p>
-          <p>
-            Implementers should be aware of issues presented by spoofed DNS records where the record returned by a
-            malicious DNS Server is inauthentic and allows the record to be pointed at a malicious server which contains
-            a different <a>DID</a> Document. To prevent this type of issue,  Digital Wallet Providers and Credential
-            Issuers SHALL use DNSSEC which is defined in [[RFC4033]], [[RFC4034]], and [[RFC4035]].
-          </p>
-        </section>
       </section>
       <section>
         <h2><a>DID</a> Resolution</h2>
         <p>
           Digital Wallet Providers SHALL integrate <a>DID</a> resolver functionality for resolving <a>DID</a> documents. The
           <a>DID</a> resolver
-          SHALL support all <a>DID</a> methods endorsed by OCI. It SHALL be a
+          SHALL support all <a>DID</a> methods endorsed by the OCI as defined in Table 3 in section 3.1.2. It SHALL be a
           trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
-          DIDKit) vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
+          DIDKit)
+          vetted against the non-functional conformance criteria outlined in this document. Wallet providers SHALL NOT
           use public instances of resolvers, instead using their own implementations.
         </p>
       </section>
       <section>
-        <h2>Trusted Credential Issuer Registry</h2>
+        <h2>Vetted Credential Issuer, Root of Trust & Securing DID:web</h2>
         <p>
-          To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
-          maintains a Trusted Credential Issuer registry. Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
-          Credential Issuer that is endorsed via the OCI registry.
+          Credential Issuers verify Stakeholder identity and activity status (e.g. licensure). They are proving verifiable credentials
+          within their trust domain and are therefore root of trust in their respective trust domain.
         </p>
         <p>
-          The trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
+          To qualify for an OCI Credential Issuer, the Credential Issuer shall fulfill the <a
+            href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">conformance
+            criteria for
+            Credential Issuers defined by OCI.</a>
+        </p>
+        <p>
+          To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
+          SHALL implement and maintain a Trusted Credential Issuer registry (see
+          next section). Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
+          Credential Issuer that is endorsed via the specified OCI registry.
+        </p>
+        <p>
+          Credential Issuers SHALL use a <a>DID</a> method implementation that supports a <a
+            href="https://datatracker.ietf.org/doc/html/rfc8615">Well-Known Uniform Resource
+            Identifier [[RFC8615]]</a> to make the identifiers well-known among the OCI trading partner.
+        </p>
+        <p>
+          To provide the well-known mechanism, Digital Wallet Providers SHALL support the DID:web method for Credential
+          Issuers.
+        </p>
+        <p>
+          Digital Wallet Providers SHALL put controls in place to ensure that <a>DSCSA Stakeholder</a> credentials are from vetted
+          Credential
+          Issuers only.
+        </p>
+        <section>
+          <h2>Securing DID:web</h2>
+          <p>
+            DNS presents many of the attack vectors that enable active security and privacy attacks on the did:web
+            method and it's important that implementers address these concerns via proper configuration of DNS. For
+            example, without proper security of the DNS resolution via DNS over HTTPS it's possible for active attackers
+            to intercept the result of the DNS resolution via a Man in the Middle attack which would point at a
+            malicious server with the incorrect <a>DID</a> Document.
+          </p>
+          <p>
+            Implementers should be aware of issues presented by Spoofed DNS records where the record returned by a
+            malicious DNS Server is inauthentic and allows the record to be pointed at a malicious server which contains
+            a different <a>DID</a> Document. To prevent this type of issue, wallet implementers and verifiable
+            credential
+            issuers SHALL use DNSSEC which is defined in [[RFC4033]], [[RFC4034]], and [[RFC4035]].
+          </p>
+        </section>
+      </section>
+      <section>
+        <h2>Trusted Credential Issuer Registry</h2>
+        <p>
+          As described above, the trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
           ensure that this key role is not exploited, the trust is anchored
           in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have satisfied OCI’s <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">Credential Issuer Conformance Criteria</a>, are to be trusted is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum Smart Contracts.
         </p>
@@ -657,7 +701,7 @@
           implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>.
         </p>
         <section>
-          <h3>Verifying the Credential Issuer</h3>
+          <h2>Digital Wallet Requirements</h2>
           <p>
             At each generation and verification of a Verifiable Presentation, a Digital Wallet SHALL check if the respective Verifiable
             Credential has indeed been issued by a Trusted Issuer. To accomplish this, a wallet SHALL
@@ -767,7 +811,7 @@
           <li>
             <a
               href="https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAATPCredential-v1.0.0.jsonld">DSCSA
-              ATP Credential </a>
+              <a>ATP</a> Credential </a>
           </li>
           <li>
             <a
@@ -778,7 +822,7 @@
             <a
               href="https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAAuthorityCredential-v1.0.0.jsonld">DSCSA
               <a>Authority</a> Credential </a>
-          </li>
+          </li>  
         </ul>
         <p>
           Digital Wallet Providers SHALL be capable of managing the Identity Credential, and of managing at least one of the three Stakeholder <a>Credential</a> types indicated above.
@@ -1067,7 +1111,7 @@
         <tr>
           <td>Description</td>
           <td>API Integration with VRS Provider, API Interface for creating and verifying Stakeholder Credential Presentations
-          </td>
+            (See Section 5.1.7 Proof & Verifications )</td>
         </tr>
         <tr>
           <td>OpenAPI Specification</td>
@@ -1267,7 +1311,7 @@
         </p>
         <ul>
           <li>
-            On-boarding includes a secure process to assign a role to a verified user. This process SHOULD include secure
+            On-boarding includes a secure process to assign a role to a verified user. This process SHOULD include secure 
             provisioning of 2FA or multi-factor authentication access credentials to a given user.
           </li>
           <li>
@@ -1644,31 +1688,33 @@
           <td>Description</td>
           <td>
             The maximum time taken by the system as a whole to send any information back to the end user who triggered a
-            query (and out of the transit/transmission overhead).
+            query (and out of the transit/transmission overhead). Average time for performing the two API calls to
+            generate and verify Stakeholder VPs SHALL be in total less than 1500 ms. Maximum time for both calls SHALL be
+            in
+            total less than 3000 ms.
           </td>
         </tr>
         <tr>
           <td>Rationale</td>
           <td>
-            Solution should be easily scalable to handle high volumes of Product Identifier Verification Requests and
+            Solution SHOULD be easily scalable to handle high volumes of Product Identity Verification Requests and
             Responses as well as a high number of trading partners without making changes to the overall architecture.
           </td>
         </tr>
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            Solution SHALL provide low-latency APIs so that the average time for performing the two API calls to
-            generate and verify <a>ATP</a> VPs is in total less than 1500 ms and the maximum time for both calls is
-            in total less than 3000 ms. Solution MAY apply caching methods (e.g., revocation lists, DID
-            documents, credential verification events) where technically and legally possible to reduce throughput times 
-            of processing the APIs. Cached data SHALL be valid no longer than 48 hours. Note that other parts of these 
-            Conformance Criteria may set shorter validity times for particular types of cached data.
+            Solution SHALL provide low-latency APIs.
+            Solution MAY apply caching methods (e.g., revocation lists, DID
+            documents, credential verification events) where technically and
+            legally possible to reduce throughput times of processing the APIs.
+            Cached data SHALL be valid no longer than 48 hours.
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            Average and maximum duration of API calls
+            API performance designed for low-latency with built-in ability to measure performance, throughput and latency.
           </td>
         </tr>
       </table>
