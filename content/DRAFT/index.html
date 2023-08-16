@@ -948,30 +948,25 @@
       <section>
         <h2><a>Credential</a> Revocation</h2>
         <p>
-          OCI can potentially support multiple methods for communicating when a <a>Credential</a> has been revoked. At
-          the
-          current stage, OCI supports a proven revocation management method based on LDAP <a>Credential</a> Revocation
-          Lists
-          (CRLs). Consequently, Digital Wallet Providers SHALL implement the OCI Directory Service (LDAP)-based
-          mechanism for determining if a Verifiable <a>Credential</a> has been revoked (<a
-            href="https://spherity.github.io/vc-status-2021-ldap/">vc-status-2021-ldap</a>).
+          OCI supports a revocation management method based on LDAP <a>Credential</a> Revocation
+          Lists. Consequently, Digital Wallet Providers SHALL implement API calls 
+		to the LDAP server of the Credential Issuer(s) to check the revocation status for determining 
+		if a Verifiable <a>Credential</a> has been revoked.
         </p>
         <p>
           A <a>Digital Wallet</a> Provider MAY implement a caching mechanism for <a>Credential</a> revocation data to
-          cache LDAP data
-          for 24 hours. <a>Credential</a> revocation data SHALL not be older than 24 hours during normal operations of
-          the OCI
-          Directory Service.
+          cache LDAP data for up to 24 hours. <a>Credential</a> revocation data SHALL not be older than 24 hours during 
+		normal operations of the Revocation List.
         </p>
         <p>
-          It shall be understood that existing cached data can be used when the OCI Directory Service is not available
+          It shall be understood that existing cached data can be used when the Revocation List is not available
           for an update of the local cache due to a technical downtime. A <a>Digital Wallet</a> Provider SHALL store
-          communication request data when OCI Directory Service is not available to establish an audit trail and
+          communication request data when the Revocation List is not available to establish an audit trail and
           document why revocation data older than 24 hours were potentially used for checking the revocation status over
-          the time period of the OCI Directory Service downtime.
+          the time period of the Revocation List downtime.
         </p>
         <p>
-          To mitigate man-in-the-middle attack vectors, Credential Issuer and Digital Identity providers SHALL implement
+          To mitigate man-in-the-middle attack vectors, <a>Digital Wallet</a> Providers SHALL implement
           LDAPS, which is LDAP secured by communication over Transport Layer Security (TLS) protocol.
         </p>
       </section>
