@@ -1812,7 +1812,7 @@
         </tr>
         <tr>
           <td>Description</td>
-          <td>The HTTP endpoint used to generate a Verifiable Presentation of a DSCSA Stakeholder Credential.</td>
+          <td>The HTTP endpoint used to generate a Verifiable Presentation (VP) of a DSCSA ATP Credential.</td>
         </tr>
         <tr>
           <td>OpenAPI Specification</td>
@@ -1864,23 +1864,25 @@
         <tr>
           <td>Request Parameters</td>
           <td>
-            <p>The <a>Digital Wallet</a> SHALL provide the following OPTIONAL query request parameters. During the
-              generation
-              of a VP these checks MAY be omitted and only be used for other use cases. In standard mode of operations
-              verifiable presentations can be generated without any additional checks. Checks will always be done on the
-              receiving side. Therefore and to reuse overall latency checks can be neglected on the sender side. The
-              following optional checks can be done by the sender to check that the presentation generation is working
-              properly and the underlying credentials are valid (e.g. for Periodical checking the validity of a
-              <a>Credential</a>):
+            <p>
+              Optional checks may be completed by the party generating the VP to ensure that the presentation generation is working
+              properly and the underlying credentials are valid. However, they are not mandatory at VP generation because checks will 
+              always be performed by the recipient anyway. Skipping these checks reduces overall latency. 
+            </p>  
+            <p> 
+              It is RECOMMENDED for the <a>Digital Wallet</a> provider to disable the use of any such parameters by default 
+              with the option for the user to enable these if so desired.
+            </p>
+            <p>
+              The <a>Digital Wallet</a> SHALL provide the following query request parameters for optional use during the
+              generation of a VP:               
             </p>
             <ul>
               <li>
                 <b>vc-expirationDate</b> | <i>boolean</i> | <b>optional</b> | default 'false'
                 <ul>
                   <li>
-                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the expiration date of the
-                    Stakeholder
-                    <a>Credential</a>
+                    Parameter to check the expiration date of the Stakeholder <a>Credential</a>
                   </li>
                 </ul>
               </li>
@@ -1888,8 +1890,7 @@
                 <b>vc-proof</b> | <i>boolean</i> | <b>optional</b> | default 'false'
                 <ul>
                   <li>
-                    The <a>Digital Wallet</a> SHALL provide this parameter to check the cryptographic proof of the Stakeholder
-                    <a>Credential</a>
+                    Parameter to check the cryptographic proof of the Stakeholder <a>Credential</a>
                   </li>
                 </ul>
               </li>
@@ -1897,17 +1898,14 @@
                 <b>vc-issuanceDate</b> | <i>boolean</i> | <b>optional</b> | default 'false'
                 <ul>
                   <li>
-                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the issuance date of the
-                    Stakeholder
-                    <a>Credential</a>
+                    Parameter to check the issuance date of the Stakeholder <a>Credential</a>
                   </li>
                 </ul>
               </li>
               <b>vc-credentialStatus</b> | <i>boolean</i> | <b>optional</b> | default 'false'
               <ul>
                 <li>
-                  The <a>Digital Wallet</a> SHALL provide this optional parameter to check the revocation status (incl.
-                  expiration) of the Stakeholder <a>Credential</a>
+                  Parameter to check the revocation and expiration status of the Stakeholder <a>Credential</a>
                 </li>
               </ul>
               </li>
