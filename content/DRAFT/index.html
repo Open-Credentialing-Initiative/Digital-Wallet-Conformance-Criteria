@@ -495,30 +495,30 @@
         <tr>
           <td>Wallet to Wallet communication (for cloud wallets)</td>
           <td>
-            <p>Hyperledger Aries RFCs.</p>
+            <p>Hyperledger Aries RFCs</p>
             <ul>
               <li>
                 <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">
-                  Issue Credential Protocol v2.
+                  Issue Credential Protocol v2
                 </a>
               </li>
               <li>
                 <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">
-                  Credential-Manifest Attachment format for requesting and presenting credentials.
+                  Credential-Manifest Attachment format for requesting and presenting credentials
                 </a>
               </li>
               <li>
                 <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0454-present-proof-v2">
-                  Present Proof Protocol v2.
+                  Present Proof Protocol v2
                 </a>
               </li>
               <li>
                 <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0510-dif-pres-exch-attach">
-                  Presentation-Exchange Attachment format for requesting and presenting proofs Presentation Exchange.
+                  Presentation-Exchange Attachment format for requesting and presenting proofs Presentation Exchange
                 </a>
               </li>
             </ul>
-            <p>Decentralized Identity Foundation specs.</p>
+            <p>Decentralized Identity Foundation specs</p>
             <ul>
               <li>
                 <a href="https://identity.foundation/didcomm-messaging/spec/">DIDComm Messaging v2</a>
@@ -530,12 +530,6 @@
                 <a href="https://identity.foundation/presentation-exchange/">Presentation Exchange</a>
               </li>
             </ul>
-            <div class="advisement">
-              <p>
-                <b>Warning:</b> OCI has not standardized wallet to wallet communication. This is merely an overview of
-                technologies OCI expects to be used for wallet to wallet communication in the future.
-              </p>
-            </div>
           </td>
         </tr>        
         <tr>
@@ -860,7 +854,8 @@
             <td>Credential Issuer: Credential Issuance</td>
             <td>
               <p>
-                Issuance of a Verifiable Credential from Credential Issuer’s wallet to a Trading Partner’s wallet.
+                Issuance of a Verifiable Credential from Credential Issuer’s wallet to a Trading Partner’s wallet via
+                DIDComm protocol.
               </p>
               <ol>
                 <li>
@@ -900,7 +895,7 @@
             <td>
               <p>
                 Presentation of a Verifiable Presentation between Stakeholder wallets or from Stakeholder’s
-                wallet to Credential Issuer’s wallet.
+                wallet to Credential Issuer’s wallet via DIDComm protocol.
               </p>
               <ol>
                 <li>
@@ -923,7 +918,6 @@
         <p>
           Communication between Credential Issuer’s <a>Digital Wallet</a> and Stakeholder’s <a>Digital Wallet</a> or
           between trading parties for the exchange of credentials may be required to issue and exchange credentials.
-          This can be achieved through a variety of methods including DIDComm, or any other secured exchange protocol.
         </p>        
         <section>
           <h2>DIDComm</h2>
@@ -937,7 +931,7 @@
             or facilitate secure message exchange within an organization.
           </p>
           <p>
-            Digital Wallet Providers <i>CAN</i> implement DIDComm capabilities to meet the functional requirements outlined
+            Digital Wallet Providers <i>SHALL</i> implement DIDComm capabilities to meet the functional requirements outlined
             in the OCI <a>Digital Wallet</a> Conformance Criteria.
           </p>
           <p>
@@ -945,10 +939,10 @@
           </p>
           <img src="assets/didcomm.png" style="width: 100%; height: 100%;"></img>
           <p>
-            Beyond this, the DSCSA Stakeholder <i>CAN</i> exchange Verifiable Presentations of their Identity
+            Beyond this, the DSCSA Stakeholder <i>SHOULD</i> be able to exchange Verifiable Presentations of their Identity
             Credentials with other Stakeholders using DIDComm. This is important when a trading partner receives a
-            Stakeholder's <a>ATP</a> <a>Credential</a> from a previously unknown trading partner and wishes to request the
-            corresponding identity
+            Stakeholder <a>Credential</a> from a previously unknown trading partner and wishes to request the
+            corresponding Identity
             <a>Credential</a>. Having established a trusted communication channel between Stakeholder wallets,
             future use
             cases that require exchanging credentials can be facilitated more easily.
@@ -1000,12 +994,14 @@
             </tr>
           </table>
           <div class="advisement">
-            <p>
-              <b>Warning:</b> OCI has not fully standardized wallet to wallet communication. The high-level view can be used
-              to implement custom DIDComm flows that might be off-standard in the future. For the time being, OCI
-              does <b>not</b> endorse any specific low-level DIDComm protocol or other credential exchange flows.
-            </p>
-          </div>
+              <p>
+                <b>Note:</b> OCI has not yet standardized wallet-to-wallet communication. This is an overview of
+                technologies OCI expects to be used for wallet-to-wallet communication in the near future. It can be used 
+		to implement custom DIDComm flows meanwhile bearing in mind that these might be off-standard in the future.
+		Refer to the <a href="https://open-credentialing-initiative.github.io/Conformance-Program/latest/index.html">OCI Conformance Program</a> 
+		for more details.
+              </p>
+          </div>	
         </section>        
       </section>
       <section>
@@ -1098,7 +1094,7 @@
           <td>Manual interface, authentication via Two-Factor Authentication (2FA), Connection: HTTPS</td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>Bidirectional: Human User ⬄ Enterprise Digital Wallet</td>
         </tr>
         <tr>
@@ -1144,7 +1140,7 @@
           </td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>Bidirectional, VRS ⬄ Enterprise Digital Wallet</td>
         </tr>
         <tr>
@@ -1183,7 +1179,7 @@
           <td>REST API, public API with no authentication, Encryption: SSL TLS v1.2+, Connection: REST on HTTPS</td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>Bidirectional, Credential Issuer Revocation DB ⬄ Enterprise Digital Wallet</td>
         </tr>
         <tr>
@@ -1218,7 +1214,7 @@
           <td>DLT RPC calls, <a>VDR</a> , no authentication required</td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>Bidirectional, <a>VDR</a> ⬄ Enterprise Digital Wallet</td>
         </tr>
         <tr>
@@ -1251,10 +1247,10 @@
           <td>REST API, wallet-to-wallet communication</td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>
             Bidirectional, Credential Issuer Wallet ⬄ Enterprise Digital Wallet, Encryption: SSL TLS v1.2+, Connection:
-            Issuance of credentials via wallet to wallet communication based on DIDComm or direct API calls.
+            Issuance of credentials via wallet-to-wallet communication based on DIDComm.
           </td>
         </tr>
         <tr>
