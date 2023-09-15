@@ -2306,6 +2306,17 @@
           </ul>
         </li>
         <li>
+          The field <b>vp.verifiableCredential.credentialStatus</b> (Revocation of the Verifiable <a>Credential</a>) is
+          evaluated, the revocation checked and concluded to be unclear. This error SHALL be thrown if the revocation
+          status of the Verifiable <a>Credential</a> can not be resolved from the revocation registry and/ or cached
+          data is older than 24 hours.
+          <ul>
+            <li>
+              <b>vc_status_unclear</b>
+            </li>
+          </ul>
+        </li>
+        <li>
           The field <b>vp.verifiableCredential.proof</b> (Proof of the Verifiable <a>Credential</a>) is concluded to be
           invalid
           given the signed body or does not yield a valid or resolvable result.
