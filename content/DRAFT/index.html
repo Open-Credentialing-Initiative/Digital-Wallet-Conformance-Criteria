@@ -602,18 +602,30 @@
         <section>
           <h3>Securing did:web</h3>
           <p>
-            DNS presents many of the attack vectors that enable active security and privacy attacks on the did:web
-            method and it is important that implementers address these concerns via proper configuration of DNS. For
-            example, without proper security of the DNS resolution via DNS over HTTPS it is possible for active attackers
-            to intercept the result of the DNS resolution via a man-in-the-middle attack which would point at a
-            malicious server with the incorrect <a>DID</a> Document.
+            Implementers of the <a>DID</a> method SHALL implement measures to cover the security and privacy
+            considerations outlined in the
+            <a href="https://w3c-ccg.github.io/did-method-web/#security-and-privacy-considerations">
+              did:web method specification</a>.
+            This includes possible attack vectors for man-in-the-middle attacks, DNS record spoofing, <a>DID</a>
+            document integrity, and in-transit security. Providers of did:web <a>VDRs</a> SHALL not correlate usage
+            of another subjects <a>DID</a> during resolution for credential verification for privacy reasons.
           </p>
           <p>
-            Implementers should be aware of issues presented by spoofed DNS records where the record returned by a
-            malicious DNS Server is inauthentic and allows the record to be pointed at a malicious server which contains
-            a different <a>DID</a> Document. To prevent this type of issue,  Digital Wallet Providers and Credential
-            Issuers SHALL use DNSSEC which is defined in [[RFC4033]], [[RFC4034]], and [[RFC4035]].
+            Due to the centralized nature of this <a>DID</a> method, implementors SHALL make sure that the <a>VDR</a>
+            is highly available and resilient to availability attacks. If <a>DID</a> resolutions fails, digital wallets
+            are unable to verify credentials and trading partner ATP statuses.
           </p>
+        </section>
+        <section>
+          <h3>Securing did:ethr</h3>
+          <p>
+            Implementers of the <a>DID</a> method SHALL implement measures to cover common security attacks. This
+            includes private key hijacking on the wallet, man-in-the-middle attacks, and in-transit security while
+            communicating with an Ethereum node. Self-hosted or OCI-owned Ethereum nodes SHOULD be used to mitigate
+            some of those attack vectors. Enterprise-grade blockchain infrastructure-as-a-service platforms MAY be used.
+          </p>
+          <p>Due to DID document related metadata being persisted on the Ethereum-blockchain, measures to make the
+            <a>DID</a> document generally available NEED NOT to be employed.</p>
         </section>
       </section>
       <section>
@@ -808,9 +820,11 @@
             </td>
             <td>
               <p>
-                Verifiable Credential’s proof SHALL be generated and verified in conformance with <a
-                  href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519 Signature 2018</a>
-                Linked-Data Signature Suite.
+                Verifiable Credential’s proof SHALL be generated and verified in conformance with
+                <a href="https://w3c-ccg.github.io/lds-ed25519-2018/">Ed25519Signature2018</a>
+                or
+                <a href="https://github.com/decentralized-identity/EcdsaSecp256k1RecoverySignature2020">
+                  EcdsaSecp256k1RecoverySignature2020</a>.
               </p>
             </td>
           </tr>
