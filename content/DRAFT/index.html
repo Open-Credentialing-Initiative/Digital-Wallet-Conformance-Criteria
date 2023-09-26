@@ -631,7 +631,7 @@
       <section>
         <h2><a>DID</a> Resolution</h2>
         <p>
-          Digital Wallet Providers SHALL integrate a <a>DID</a> resolver service for resolving <a>DID</a> documents. The
+          Digital Wallet Providers SHALL integrate <a>DID</a> resolver functionality for resolving <a>DID</a> documents. The
           <a>DID</a> resolver
           SHALL support all <a>DID</a> methods endorsed by OCI. It SHALL be a
           trusted open source <a>DID</a> resolver with broad community participation (e.g. DIF Universal Resolver or
@@ -725,22 +725,12 @@
         <h2>Credential Structure</h2>
         <p>
           Working groups at the W3C author, host, and maintain the <a href="https://www.w3.org/TR/vc-data-model/">W3C
-            Verifiable Credential Data Model 1.0 specification.</a>
-          This W3C VC Standard is now a <a href="https://en.wikipedia.org/wiki/World_Wide_Web_Consortium">W3C
-            recommendation</a> (the most mature stage of the W3C standards
-          process). VCs are issued for identifiers that may be associated with cryptographic operations, be they DIDs,
-          self-certifying identifiers, or legacy identities backed with traditional PKI. The structure of a VC is an
-          important component of interoperability.
+            Verifiable Credential Data Model specification</a>.
+          The structure of a VC is an important component of interoperability.
         </p>
         <p>
-          CI relies on an implementation of a common standard for the credential structure. Digital Wallet Providers
+          OCI relies on an implementation of a common standard for the credential structure. Digital Wallet Providers
           SHALL implement Verifiable Credential Data Model 1.0.
-        </p>
-        <p>
-          At time of writing, there are only early, non-standard and experimental implementations that combine
-          traditional PKI with VCs and DIDs. Therefore Digital Wallet Providers SHALL implement DIDs as cryptographic
-          identifiers. It shall be understood that DIDs can be blended with X.509 DEA signing certificates within the
-          Identity Verification Process in the form of wrapped or nested credentials.
         </p>
       </section>
       <section>
@@ -1046,7 +1036,7 @@
         </tr>
         <tr>
           <td>Type</td>
-          <td>Manual interface, authentication via Two-Factor Authentication (2FA), Connection: HTTPS</td>
+          <td>Manual interface, Connection: HTTPS</td>
         </tr>
         <tr>
           <td>Information flow Direction</td>
@@ -1441,30 +1431,29 @@
         <tr>
           <td>Description</td>
           <td>
-            The system must prevent the initiator of a transaction from later disputing the creation of a given
-            transaction.
+            The system collects evidence of user actions to prove the origin and authenticity of data in the event of a future dispute.
           </td>
         </tr>
         <tr>
           <td>Rationale</td>
           <td>
-            Standard pharma compliance requirement
+            Common compliance requirement that supports accountability and data integrity
           </td>
         </tr>
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            Solution SHOULD implement an audit trail including non-repudiable digital signatures for all Stakeholder
-            <a>Credential</a>
-            transactions realized on the system.
-            User authentication and activities SHALL be logged. Audit trail SHALL be available for user inspection.
+            The wallet solution SHALL record user authentication and actions by registered users. 
+            The solution SHOULD record the entity for each credential-related transaction, 
+            including non-repudiable digital signatures for all <a>ATP</a> <a>Credential</a> transactions.
+            The Wallet Provider SHALL be capable of transferring or making available such auditable records to 
+            the Trading Partner or another party with legitimate interest and right to obtain such data.
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            Application security testing against these features documented in User Acceptance Testing (UAT). Review of
-            operational audit logs created by the solution and compared with user activity in a test scenario.
+            Activity logs and, if applicable, archives can be retrieved, made accessible, and can be processed.
           </td>
         </tr>
       </table>
@@ -1658,33 +1647,31 @@
           <td>Description</td>
           <td>
             The maximum time taken by the system as a whole to send any information back to the end user who triggered a
-            query (and out of the transit/transmission overhead). Average time for performing the two API calls to
-            generate and verify Stakeholder VPs SHALL be in total less than 1500 ms. Maximum time for both calls SHALL be
-            in
-            total less than 3000 ms.
+            query (and out of the transit/transmission overhead).
           </td>
         </tr>
         <tr>
           <td>Rationale</td>
           <td>
-            Solution SHOULD be easily scalable to handle high volumes of Product Identity Verification Requests and
+            Solution should be easily scalable to handle high volumes of Product Identifier Verification Requests and
             Responses as well as a high number of trading partners without making changes to the overall architecture.
           </td>
         </tr>
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            Solution SHALL provide low-latency APIs.
-            Solution MAY apply caching methods (e.g., revocation lists, DID
-            documents, credential verification events) where technically and
-            legally possible to reduce throughput times of processing the APIs.
-            Cached data SHALL be valid no longer than 48 hours.
+            Solution SHALL provide low-latency APIs so that the average time for performing the two API calls to
+            generate and verify <a>ATP</a> VPs is in total less than 1500 ms and the maximum time for both calls is
+            in total less than 3000 ms. Solution MAY apply caching methods (e.g., revocation lists, DID
+            documents, credential verification events) where technically and legally possible to reduce throughput times 
+            of processing the APIs. Cached data SHALL be valid no longer than 48 hours. Note that other parts of these 
+            Conformance Criteria may set shorter validity times for particular types of cached data.
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            API performance designed for low-latency with built-in ability to measure performance, throughput and latency.
+            Average and maximum duration of API calls
           </td>
         </tr>
       </table>
@@ -1733,7 +1720,6 @@
 
       <br>
       <br>
-
       <table class="simple">
         <tr>
           <th></th>
@@ -1745,36 +1731,36 @@
         </tr>
         <tr>
           <td>NFR Type</td>
-          <td>Audit Requirements</td>
+          <td>Audit Support</td>
         </tr>
         <tr>
           <td>Description</td>
           <td>
-            The solution must be able to support audit log requirements.
+            The solution provides auditable granular transaction logs
           </td>
         </tr>
         <tr>
           <td>Rationale</td>
           <td>
-            Data and industry regulations require support for investigations and compliance
+            Data and industry regulations require support for investigations and compliance. 
           </td>
         </tr>
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            Solution SHALL provide audit logs of interface access as well as of generation and verification of
-            verifiable presentations. Solution SHALL log corrUUID so that transactions are correlatable across systems
-            and wallets of the trading partners.
+            The Wallet solution SHALL be capable of providing detailed records of all verifiable presentation (VP) generation and 
+            verification events for each Trading Partner. These records SHALL include the corrUUID so that transactions are correlatable across 
+            systems.
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            Testing of audit logs. Checking that audit logs can be retrieved, are accessible and can be processed.
+            Detail of transaction logs and, if applicable, archive.
           </td>
         </tr>
-      </table>
-
+      </table>    
+      
       <br>
       <br>
       <table class="simple">
@@ -1793,33 +1779,34 @@
         <tr>
           <td>Description</td>
           <td>
-            The solution can support audit archiving requirements.
+            The solution can archive auditable transaction logs
           </td>
         </tr>
         <tr>
           <td>Rationale</td>
           <td>
-            Data and industry regulations require support for investigations and compliance with data archiving
-            regulations.
+            Data and industry regulations require support for investigations and compliance of current and historical transactions data. 
+            Transaction logs constitute an audit trail to be used, for example, in the event of an investigation into 
+            credential-related activities.
           </td>
         </tr>
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            The Wallet Provider SHALL keep detailed records of all VP generation and verification events as well as
-            monitoring activities for a period of not less than six (6) years. These detailed records constitute an
-            audit trail to be used in the event of an investigation into credential-related activities of the credential
-            holder
+            The Wallet solution SHALL have the capability of keeping detailed records of all VP generation and verification events 
+            to enable the Trading Partner to comply with regulatory data storage requirements.
+            The Wallet Provider SHALL be capable of transferring or making available such auditable records to 
+            the Trading Partner or another party with legitimate interest and right to obtain such data.
           </td>
         </tr>
         <tr>
           <td>Measurement</td>
           <td>
-            Testing of archiving features. Checking that archived data can be retrieved, are accessible and can be
-            processed.
+            Archived data can be retrieved, are accessible and can be processed.
           </td>
         </tr>
       </table>
+      
     </section>
   </section>
   <section>
@@ -1839,7 +1826,7 @@
         </tr>
         <tr>
           <td>Description</td>
-          <td>The HTTP endpoint used to generate a Verifiable Presentation of a DSCSA Stakeholder Credential.</td>
+          <td>The HTTP endpoint used to generate a Verifiable Presentation (VP) of a DSCSA ATP Credential.</td>
         </tr>
         <tr>
           <td>OpenAPI Specification</td>
@@ -1891,23 +1878,25 @@
         <tr>
           <td>Request Parameters</td>
           <td>
-            <p>The <a>Digital Wallet</a> SHALL provide the following OPTIONAL query request parameters. During the
-              generation
-              of a VP these checks MAY be omitted and only be used for other use cases. In standard mode of operations
-              verifiable presentations can be generated without any additional checks. Checks will always be done on the
-              receiving side. Therefore and to reuse overall latency checks can be neglected on the sender side. The
-              following optional checks can be done by the sender to check that the presentation generation is working
-              properly and the underlying credentials are valid (e.g. for Periodical checking the validity of a
-              <a>Credential</a>):
+            <p>
+              Optional checks may be completed by the party generating the VP to ensure that the presentation generation is working
+              properly and the underlying credentials are valid. However, they are not mandatory at VP generation because checks will 
+              always be performed by the recipient anyway. Skipping these checks reduces overall latency. 
+            </p>  
+            <p> 
+              It is RECOMMENDED for the <a>Digital Wallet</a> provider to disable the use of any such parameters by default 
+              with the option for the user to enable these if so desired.
+            </p>
+            <p>
+              The <a>Digital Wallet</a> SHALL provide the following query request parameters for optional use during the
+              generation of a VP:               
             </p>
             <ul>
               <li>
                 <b>vc-expirationDate</b> | <i>boolean</i> | <b>optional</b> | default 'false'
                 <ul>
                   <li>
-                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the expiration date of the
-                    Stakeholder
-                    <a>Credential</a>
+                    Parameter to check the expiration date of the Stakeholder <a>Credential</a>
                   </li>
                 </ul>
               </li>
@@ -1915,8 +1904,7 @@
                 <b>vc-proof</b> | <i>boolean</i> | <b>optional</b> | default 'false'
                 <ul>
                   <li>
-                    The <a>Digital Wallet</a> SHALL provide this parameter to check the cryptographic proof of the Stakeholder
-                    <a>Credential</a>
+                    Parameter to check the cryptographic proof of the Stakeholder <a>Credential</a>
                   </li>
                 </ul>
               </li>
@@ -1924,17 +1912,14 @@
                 <b>vc-issuanceDate</b> | <i>boolean</i> | <b>optional</b> | default 'false'
                 <ul>
                   <li>
-                    The <a>Digital Wallet</a> SHALL provide this optional parameter to check the issuance date of the
-                    Stakeholder
-                    <a>Credential</a>
+                    Parameter to check the issuance date of the Stakeholder <a>Credential</a>
                   </li>
                 </ul>
               </li>
               <b>vc-credentialStatus</b> | <i>boolean</i> | <b>optional</b> | default 'false'
               <ul>
                 <li>
-                  The <a>Digital Wallet</a> SHALL provide this optional parameter to check the revocation status (incl.
-                  expiration) of the Stakeholder <a>Credential</a>
+                  Parameter to check the revocation and expiration status of the Stakeholder <a>Credential</a>
                 </li>
               </ul>
               </li>
@@ -2095,7 +2080,7 @@
             <p>The <a>Digital Wallet</a> SHALL provide an API accepting a request body with the following values:</p>
             <ul>
               <li>
-                <b>Verifiable Presentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
+                <b>VerifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
                 <ul>
                   <li>
                     The verifiable presentation to verify in JWT base64 encoded format.
@@ -2356,14 +2341,7 @@
       </ul>
     </section>
     <section>
-      <h2>Protection against <a>Credential</a> Replay Attacks and VP Lifetime</h2>
-      <p>
-        It was decided by OCI members not to use the verifiable presentation approach employing a nonce created by the
-        verifier as developed in the pilot phase, but instead to use a JWT with a given lifetime that then defines the
-        expiration date/time of the JWT. The verifiable presentation approach of the ATP pilot is documented in the
-        pilot documentation. This approach was designed to fulfill low-latency requirements. The rationale behind this
-        decision is based on confidentiality considerations on an overall <a>PI</a> verification system level.
-      </p>
+      <h2>Protection against <a>Credential</a> Replay Attacks and VP Lifetime</h2>      
       <p>
         The JWT VP SHALL have a lifetime (or time to live) attribute. The lifetime for JWT VPs used in <a>PI</a>
         verifications
@@ -2371,7 +2349,6 @@
         threshold to check if a VP is expired. This VP lifetime threshold will be added to the issuance date of the VP,
         iat attribute of VP, to determine whether the VP verification time is within the acceptable time window for
         using the generated VP.
-      <p>Looking to the future, OCI will seek to leverage DIDcomm protocols to enable full message signing and related cryptographic protections. For more information, readers are encouraged to access the <a href="https://dscsagovernance.org/blueprint/" target="_blank">PDG Foundational Blueprint for 2023 Interoperability Chapter 5: Tracing Architecture Functional Design</a>, particularly Figure 15: Trace Network Implementation Maturity.</p>
       </p>
     </section>
   </section>
@@ -2380,8 +2357,7 @@
     <section>
       <h2>Documentation</h2>
       <p>It is RECOMMENDED that the <a>Digital Wallet</a> provider offers the following documentation to support any
-        validation
-        process: </p>
+        validation process: </p>
       <ul>
         <li>
           Functional documentation
@@ -2391,13 +2367,9 @@
         </li>
       </ul>
       <p>
-        The <a>Digital Wallet</a> Provider SHALL establish a process to create installation qualification documentation
-        (IQ).
-        Digital Wallet Providers SHALL provide individual IQ documentation to trading partners during the onboarding
-        process. IQ should instruct about how the <a>Digital Wallet</a> components are installed and integrated
-        correctly. This
-        includes documentation of the software deployment process, installed system components and the host
-        environments.
+        Digital Wallet Providers SHALL provide any applicable technical documentation, e.g. Installation Qualification documentation, to trading partners or integrating solution providers. 
+	This should instruct about how the <a>Digital Wallet</a> components are installed or integrated correctly. This
+        includes documentation of the software deployment process, installed system components and host environments.
       </p>
     </section>
     <section>
