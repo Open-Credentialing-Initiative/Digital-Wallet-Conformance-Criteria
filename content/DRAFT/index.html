@@ -226,7 +226,7 @@
         not necessarily preferred.
       </li>
       <li>
-        <b>CAN</b> and <b>CANNOT</b> indicate a capability, whether material, physical or
+        <b><i>CAN</i></b> and <b><i>CANNOT</i></b> indicate a capability, whether material, physical or
         causal or, in the negative, the absence of that capability.
       </li>
       Keywords appear in <b>bold</b> and <b>ALL CAPS</b> in the Conformance Criteria. The key words <i>MAY</i>,
@@ -491,24 +491,30 @@
         <tr>
           <td>Credential Issuance & Exchange</td>
           <td>
-            <p>Hyperledger Aries RFCs <a
-                href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">Issue
-                Credential Protocol v2.</a></p>
+            <p>Hyperledger Aries RFCs</p>
             <ul>
               <li>
-                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">Credential
-                  ManifestCredential-Manifest Attachment format for requesting and presenting credentials</a>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0453-issue-credential-v2">
+                  Issue Credential Protocol v2
+                </a>
               </li>
               <li>
-                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0454-present-proof-v2">Present
-                  Proof Protocol v2</a>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0511-dif-cred-manifest-attach">
+                  Credential-Manifest Attachment format for requesting and presenting credentials
+                </a>
               </li>
               <li>
-                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0510-dif-pres-exch-attach">Presentation-Exchange
-                  Attachment format for requesting and presenting proofs Presentation Exchange</a>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0454-present-proof-v2">
+                  Present Proof Protocol v2
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/hyperledger/aries-rfcs/tree/master/features/0510-dif-pres-exch-attach">
+                  Presentation-Exchange Attachment format for requesting and presenting proofs Presentation Exchange
+                </a>
               </li>
             </ul>
-            <p>Decentralized Identity Foundation specs.</p>
+            <p>Decentralized Identity Foundation specs</p>
             <ul>
               <li>
                 <a href="https://identity.foundation/didcomm-messaging/spec/">DIDComm Messaging v2</a>
@@ -807,7 +813,7 @@
             <td>
               <p>
                 Issuance of a Verifiable Credential from Credential Issuer’s wallet to a Trading Partner’s wallet via
-                DIDComm protocol i.e., “issue-credential” v2.0.
+                DIDComm protocol.
               </p>
               <ol>
                 <li>
@@ -849,7 +855,7 @@
             <td>
               <p>
                 Presentation of a Verifiable Presentation between Stakeholder wallets or from Stakeholder’s
-                wallet to Credential Issuer’s wallet via DIDComm protocol i.e., “present-proof” v2.0.
+                wallet to Credential Issuer’s wallet via DIDComm protocol.
               </p>
               <ol>
                 <li>
@@ -885,7 +891,7 @@
             or facilitate secure message exchange within an organization.
           </p>
           <p>
-            Digital Wallet Providers SHALL implement DIDComm capabilities to meet the functional requirements outlined
+            Digital Wallet Providers <i>SHALL</i> implement DIDComm capabilities to meet the functional requirements outlined
             in the OCI <a>Digital Wallet</a> Conformance Criteria.
           </p>
           <p>
@@ -893,10 +899,10 @@
           </p>
           <img src="assets/didcomm.png" style="width: 100%; height: 100%;"></img>
           <p>
-            Beyond this, the DSCSA Stakeholder SHOULD be able to exchange Verifiable Presentations of their Identity
-            Credentials with other Stakeholders using DIDcomm. This is important when a trading partner receives a
+            Beyond this, the DSCSA Stakeholder <i>SHOULD</i> be able to exchange Verifiable Presentations of their Identity
+            Credentials with other Stakeholders using DIDComm. This is important when a trading partner receives a
             Stakeholder <a>Credential</a> from a previously unknown trading partner and wishes to request the
-            corresponding identity
+            corresponding Identity
             <a>Credential</a>. Having established a trusted communication channel between Stakeholder wallets,
             future use
             cases that require exchanging credentials can be facilitated more easily.
@@ -947,6 +953,14 @@
               </td>
             </tr>
           </table>
+          <div class="advisement">
+              <p>
+                <b>Note:</b> OCI has not yet standardized direct wallet-to-wallet communication. This is an overview of
+                technologies OCI expects to be used for direct wallet-to-wallet communication in the near future. 
+		Refer to the <a href="https://open-credentialing-initiative.github.io/Conformance-Program/latest/index.html">OCI Conformance Program</a> 
+		for more details.
+              </p>
+          </div>	
         </section>        
       </section>
       <section>
@@ -1039,7 +1053,7 @@
           <td>Manual interface, Connection: HTTPS</td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>Bidirectional: Human User ⬄ Enterprise Digital Wallet</td>
         </tr>
         <tr>
@@ -1085,7 +1099,7 @@
           </td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>Bidirectional, VRS ⬄ Enterprise Digital Wallet</td>
         </tr>
         <tr>
@@ -1116,7 +1130,7 @@
         <tr>
           <td>Specification</td>
           <td><a
-              href="https://spherity.github.io/vc-status-2021-ldap/">https://spherity.github.io/vc-status-2021-ldap/</a>>
+              href="https://spherity.github.io/vc-status-2021-ldap/">https://spherity.github.io/vc-status-2021-ldap/</a>
           </td>
         </tr>
         <tr>
@@ -1124,7 +1138,7 @@
           <td>REST API, public API with no authentication, Encryption: SSL TLS v1.2+, Connection: REST on HTTPS</td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>Bidirectional, Credential Issuer Revocation DB ⬄ Enterprise Digital Wallet</td>
         </tr>
         <tr>
@@ -1159,7 +1173,7 @@
           <td>DLT RPC calls, <a>VDR</a> , no authentication required</td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>Bidirectional, <a>VDR</a> ⬄ Enterprise Digital Wallet</td>
         </tr>
         <tr>
@@ -1192,11 +1206,10 @@
           <td>REST API, wallet-to-wallet communication</td>
         </tr>
         <tr>
-          <td>Information flow Direction</td>
+          <td>Information Flow Direction</td>
           <td>
             Bidirectional, Credential Issuer Wallet ⬄ Enterprise Digital Wallet, Encryption: SSL TLS v1.2+, Connection:
-            Issuance of Credentials via DIDcomm V2 with Encrypted Messaging Envelope as specified in the DIDComm
-            Messaging Specification based on Aries Protocols
+            Issuance of Credentials via DIDcomm with Encrypted Messaging Envelope as specified in the DIDComm Messaging Specification based on Aries Protocols.
           </td>
         </tr>
         <tr>
