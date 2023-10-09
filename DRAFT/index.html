@@ -1495,7 +1495,7 @@
         <tr>
           <td>Rationale</td>
           <td>
-            Protect application against theft of signing keys
+            Protect application against theft and misuse of signing keys
           </td>
         </tr>
         <tr>
@@ -1503,19 +1503,21 @@
           <td>
             <ul>
               <li>
-                Solution SHALL provide secure key management for encryption and signing keys
+                Solution SHALL provide secure key management for encryption and signing keys.
               </li>
               <li>
-                Solution SHALL provide features to update <a>DID</a> documents and to rotate keys in accordance with the
-                W3C
-                <a>DID</a> standards and best practices/implementation guidelines on a regular basis, keys SHALL be
-                rotated no
-                less often than once every 12 months.
+                Solution SHALL provide features to update <a>DID</a> documents and to rotate encryption and signing keys no
+                less often than once every 12 months. At a minimum this SHOULD involve key retirement, 
+		      meaning that the old key is no longer used but discoverable via the DID doucment. 
+		      For any future signing operations a newly generated key SHOULD be used and discoverable via the DID doucment alongside the old key(s).
               </li>
               <li>
                 Solution SHALL provide rotation features for encryption keys (e.g. database encryption, certificate
-                renewal)
+                renewal).
               </li>
+		<li>
+		    At a minimum key rotation SHALL be implemented in production environments.
+		</li>
             </ul>
           </td>
         </tr>
