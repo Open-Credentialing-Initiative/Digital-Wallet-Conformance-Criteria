@@ -647,19 +647,23 @@
         <h2>Trusted Credential Issuer Registry</h2>
         <p>
           To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
-          maintains a Trusted Credential Issuer registry. Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
-          Credential Issuer that is endorsed via the OCI registry.
+          maintains a Trusted Credential Issuer registry. Digital Wallet Providers SHALL be able to process and verify
+          credentials issued by any vetted Credential Issuer that is endorsed via the OCI registry.
         </p>
         <p>
-          The trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
-          ensure that this key role is not exploited, the trust is anchored
-          in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have
-          satisfied OCI’s <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">
-          Credential Issuer Conformance Criteria</a>, are to be trusted is stored in the <b>Trusted Issuer Registry</b>,
-          which is managed through Ethereum Smart Contracts according to <a href="">ERC-7506</a>.
+          The trust placed in Credential Issuers is a key aspect of the OCI ecosystem. To ensure that this critical
+          role is not exploited, trust is anchored in a decentralized and cryptographically verifiable manner. The
+          crucial information about which issuers have met OCI’s
+          <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">
+            Credential Issuer Conformance Criteria
+          </a>
+          and are therefore trusted is stored in the <b>Trusted Issuer Registry</b>. This registry, managed through
+          Ethereum Smart Contracts in accordance with <a href="https://eips.ethereum.org/EIPS/eip-7506">ERC-7506</a>,
+          serves as the single source of truth for determining the trust status of credential issuers during credential
+          verifications.
         </p>
         <p>
-          OCI maintains multiple versions of the Trusted Issuer Registry for production and demo/testing purposes.
+          OCI maintains multiple versions of the Trusted Issuer Registry for production and testing purposes.
           Available environments, their respective network, contract address, and namespace lists reside in, are listed in the table below.
         </p>
         <table class="simple">
