@@ -646,7 +646,7 @@
       <section>
         <h2>Trusted Credential Issuer Registry</h2>
         <p>
-          To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
+          To enable Digital Wallet Providers to accept credentials issued from vetted Credential Issuers only, OCI
           maintains a Trusted Credential Issuer registry. Digital Wallet Providers SHALL be able to process and verify
           credentials issued by any vetted Credential Issuer that is endorsed via the OCI registry.
         </p>
@@ -674,11 +674,25 @@
             <th>Namespace</th>
           </tr>
           <tr>
+            <td>PRD</td>
+            <td>Mainnet (Ethereum Testnet)</td>
+            <td>
+              <a href="https://etherscan.io/address/0x962646c54ba9C53aA16f662F50175407681B26f3">
+                0x962646c54ba9C53aA16f662F50175407681B26f3
+              </a>
+            </td>
+            <td>
+              <a href="https://etherscan.io/address/0xdB2b5db56B34d1455E52E135f01989EFC13E8Cb3">
+                0xdB2b5db56B34d1455E52E135f01989EFC13E8Cb3
+              </a>
+            </td>
+          </tr>
+          <tr>
             <td>STK-INT</td>
             <td>Sepolia (Ethereum Testnet)</td>
             <td>
-              <a href="https://sepolia.etherscan.io/address/0xaFec50dd5D3599377C74CEEde4fc54C400D28909">
-                0xaFec50dd5D3599377C74CEEde4fc54C400D28909
+              <a href="https://sepolia.etherscan.io/address/0x6F68c931d785eee932d29A4419B6e28081bbb597">
+                0x6F68c931d785eee932d29A4419B6e28081bbb597
               </a>
             </td>
             <td>
@@ -691,8 +705,8 @@
             <td>WLT-INT</td>
             <td>Sepolia (Ethereum Testnet)</td>
             <td>
-              <a href="https://sepolia.etherscan.io/address/0x1fD876182E3ca7Aa208cF66e659666dc1d372e5C">
-                0x1fD876182E3ca7Aa208cF66e659666dc1d372e5C
+              <a href="https://sepolia.etherscan.io/address/0x9497Bb14906aa6D4241Adf83708891fAe6ba171C">
+                0x9497Bb14906aa6D4241Adf83708891fAe6ba171C
               </a>
             </td>
             <td>
@@ -705,12 +719,12 @@
             <td>PBL-INT</td>
             <td>Sepolia (Ethereum Testnet)</td>
             <td>
-              <a href="https://sepolia.etherscan.io/address/0x23307e987aa5e4a4ff7dc2dc4bcea8eed092f5a4">
-                0x23307e987aa5e4a4ff7dc2dc4bcea8eed092f5a4
+              <a href="https://sepolia.etherscan.io/address/0x949AEe13C99Ffd7250DaC5865659DB17744352B9">
+                0x949AEe13C99Ffd7250DaC5865659DB17744352B9
               </a>
             </td>
             <td>
-              n/a
+              Developers wallet address
             </td>
           </tr>
         </table>
@@ -720,10 +734,22 @@
           hash of its JSON-LD schema IRI.
         </p>
         <p>
-          The development environments are deployed on an Ethereum test network. STK-INT mirrors the production
-          environment and should only be used for testing purposes by approved OCI Statekeepers. WLT-INT should be used
-          only by OCI Digital Wallets for testing purposes without voting processes. PBL-INT is generally open without
-          any restrictions to make quick testing easy.
+          The Trusted Issuer Registry vetted for production use SHALL be deployed on the Ethereum mainnet. Versions for
+          testing purposed SHALL be deployed on an Ethereum test network. PRD SHALL represent the current state of
+          vetted Trusted Issuers that SHALL be used by Digital Wallets during verification of Verifiable Credentials.
+          STK-INT mirrors the production environment and should only be used for testing purposes by approved OCI
+          Statekeepers. WLT-INT should be used only by OCI digital wallets for testing purposes. PBL-INT is generally
+          open without any restrictions as a general-purpose playground for developers.
+        </p>
+        <p>
+          OCI SHALL appoint delegated Statekeepers to manage the Trusted Issuer Registry. Statekeepers SHALL be
+          responsible for maintaining the state of the Trusted Issuer Registry, ensuring that only vetted Credential
+          Issuers are added or removed from the registry. Statekeepers SHALL utilize a digital, cryptographically secure
+          governance mechanism to manage the Trusted Issuer Registry for PRD and STK-INT. A quorum of 60% of the
+          Statekeepers SHALL be required to make changes to the Trusted Issuer Registry. Statekeepers SHALL use the
+          OCI-provided
+          <a href="https://open-credentialing-initiative.github.io/trusted-issuer-frontend/" target="_blank" rel="noopener noreferrer">dApp</a>
+          to manage the Trusted Issuer Registry.
         </p>
         <p>In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
           implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>.
@@ -744,6 +770,10 @@
                   <code>
                     function isTrustedIssuer(address _namespace, string memory _contextUrl, string memory _did)
                   </code>
+                </li>
+                <li>
+                  The namespace SHALL be chosen according to the environment. The contextUrl SHALL match the JSON-LD
+                  schema IRI of the credential. The DID SHALL match the DID of the Credential Issuer.
                 </li>
                 <li>
                   Returns a boolean:
