@@ -646,36 +646,101 @@
       <section>
         <h2>Trusted Credential Issuer Registry</h2>
         <p>
-          To enable Digital Wallet Providers to accept credentials issued from a vetted Credential Issuer only, OCI
-          maintains a Trusted Credential Issuer registry. Digital Wallet Providers SHALL be able to process and verify credentials issued by any vetted
-          Credential Issuer that is endorsed via the OCI registry.
+          To enable Digital Wallet Providers to accept credentials issued from vetted Credential Issuers only, OCI
+          maintains a Trusted Credential Issuer registry. Digital Wallet Providers SHALL be able to process and verify
+          credentials issued by any vetted Credential Issuer that is endorsed via the OCI registry.
         </p>
         <p>
-          The trust placed in Credential Issuers is a key aspect of the OCI ecosystem. In order to
-          ensure that this key role is not exploited, the trust is anchored
-          in a decentralized and cryptographically verifiable way. The crucial information of which issuers, who have satisfied OCI’s <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">Credential Issuer Conformance Criteria</a>, are to be trusted is stored in the <b>Trusted Issuer Registry</b>, which is managed through Ethereum Smart Contracts.
+          The trust placed in Credential Issuers is a key aspect of the OCI ecosystem. To ensure that this critical
+          role is not exploited, trust is anchored in a decentralized and cryptographically verifiable manner. The
+          crucial information about which issuers have met OCI’s
+          <a href="https://open-credentialing-initiative.github.io/Credential-Issuer-Conformance-Criteria/">
+            Credential Issuer Conformance Criteria
+          </a>
+          and are therefore trusted is stored in the <b>Trusted Issuer Registry</b>. This registry, managed through
+          Ethereum Smart Contracts in accordance with <a href="https://eips.ethereum.org/EIPS/eip-7506">ERC-7506</a>,
+          serves as the single source of truth for determining the trust status of credential issuers during credential
+          verifications.
         </p>
         <p>
-          OCI maintains multiple versions of the Trusted Issuer Registry for production and demo/testing purposes.
-          You can find the deployed contracts at these addresses:
+          OCI maintains multiple versions of the Trusted Issuer Registry for production and testing purposes.
+          Available environments, their respective network, contract address, and namespace are listed in the table below.
         </p>
-        <ul>
-          <li>
-            <a href="https://goerli.etherscan.io/address/0xDfC7aCC61c532350a562018d627c6fe6aBBca5e8" target="_blank" rel="noopener noreferrer">Development STK-INT (Goerli)</a>
-          </li>
-          <li>
-            <a href="https://goerli.etherscan.io/address/0xfAc0eac761d4b589b471e461F247059b2f9A8B85" target="_blank" rel="noopener noreferrer">Development WLT-INT (Goerli)</a>
-          </li>
-          <li>
-            <a href="https://goerli.etherscan.io/address/0x2b219C6e76A8Df00Aa90155620078d56a6e3f26c" target="_blank" rel="noopener noreferrer">Development PBL-INT (Goerli)</a>
-          </li>
-        </ul>
+        <table class="simple">
+          <tr>
+            <th>Environment</th>
+            <th>Network</th>
+            <th>Contract Address</th>
+            <th>Namespace</th>
+          </tr>
+          <tr>
+            <td>PRD</td>
+            <td>Mainnet (Ethereum Testnet)</td>
+            <td>
+              <a href="https://etherscan.io/address/0x962646c54ba9C53aA16f662F50175407681B26f3">
+                0x962646c54ba9C53aA16f662F50175407681B26f3
+              </a>
+            </td>
+            <td>
+              <a href="https://etherscan.io/address/0xdB2b5db56B34d1455E52E135f01989EFC13E8Cb3">
+                0xdB2b5db56B34d1455E52E135f01989EFC13E8Cb3
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>STK-INT</td>
+            <td>Sepolia (Ethereum Testnet)</td>
+            <td>
+              <a href="https://sepolia.etherscan.io/address/0x6F68c931d785eee932d29A4419B6e28081bbb597">
+                0x6F68c931d785eee932d29A4419B6e28081bbb597
+              </a>
+            </td>
+            <td>
+              <a href="https://sepolia.etherscan.io/address/0xb229AC3bC15bacCe74A721a722d8098178c22353">
+                0xb229AC3bC15bacCe74A721a722d8098178c22353
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>WLT-INT</td>
+            <td>Sepolia (Ethereum Testnet)</td>
+            <td>
+              <a href="https://sepolia.etherscan.io/address/0x9497Bb14906aa6D4241Adf83708891fAe6ba171C">
+                0x9497Bb14906aa6D4241Adf83708891fAe6ba171C
+              </a>
+            </td>
+            <td>
+              <a href="https://sepolia.etherscan.io/address/0x6c151A6139c40966029B9ce8e7b24a4D61215921">
+                0x6c151A6139c40966029B9ce8e7b24a4D61215921
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>PBL-INT</td>
+            <td>Sepolia (Ethereum Testnet)</td>
+            <td>
+              <a href="https://sepolia.etherscan.io/address/0x949AEe13C99Ffd7250DaC5865659DB17744352B9">
+                0x949AEe13C99Ffd7250DaC5865659DB17744352B9
+              </a>
+            </td>
+            <td>
+              Developer's wallet address
+            </td>
+          </tr>
+        </table>
         <p>
-          The development environments are deployed on an Ethereum test network. STK-INT mirrors the production
-          environment and should only be used for testing purposes by approved OCI statekeepers. WLT-INT should be used
-          only by OCI digital wallets for testing purposes without voting processes. PBL-INT is generally open without
-          any restrictions to make quick testing easy.
+          Trusted Credential Issuers are systematically organized into distinct lists within a namespace, each
+          corresponding to a specific credential type and version. Each list is uniquely identified by the keccak256
+          hash of its JSON-LD schema IRI.
         </p>
+        <p>
+          The Trusted Issuer Registry is deployed by OCI on the Ethereum mainnet for use in production (PRD). Versions for
+          testing purposes are deployed on an Ethereum test network. PRD represents the current state of
+          OCI-conformant Trusted Issuers that SHALL be used by Digital Wallets during verification of Verifiable Credentials in productive environments.
+          STK-INT mirrors the production environment and SHOULD only be used for testing purposes by approved OCI
+          Statekeepers. WLT-INT SHOULD be used only by OCI Digital Wallets for testing purposes. PBL-INT is generally
+          open without any restrictions as a general-purpose playground for developers.
+        </p>       
         <p>In addition to readily deployed versions of the contracts, OCI has also published the source code as well as
           implementation guidelines on GitHub: <a href="https://github.com/Open-Credentialing-Initiative/trusted-issuer-registry" target="_blank" rel="noopener noreferrer">Trusted Issuer Registry</a>.
         </p>
@@ -688,30 +753,17 @@
           </p>
           <ul>
             <li>
-              Retrieve the full list of all Trusted Issuer <a>DIDs</a>.
+              Retrieve the Trusted Issuer status given a supplied <a>DID</a>.
               <ul>
                 <li>
                   Signature:
                   <code>
-                    function getTrustedIssuers() public view returns (string[] memory)
+                    function isTrustedIssuer(address _namespace, string memory _contextUrl, string memory _did)
                   </code>
                 </li>
                 <li>
-                  Returns a string array:
-                  <code>
-                    ["did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74", "did:web:example.com", "did:key:0c498d9e26865f34fcaa50c498d9e26865f34fcaa5"]
-                  </code>
-                </li>
-              </ul>
-            </li>
-            <li>
-              Retrieve the Trusted Issuer status of given a supplied <a>DID</a>.
-              <ul>
-                <li>
-                  Signature:
-                  <code>
-                    function isTrustedIssuer(string memory _DID) public view returns (bool)
-                  </code>
+                  The namespace SHALL be chosen according to the environment. The contextUrl SHALL match the JSON-LD
+                  schema IRI of the credential. The DID SHALL match the DID of the Credential Issuer.
                 </li>
                 <li>
                   Returns a boolean:
@@ -721,11 +773,25 @@
                 </li>
               </ul>
             </li>
+            <li>
+              Retrieve the full list of all Trusted Issuer <a>DIDs</a> (filtering required).
+              <ul>
+                <li>
+                  Event Signature:
+                  <code>
+                    event HintValueChanged(address indexed namespace, bytes32 indexed list, bytes32 indexed key, bytes32 value)
+                  </code>
+                </li>
+                <li>
+                  Returns an array of unfiltered event logs containing trusted issuer changes.
+                </li>
+              </ul>
+            </li>
           </ul>
           <p>
-            A Digital Wallet MAY also subscribe to changes on the Trusted Issuer Registry by listening to events emitted
-            by the contract. This way, the wallet can be notified of changes to the Trusted Issuer Registry and update
-            its local state accordingly.
+            A Digital Wallet MAY also subscribe to changes on the Trusted Issuer Registry by listening to
+            <code>HintValueChanged</code> events emitted by the contract. This way, the wallet can be notified of
+            changes to the Trusted Issuer Registry and update its local state accordingly.
           </p>
           <p>
             By deriving this information from the contract, the Digital Wallet SHALL check that the issuer stated within the claims of the respective
