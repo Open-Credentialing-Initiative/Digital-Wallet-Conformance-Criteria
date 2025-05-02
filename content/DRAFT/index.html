@@ -344,6 +344,10 @@
           technology resources.
         </li>
         <li>
+          <dfn><abbr title="JSON Web Token">JWT</abbr></dfn>
+          A JSON Web Token is a standardized token whose payload holds JSON that asserts a number of claims. 
+        </li>
+        <li>
           <dfn><abbr title="Product Identifier">PI</abbr></dfn>
           (Product Identifier):
           DSCSA defines the term “product identifier” as, “a standardized graphic that includes, in both human-readable
@@ -353,6 +357,14 @@
           data elements: National Drug Code (NDC), Serial Number, Batch or Lot Number, Expiration Date. Product
           Identifiers are affixed to, or printed on a package or homogeneous case corresponding to the SNI assigned to
           the product by the manufacturer or the repackager.
+        </li>
+        <li>
+          <dfn><abbr title="Verifiable Credential">VC</abbr></dfn>
+          Verifiable Credential: see <a>Credential</a>.
+        </li>  
+        <li>
+          <dfn><abbr title="Verifiable Presentation">VP</abbr></dfn>
+          A Verifiable Presentation is used to exchange a <a>Credential</a> with other parties.
         </li>
         <li>
           <dfn><abbr title="Verifiable data registry">VDR</abbr></dfn>
@@ -487,7 +499,7 @@
         </tr>
         <tr>
           <td>Proofs & Verifications</td>
-          <td>Cryptographic primitives used for VC creation/verification, JWT creation/verification and wallet-to-wallet
+          <td>Cryptographic primitives used for <a>VC</a> creation/verification, <a>JWT</a> creation/verification and wallet-to-wallet
             communication.</td>
         </tr>
         <tr>
@@ -808,7 +820,7 @@
         <p>
           Working groups at the W3C author, host, and maintain the <a href="https://www.w3.org/TR/vc-data-model/">W3C
             Verifiable Credential Data Model specification</a>.
-          The structure of a VC is an important component of interoperability.
+          The structure of a <a>VC</a> is an important component of interoperability.
         </p>
         <p>
           OCI relies on an implementation of a common standard for the credential structure. Digital Wallet Providers
@@ -1209,11 +1221,11 @@
         </tr>
         <tr>
           <td>Input Data</td>
-          <td>Request VC revocation status</td>
+          <td>Request <a>VC</a> revocation status</td>
         </tr>
         <tr>
           <td>Output Data</td>
-          <td>Response VC revocation status</td>
+          <td>Response <a>VC</a> revocation status</td>
         </tr>
       </table>
 
@@ -1874,7 +1886,7 @@
         <tr>
           <td>Conformance Criteria</td>
           <td>
-            The Wallet solution SHALL have the capability of keeping detailed records of all VP generation and verification events 
+            The Wallet solution SHALL have the capability of keeping detailed records of all <a>VP</a> generation and verification events 
             to enable the Trading Partner to comply with regulatory data storage requirements.
             The Wallet Provider SHALL be capable of transferring or making available such auditable records to 
             the Trading Partner or another party with legitimate interest and right to obtain such data.
@@ -1950,7 +1962,7 @@
             <p>
               <b>Note:</b> It shall be understood that a counterparty VRS can be unavailable at any given time. If this
               is the
-              case, the first VRS provider needs to regenerate a JWT token for resending the <a>PI</a> verify request to
+              case, the first VRS provider needs to regenerate a <a>JWT</a> token for resending the <a>PI</a> verify request to
               the
               counterparty VRS at a later time to retry the <a>PI</a> verification request.
             </p>
@@ -1960,8 +1972,8 @@
           <td>Request Parameters</td>
           <td>
             <p>
-              Optional checks may be completed by the party generating the VP to ensure that the presentation generation is working
-              properly and the underlying credentials are valid. However, they are not mandatory at VP generation because checks will 
+              Optional checks may be completed by the party generating the <a>VP</a> to ensure that the presentation generation is working
+              properly and the underlying credentials are valid. However, they are not mandatory at <a>VP</a> generation because checks will 
               always be performed by the recipient anyway. Skipping these checks reduces overall latency. 
             </p>  
             <p> 
@@ -2011,7 +2023,7 @@
           <td>Response Body</td>
           <td>
             <p>
-              Depending on whether the VP generation is successful or not, The <a>Digital Wallet</a> SHALL either return
+              Depending on whether the <a>VP</a> generation is successful or not, The <a>Digital Wallet</a> SHALL either return
               a
               response body representing positive or negative generation.
             </p>
@@ -2031,7 +2043,7 @@
                 <b>verifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
                 <ul>
                   <li>
-                    The JWT formatted and base64 encoded Verifiable Presentation.
+                    The <a>JWT</a> formatted and base64 encoded Verifiable Presentation.
                   </li>
                 </ul>
               </li>
@@ -2164,7 +2176,7 @@
                 <b>VerifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>required</b>
                 <ul>
                   <li>
-                    The Verifiable Presentation to verify in JWT base64 encoded format.
+                    The Verifiable Presentation to verify in <a>JWT</a> base64 encoded format.
                   </li>
                 </ul>
               </li>
@@ -2209,7 +2221,7 @@
                 <b>verifiablePresentation</b> | <i>string</i> | format <i>base64</i> | <b>optional</b>
                 <ul>
                   <li>
-                    The JWT formatted and base64 encoded Verifiable Presentation which has been verified
+                    The <a>JWT</a> formatted and base64 encoded Verifiable Presentation which has been verified
                   </li>
                 </ul>
               </li>
@@ -2312,33 +2324,33 @@
         <li>
           Determine if the decodation of the provided JWT-formatted Verifiable Presentation fails, and it is not
           possible to derive
-          meaningful data from the input. This includes, but is not limited to, not readable JWT headers or signatures.
-          This error SHALL also be returned if it is concluded that the decoded structure of the JWT is missing required
+          meaningful data from the input. This includes, but is not limited to, not readable <a>JWT</a> headers or signatures.
+          This error SHALL also be returned if it is concluded that the decoded structure of the <a>JWT</a> is missing required
           fields.
           <ul>
             <li><b>jwt_invalid</b></li>
           </ul>
         </li>
         <li>
-          The field <b>exp</b> (VC expiration date) of the decoded JWT is either concluded to be in the past -
+          The <a>VC</a> field <b>expirationDate</b> and/or the <a>VP</a> field <b>exp</b> (the VP's reiteration of the VC expiration date) of the decoded <a>JWT</a> are either concluded to be in the past -
           <ul>
             <li>
               <b>vc_exp_expired</b> | <b>or</b> the field is concluded to be unreadable/unprocessable in which case
-              <b>vc_exp_invalid</b> needs to be returned
+              <b>vc_exp_invalid</b> needs to be returned.
             </li>
           </ul>
         </li>
         <li>
-          The field <b>nbf</b> (VC issuance date) of the decoded JWT is either concluded to be in the future -
+          The <a>VC</a> field <b>issuanceDate</b> and/or the <a>VP</a> field <b>nbf</b> (the VP's reiteration of the VC issuance date) of the decoded <a>JWT</a> is either concluded to be in the future -
           <ul>
             <li>
               <b>vc_nbf_expired</b> | <b>or</b> the field is concluded to be unreadable/unprocessable in which case
-              <b>vc_nbf_invalid</b> needs to be returned
+              <b>vc_nbf_invalid</b> needs to be returned.
             </li>
           </ul>
         </li>
         <li>
-          The field <b>iat</b> (VP generation date) of the decoded JWT, factoring in the current approved VP lifetime,
+          The field <b>iat</b> (<a>VP</a> generation date) of the decoded JWT, factoring in the current approved <a>VP</a> lifetime,
           is concluded to be in the past -
           <ul>
             <li>
@@ -2349,7 +2361,7 @@
           </ul>
         </li>
         <li>
-          The field <b>iss</b> (holder <a>DID</a> generating the VP) of the decoded JWT is concluded to <i>not</i> be a
+          The field <b>iss</b> (holder <a>DID</a> generating the VP) of the decoded <a>JWT</a> is concluded to <i>not</i> be a
           <a>DID</a>-compliant
           formatted identifier. See <a
             href="https://www.w3.org/TR/did-core/#did-syntax">https://www.w3.org/TR/did-core/#did-syntax</a> for ABNF
@@ -2362,7 +2374,7 @@
           </ul>
         </li>
         <li>
-          The field <b>nonce</b> of the decoded JWT is concluded to not contain a valid UUID Version 4 Format as
+          The field <b>nonce</b> of the decoded <a>JWT</a> is concluded to not contain a valid UUID Version 4 Format as
           specified in [[RFC4122]].
           <ul>
             <li>
@@ -2424,7 +2436,7 @@
     <section>
       <h2>Protection against <a>Credential</a> Replay Attacks and VP Lifetime</h2>
       <p>
-        The JWT VP SHALL have a lifetime (or time to live) attribute. The lifetime for JWT VPs used in <a>PI</a>
+        The <a>JWT</a> <a>VP</a> SHALL have a lifetime (or time to live) attribute. The lifetime for JWT VPs used in <a>PI</a>
         verifications
         SHALL not be longer than 5 minutes or 300,000 ms. The JWT VP verification API will use this VP lifetime
         threshold to check if a VP is expired. This VP lifetime threshold will be added to the issuance date of the VP,
